@@ -1,7 +1,10 @@
-const webpack = require('webpack'),
-      argv = require('yargs').argv;
+const HtmlWebpackPlugin = require('html-webpack-plugin'),
+    CleanWebpackPlugin = require('clean-webpack-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-let config = {
+let extender = require('./config/webpack/extender');
+
+let baseConfig = {
     entry: './app/main.js',
     output: {
         path: './dist',
@@ -16,19 +19,28 @@ let config = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
+            },
+            {
+                test: /\.html$/,
+                loader: 'raw'
             }
         ]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: false,
-            compress: {
-                warnings: false
-            },
-            comments: false
-        })
+        new HtmlWebpackPlugin({
+            template: './app/index.html'
+        }),
+        new CleanWebpackPlugin(['dist'], {
+            root: __dirname,
+            verbose: true,
+            dry: false
+        }),
+        new ExtractTextPlugin('styles.css')
     ],
-    devtool: 'source-map'
+    devServer: {
+        contentBase: './dist',
+        inline: true
+    }
 };
 
-module.exports = config;
+module.exports = extender(baseConfig);
