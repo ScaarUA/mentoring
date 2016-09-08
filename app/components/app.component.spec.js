@@ -7,4 +7,4 @@ describe('AppComponent', () => {
         expect(template).to.be.equal(`<div class="first-div"></div>`);
     });
 
-});
+});     
