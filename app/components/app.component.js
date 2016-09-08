@@ -1,4 +1,7 @@
 import './app.sass';
 import template from './app.html';
 
-export default template;
+export function fn() {
+    var x = 2;
+    return x;
+}
