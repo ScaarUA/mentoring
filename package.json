@@ -8,12 +8,14 @@
     "dev": "webpack-dev-server --debug --open",
     "test": "webpack --config ./config/webpack.config.test.js && mocha test/test.bundle.js --color --ansi",
     "tdd": "node ./config/tdd.js",
-    "test:coverage": "babel-node node_modules/istanbul/lib/cli cover --report html node_modules/mocha/bin/_mocha -- app/**/*.js --compilers external:config/cssHtmlCompiler.js -u exports --reporter dot"
+    "test:coverage": "babel-node node_modules/istanbul/lib/cli cover --report html node_modules/mocha/bin/_mocha -- app/**/*.js --compilers external:config/cssHtmlCompiler.js -u exports --reporter dot",
+    "eslint": "eslint app/**"
   },
   "author": "Bohdan Huseinov bohdan_huseinov@epam.com",
   "license": "ISC",
   "pre-commit": [
-    "test"
+    "test",
+    "eslint"
   ],
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
