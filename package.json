@@ -14,8 +14,7 @@
   "author": "Bohdan Huseinov bohdan_huseinov@epam.com",
   "license": "ISC",
   "pre-commit": [
-    "test",
-    "eslint"
+    "test"
   ],
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
@@ -36,8 +35,8 @@
     "isparta": "^4.0.0",
     "istanbul": "^1.0.0-alpha.2",
     "mocha": "^3.0.2",
-    "n": "^0.4.5",
     "node-sass": "^3.9.3",
+    "pre-commit": "^1.1.3",
     "precommit-hook": "^3.0.0",
     "raw-loader": "^0.5.1",
     "sass-loader": "^4.0.1",
