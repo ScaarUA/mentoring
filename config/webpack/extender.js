@@ -6,6 +6,7 @@ module.exports = (config) => {
     for(var key in modeConfig) {
         if(modeConfig.hasOwnProperty(key) ) {
             let value = modeConfig[key];
+
             if(/(string)|(number)/.test((typeof value))) {
                 config[key] = modeConfig[key];
             }

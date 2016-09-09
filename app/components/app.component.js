@@ -2,6 +2,7 @@ import './app.sass';
 import template from './app.html';
 
 export function fn() {
-    var x = 2;
+    var x = template.indexOf('laasdasdsa');
+
     return x;
 }

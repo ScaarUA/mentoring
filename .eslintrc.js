@@ -3,7 +3,8 @@ module.exports = {
         "browser": true,
         "commonjs": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "mocha": true
     },
     "plugins": [
         "mocha",
@@ -13,7 +14,7 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        "indent": [2, "tab"],
+        "indent": [2, 4],
         "linebreak-style": [2, "windows"],
         "quotes": [2, "single"],
         "semi": [2, "always"],

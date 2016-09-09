@@ -4,7 +4,7 @@ import {fn} from './app.component';
 describe('AppComponent', () => {
 
     it('should contain template', () => {
-        expect(1).to.be.equal(1);
+        expect(fn()).to.be.equal(-1);
     });
 
 });
