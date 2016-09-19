@@ -31,4 +31,8 @@ To test files in eslint
 $ npm run eslint
 ```
 
-> Pre-com          mit hook included which run tests and eslint checks before commit and allows or disallows that commit
+> Pre-commit hook included which run tests and eslint checks before commit and allows or disallows that commit
+
+###Home Tasks
+
+1. [JSMP3.5: JAVASCRIPT WEB DESIGN PATTERNS](docs/PATTERNS.md)
