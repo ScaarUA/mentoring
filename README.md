@@ -1,5 +1,5 @@
 # Bohdan Huseinov's project build
-##Javascript mentoring program
+## Javascript mentoring program
 
 To make production build with minification, uglifing and concatination
 ```sh
@@ -33,6 +33,6 @@ $ npm run eslint
 
 > Pre-commit hook included which run tests and eslint checks before commit and allows or disallows that commit
 
-###Home Tasks
+### Home Tasks
 
 1. [JSMP3.5: JAVASCRIPT WEB DESIGN PATTERNS](docs/PATTERNS.md)

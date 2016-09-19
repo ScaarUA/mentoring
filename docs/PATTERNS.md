@@ -1,6 +1,6 @@
-##JSMP3.5: JAVASCRIPT WEB DESIGN PATTERNS
+## JSMP3.5: JAVASCRIPT WEB DESIGN PATTERNS
 
-###Найденные паттерны
+### Найденные паттерны
 
 __Фреймворк:__ Angular2
 
@@ -21,7 +21,7 @@ https://github.com/angular/angular/blob/master/modules/%40angular/facade/src/lan
 Обертка для Symbol.iterator. В этой же папке (angular/modules/@angular/facade/src/) содержится куча фасадов всего фреймворка).
 
 
-###Архитектура приложения
+### Архитектура приложения
 
 Проект(*Project*) - создаваемый аналитиком, содержит имя, категорию и список людей, имеющих доступ к нему. Каждый проект содержит в себе коллекцию из шаблонов картинок(Image Template).
 
