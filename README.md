@@ -1,6 +1,11 @@
 # Bohdan Huseinov's project build
 ## Javascript mentoring program
 
+To run a server
+```sh
+$ npm start
+```
+
 To make production build with minification, uglifing and concatination
 ```sh
 $ npm run build
