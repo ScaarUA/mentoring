@@ -22,7 +22,7 @@ module.exports = {
                 loader: 'raw'
             },
             {
-                test: /\.sass$/,
+                test: /\.scss$/,
                 loaders: ['css', 'sass']
             }
         ]

@@ -5,8 +5,8 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.sass$/,
-                loader: ExtractTextPlugin.extract('style', 'css?-minimize&sourceMap!autoprefixer?browsers=last 2 versions!sass?indentedSyntax&sourceMap')
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract('style', 'css?-minimize&sourceMap!autoprefixer?browsers=last 2 versions!sass?&sourceMap')
             }
         ]
     },

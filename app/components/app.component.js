@@ -1,4 +1,4 @@
-import './app.sass';
+import './app.scss';
 import template from './app.html';
 
 export function fn() {
