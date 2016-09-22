@@ -10,7 +10,7 @@
     "test": "webpack --config ./config/webpack.config.test.js && mocha test/test.bundle.js --color --ansi",
     "tdd": "node ./config/tdd.js",
     "test:coverage": "babel-node node_modules/istanbul/lib/cli cover --report html node_modules/mocha/bin/_mocha -- app/**/*.js --compilers external:config/cssHtmlCompiler.js -u exports --reporter dot",
-    "eslint": "eslint *.js",
+    "eslint": "eslint *.js **/*.js",
     "eslint-changed": "node ./config/lintModified.js"
   },
   "author": "Bohdan Huseinov bohdan_huseinov@epam.com",
@@ -40,7 +40,7 @@
     "istanbul": "^1.0.0-alpha.2",
     "mocha": "^3.0.2",
     "node-sass": "^3.9.3",
-    "precommit-hook": "^3.0.0",
+    "pre-commit": "^1.1.3",
     "raw-loader": "^0.5.1",
     "sass-loader": "^4.0.1",
     "sinon": "^1.17.5",
