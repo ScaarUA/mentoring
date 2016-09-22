@@ -4,14 +4,16 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node server",
     "build": "webpack",
     "dev": "webpack-dev-server --debug --open",
-    "test": "webpack --config ./config/webpack.config.test.js && mocha test/test.bundle.js --color --ansi",
+    "test": "webpack --config ./config/webpack/webpack.config.test.js && mocha test/test.bundle.js --color --ansi",
     "tdd": "node ./config/tdd.js",
     "test:coverage": "babel-node node_modules/istanbul/lib/cli cover --report html node_modules/mocha/bin/_mocha -- app/**/*.js --compilers external:config/cssHtmlCompiler.js -u exports --reporter dot",
     "eslint": "eslint *.js **/*.js",
-    "eslint-changed": "node ./config/lintModified.js"
+    "eslint-changed": "node ./config/lintModified.js",
+    "lint": "jshint .",
+    "validate": "npm ls"
   },
   "author": "Bohdan Huseinov bohdan_huseinov@epam.com",
   "license": "ISC",

@@ -1,13 +1,15 @@
 const express = require('express'),
     mongoose = require('mongoose'),
     path = require('path'),
+    bodyParser = require('body-parser'),
     logger = require('./helpers/logger'),
-    projectPaths = require('./config/project.paths');
-
-let app = express(),
+    projectPaths = require('./../config/server/paths.js'),
+    database = require('./../config/server/database'),
     port = process.env.PORT || 8888;
 
-mongoose.connect(require('./config/database'), err => {
+let app = express();
+
+mongoose.connect(database, err => {
     if(err) {
         throw err;
     }
@@ -18,7 +20,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(projectPaths.frontEnd, 'index.html'));
 });
 
-app.use('/', require('./routes/main.router'));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+app.use('/', require('./api'));
 
 app.listen(port, err => {
     if(err) {

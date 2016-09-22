@@ -4,3 +4,6 @@ dist/
 test/
 npm-debug.log
 coverage/
+.node-version
+.jshintignore
+.jshintrc

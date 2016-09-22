@@ -4,7 +4,7 @@ const fs = require('fs'),
     exec = require('child_process').exec,
     webpack = require('webpack');
 
-let webpackConf = require('./webpack.config.test');
+let webpackConf = require('./webpack.config.test.js');
 
 let changedFiles = [],
     dir = 'app',
