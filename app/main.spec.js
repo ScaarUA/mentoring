@@ -1,5 +1,3 @@
-import { expect } from 'chai';
-
 describe('Main', () => {
 
     it('should equal 2', () => {

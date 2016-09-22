@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import {fn} from './app.component';
 
 describe('AppComponent', () => {

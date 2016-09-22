@@ -24,6 +24,14 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loaders: ['css', 'sass']
+            },
+            {
+                test: /sinon.js$/,
+                loader: 'imports?define=>false'
+            },
+            {
+                test: /\.spec\.js$/,
+                loader: 'imports?chai,expect=>chai.expect,assert=>chai.assert,should=>chai.should()'
             }
         ]
     },

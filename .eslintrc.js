@@ -1,4 +1,9 @@
 module.exports = {
+    "globals": {
+        "expect": true,
+        "assert": true,
+        "should": true
+    },
     "env": {
         "browser": true,
         "commonjs": true,
