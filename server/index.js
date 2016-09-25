@@ -9,6 +9,7 @@ const express = require('express'),
 
 let app = express();
 
+mongoose.Promise = require('q').Promise;
 mongoose.connect(database, err => {
     if(err) {
         throw err;
@@ -23,7 +24,7 @@ app.get('/', (req, res) => {
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use('/', require('./api'));
+app.use('/api', require('./api/api.routes'));
 
 app.listen(port, err => {
     if(err) {

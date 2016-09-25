@@ -1,4 +1,4 @@
-const Project = require('../../models/Project'),
+const Project = require('./project.model'),
     logger = require('../../helpers/logger');
 
 module.exports = {

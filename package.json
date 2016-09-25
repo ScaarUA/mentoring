@@ -11,7 +11,7 @@
     "tdd": "node ./config/tdd.js",
     "test:coverage": "babel-node node_modules/istanbul/lib/cli cover --report html node_modules/mocha/bin/_mocha -- app/**/*.js --compilers external:config/cssHtmlCompiler.js -u exports --reporter dot",
     "eslint": "eslint *.js **/*.js",
-    "eslint-changed": "node ./config/lintModified.js",
+    "eslint-changed": "node ./config/env/lintModified.js",
     "lint": "jshint .",
     "validate": "npm ls"
   },

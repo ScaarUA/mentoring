@@ -12,7 +12,7 @@ module.exports = {
         "mocha": true
     },
     "plugins": [
-        "mocha",
+        "mocha"
     ],
     "extends": "eslint:recommended",
     "parserOptions": {
@@ -20,7 +20,6 @@ module.exports = {
     },
     "rules": {
         "indent": [2, 4],
-        "linebreak-style": [2, "windows"],
         "quotes": [2, "single"],
         "semi": [2, "always"],
         "mocha/no-global-tests": "error",
