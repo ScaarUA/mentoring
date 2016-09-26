@@ -13,7 +13,8 @@
     "eslint": "eslint *.js **/*.js",
     "eslint-changed": "node ./config/env/lintModified.js",
     "lint": "jshint .",
-    "validate": "npm ls"
+    "validate": "npm ls",
+    "debug": "devtool server/index.js --watch"
   },
   "author": "Bohdan Huseinov bohdan_huseinov@epam.com",
   "license": "ISC",
@@ -30,6 +31,7 @@
     "chai": "^3.5.0",
     "clean-webpack-plugin": "^0.1.10",
     "css-loader": "^0.25.0",
+    "devtool": "^2.2.0",
     "eslint": "^3.4.0",
     "eslint-config-standard": "^6.0.0",
     "eslint-plugin-mocha": "^4.5.1",
