@@ -5,6 +5,7 @@ const express = require('express'),
     logger = require('./helpers/logger'),
     projectPaths = require('./../config/server/paths.js'),
     database = require('./../config/server/database'),
+    errorsHandler = require('./helpers/errorsHandler'),
     port = process.env.PORT || 8888;
 
 let app = express();
@@ -25,6 +26,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use('/api', require('./api/api.routes'));
+
+app.use(errorsHandler);
 
 app.listen(port, err => {
     if(err) {

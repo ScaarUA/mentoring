@@ -9,7 +9,7 @@ module.exports = {
 };
 
 function getAll() {
-    return Flow.find({}).exec();
+    return Flow.find();
 }
 
 function getFlow(id) {

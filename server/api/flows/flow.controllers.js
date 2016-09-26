@@ -1,4 +1,3 @@
-const logger = require('../../helpers/logger');
 const flowQueries = require('./flow.queries');
 
 module.exports = {
@@ -9,62 +8,47 @@ module.exports = {
     remove
 };
 
-function getAll() {
+function getAll(req, res, next) {
     return flowQueries.getAll()
         .then((flows) => {
             return res.status(200).send(flows);
         })
-        .catch((err) => {
-            logger.error(err);
-            return res.status(403).send(err);
-        });
+        .catch(next);
 }
 
-function getFlow(req, res) {
+function getFlow(req, res, next) {
     const id = req.params.id;
     return flowQueries.getFlow(id)
         .then((flow) => {
             return res.status(200).send(flow);
         })
-        .catch((err) => {
-            logger.error(err);
-            return res.status(403).send(err);
-        });
+        .catch(next);
 }
 
-function create(req, res) {
+function create(req, res, next) {
     const flow = req.body;
     return flowQueries.create(flow)
         .then((flow) => {
             return res.status(200).send(flow);
         })
-        .catch((err) => {
-            logger.error(err);
-            return res.status(403).send(err);
-        });
+        .catch(next);
 }
 
-function update(req, res) {
+function update(req, res, next) {
     const id = req.params.id;
     const data = req.body;
     return flowQueries.update(id, data)
         .then((flow) => {
             return res.status(200).send(flow);
         })
-        .catch((err) => {
-            logger.error(err);
-            return res.status(403).send(err);
-        });
+        .catch(next);
 }
 
-function remove(req, res) {
+function remove(req, res, next) {
     const id = req.params.id;
     return flowQueries.remove(id)
         .then((flow) => {
             return res.status(200).send(flow);
         })
-        .catch((err) => {
-            logger.error(err);
-            return res.status(403).send(err);
-        });
+        .catch(next);
 }
