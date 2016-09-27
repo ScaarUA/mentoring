@@ -1,4 +1,4 @@
-# Bohdan Huseinov's project build
+# Bohdan Huseinov's and Vitaliy Kotliar's project
 ## Javascript mentoring program
 
 To run a server
@@ -40,4 +40,5 @@ $ npm run eslint
 
 ### Home Tasks
 
-1. [JSMP3.5: JAVASCRIPT WEB DESIGN PATTERNS](docs/PATTERNS.md)
+
+1. [JSMP3.5: JAVASCRIPT WEB DESIGN PATTERNS](docs/PATTERNS.md) - Huseinov B.
