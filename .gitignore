@@ -2,6 +2,7 @@
 node_modules/
 dist/
 test/
+uploads/
 npm-debug.log
 coverage/
 .node-version

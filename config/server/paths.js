@@ -4,5 +4,6 @@ let corePath = path.resolve(__dirname, '../../dist');
 
 module.exports = {
     core: corePath,
-    frontEnd: path.join(corePath, '/dist')
+    frontEnd: corePath,
+    destinationStorageFile: path.resolve(__dirname, '../../uploads')
 };

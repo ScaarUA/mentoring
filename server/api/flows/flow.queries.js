@@ -13,7 +13,7 @@ function getAll() {
 }
 
 function getFlow(id) {
-    return Flow.findById(id);
+    return Flow.findById(id).deepPopulate('stateId');
 }
 
 function create(flow) {

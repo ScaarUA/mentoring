@@ -18,6 +18,7 @@ function getAll(req, res, next) {
 
 function getFlow(req, res, next) {
     const id = req.params.id;
+
     return flowQueries.getFlow(id)
         .then((flow) => {
             return res.status(200).send(flow);
@@ -27,6 +28,7 @@ function getFlow(req, res, next) {
 
 function create(req, res, next) {
     const flow = req.body;
+
     return flowQueries.create(flow)
         .then((flow) => {
             return res.status(200).send(flow);
@@ -37,6 +39,7 @@ function create(req, res, next) {
 function update(req, res, next) {
     const id = req.params.id;
     const data = req.body;
+
     return flowQueries.update(id, data)
         .then((flow) => {
             return res.status(200).send(flow);
@@ -46,6 +49,7 @@ function update(req, res, next) {
 
 function remove(req, res, next) {
     const id = req.params.id;
+
     return flowQueries.remove(id)
         .then((flow) => {
             return res.status(200).send(flow);

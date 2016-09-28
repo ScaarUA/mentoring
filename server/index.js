@@ -22,12 +22,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(projectPaths.frontEnd, 'index.html'));
 });
 
+app.use(express.static('dist'));
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use('/api', require('./api/api.routes'));
 
-app.use(errorsHandler);
+// app.use(errorsHandler);
 
 app.listen(port, err => {
     if(err) {

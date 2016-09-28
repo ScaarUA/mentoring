@@ -3,5 +3,6 @@ const express = require('express'),
 
 router.use('/projects', require('./projects'));
 router.use('/flows', require('./flows'));
+router.use('/states', require('./states'));
 
 module.exports = router;
