@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use('/api', require('./api/api.routes'));
 
 app.use((req, res, next) => {
-    const err = new ApiError('Not found resource', 404);
+    const err = new ApiError(`Not found resource ${req.url}`, 404);
 
     return next(err);
 });

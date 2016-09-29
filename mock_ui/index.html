@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css">
+</head>
+<style>
+    .wrapper {
+        margin: 30px;
+    }
+</style>
+<body ng-app="fileUpload">
+<div class="wrapper">
+    <form ng-controller="StateCtrl as ctrl" name="ctrl.ctrlload_form">
+        <fieldset>
+            <legend>Create or update state entity</legend>
+            <label class="checkbox">
+                <input type="checkbox" ng-model="ctrl.isUpdateMode"> Update state
+            </label>
+            <div ng-show="ctrl.isUpdateMode">
+                <label>State id</label>
+                <input type="text" ng-model="ctrl.id">
+            </div>
+            <label>Upload file</label>
+            <input
+                    type="file"
+                    ngf-select
+                    ng-model="ctrl.state.file"
+                    name="file"
+                    ngf-pattern="'image/*'"
+                    accept="image/*"
+                    ngf-max-size="20MB"
+            />
+            <span ng-show="!!ctrl.state.file">
+                Preview: <img style="width:100px;" ngf-thumbnail="ctrl.state.file"/>
+            </span>
+            <label>Title</label>
+            <input type="text" ng-model="ctrl.state.title">
+            <label>Description</label>
+            <textarea ng-model="ctrl.state.description"></textarea>
+            <br>
+            <button type="submit" class="btn" ng-click="ctrl.submit()">submit</button>
+            <div ng-cloak ng-if="ctrl.response">
+                <h3>Response server</h3>
+                <pre>{{ctrl.response}}</pre>
+                <a download href="{{ctrl.getLinkDownload()}}" ng-show="ctrl.id">Download image</a>
+            </div>
+        </fieldset>
+
+
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript" src="ng-file-upload.min.js"></script>
+<script type="text/javascript" src="ng-file-upload-shim.min.js"></script>
+<script type="text/javascript" src="state.js"></script>
+</html>
