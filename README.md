@@ -42,3 +42,4 @@ $ npm run eslint
 
 
 1. [JSMP3.5: JAVASCRIPT WEB DESIGN PATTERNS](docs/PATTERNS.md) - Huseinov B.
+2. [JSMP3.5: JAVASCRIPT WEB DESIGN PATTERNS](docs/SERVER.md) - Huseinov B.
