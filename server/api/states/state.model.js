@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
-const deepPopulate = require('mongoose-deep-populate')(mongoose);
-const stateSchema = mongoose.Schema({
+const mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+
+const stateSchema = Schema({
     image: {
         name: String,
         uploadName: {
@@ -10,10 +11,7 @@ const stateSchema = mongoose.Schema({
     },
     hotspots: [
         {
-            state: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'State'
-            },
+            stateId: Schema.ObjectId,
             title: String,
             description: String,
             x1: Number,
@@ -36,7 +34,5 @@ const stateSchema = mongoose.Schema({
         default: Date.now
     }
 });
-
-stateSchema.plugin(deepPopulate);
 
 module.exports = mongoose.model('State', stateSchema);

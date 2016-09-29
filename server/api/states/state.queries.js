@@ -1,19 +1,14 @@
 const State = require('./state.model');
 
 module.exports = {
-    getAll,
     getState,
     create,
     update,
     remove
 };
 
-function getAll() {
-    return State.find();
-}
-
 function getState(id) {
-    return State.findById(id).deepPopulate('hotspots.state');
+    return State.findById(id);
 }
 
 function create(state) {

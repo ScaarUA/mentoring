@@ -31,7 +31,7 @@ angular.module('fileUpload', ['ngFileUpload'])
         };
 
         this.generateUrl = function () {
-            let url = 'http://localhost:8888/api/states';
+            let url = 'http://localhost:8002/api/states';
             if (this.isUpdateMode){
                 url = `${url}/${this.id}`;
             }
@@ -39,6 +39,6 @@ angular.module('fileUpload', ['ngFileUpload'])
         };
 
         this.getLinkDownload = function () {
-            return `http://localhost:8888/api/states/${this.id}/image`
+            return `http://localhost:8002/api/states/${this.id}/image`
         }
     }]);
