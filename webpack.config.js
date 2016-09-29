@@ -1,9 +1,10 @@
+require('dotenv').config();
 const HtmlWebpackPlugin = require('html-webpack-plugin'),
     CleanWebpackPlugin = require('clean-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 let extender = require('./config/webpack/extender');
-
+const devServer = require('./config/webpack/webpack.dev-server');
 let baseConfig = {
     entry: './app/main.js',
     output: {
@@ -37,10 +38,7 @@ let baseConfig = {
         }),
         new ExtractTextPlugin('styles.css')
     ],
-    devServer: {
-        contentBase: './dist',
-        inline: true
-    }
+    devServer: devServer
 };
 
 module.exports = extender(baseConfig);

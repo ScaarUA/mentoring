@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express'),
     mongoose = require('mongoose'),
     path = require('path'),
@@ -7,7 +8,7 @@ const express = require('express'),
     database = require('./../config/server/database'),
     errorsHandler = require('./helpers/errorsHandler'),
     ApiError = require('./helpers/ApiError'),
-    port = process.env.PORT || 8888;
+    port = process.env.serverPort || 8081;
 
 let app = express();
 
@@ -23,7 +24,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(projectPaths.frontEnd, 'index.html'));
 });
 
-app.use(express.static('dist'));
+app.use(express.static(projectPaths.frontEnd));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
