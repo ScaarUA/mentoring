@@ -1,6 +1,9 @@
 require('dotenv').config();
 const express = require('express'),
+    session = require('express-session'),
+    passport = require('passport'),
     mongoose = require('mongoose'),
+    flash = require('connect-flash'),
     path = require('path'),
     bodyParser = require('body-parser'),
     logger = require('./helpers/logger'),
@@ -28,6 +31,12 @@ app.use(express.static(projectPaths.frontEnd));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(session(require('../config/server/session')));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+require('./authorization')(passport, app);
 
 app.use('/api', require('./api/api.routes'));
 
