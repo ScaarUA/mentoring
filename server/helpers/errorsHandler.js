@@ -1,8 +1,9 @@
 const logger = require('./logger');
 
-module.exports = function (error, req, res) {
-    logger.error(error);
-    return res.status(500).send({
-        error: error.toString()
+module.exports = function (error, req, res, next) {  // eslint-disable-line
+    logger.error(error.stack);
+    return res.status(error.status || 500).send({
+        status: 'failed',
+        message: error.message
     });
 };

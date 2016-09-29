@@ -24,6 +24,7 @@ function update(id, data) {
     return Flow.findById(id)
         .then((flow) => {
             const updatedInstance = Object.assign(flow, data);
+
             return updatedInstance.save();
         });
 }

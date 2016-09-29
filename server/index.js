@@ -6,13 +6,14 @@ const express = require('express'),
     projectPaths = require('./../config/server/paths.js'),
     database = require('./../config/server/database'),
     errorsHandler = require('./helpers/errorsHandler'),
+    ApiError = require('./helpers/ApiError'),
     port = process.env.PORT || 8888;
 
 let app = express();
 
 mongoose.Promise = require('q').Promise;
 mongoose.connect(database, err => {
-    if(err) {
+    if (err) {
         throw err;
     }
     logger.success('Connected to database');
@@ -24,15 +25,21 @@ app.get('/', (req, res) => {
 
 app.use(express.static('dist'));
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api', require('./api/api.routes'));
 
-// app.use(errorsHandler);
+app.use((req, res, next) => {
+    const err = new ApiError('Not found resource', 404);
+
+    return next(err);
+});
+
+app.use(errorsHandler);
 
 app.listen(port, err => {
-    if(err) {
+    if (err) {
         throw err;
     } else {
         logger.success(`listening on port ${port}`);

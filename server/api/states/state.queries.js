@@ -24,6 +24,7 @@ function update(id, data) {
     return State.findById(id)
         .then((state) => {
             const updatedInstance = Object.assign(state, data);
+
             return updatedInstance.save();
         });
 }
