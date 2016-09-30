@@ -3,11 +3,14 @@ const mongoose = require('mongoose'),
 
 const stateSchema = Schema({
     image: {
+        onCloud: Boolean,
         name: String,
-        uploadName: {
+        public_id: String,
+        path: {
             type: String,
             required: true
         },
+        uploadName: String
     },
     hotspots: [
         {

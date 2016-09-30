@@ -1,9 +1,9 @@
 angular.module('fileUpload', ['ngFileUpload'])
     .controller('StateCtrl', ['Upload', '$window', '$http', function (Upload, $window, $http) {
         this.isUpdateMode = false;
-
+        this.state = { onCloud: false };
         this.submit = function () { //function to call on form submit
-            if (this.state) { //check if from is valid
+            if (this.state && this.state.file) {
                 let formData = new FormData();
 
                 for (let info in this.state) {
@@ -11,7 +11,8 @@ angular.module('fileUpload', ['ngFileUpload'])
                         formData.append(info, this.state[info]);
                     }
                 }
-
+                this.requestInProgress = true;
+                this.response = null;
                 $http({
                     method: this.isUpdateMode ? 'PUT' : 'POST',
                     url: this.generateUrl(),
@@ -26,12 +27,15 @@ angular.module('fileUpload', ['ngFileUpload'])
                     .catch((error) => {
                         this.response = error;
                     })
+                    .finally(() => {
+                        this.requestInProgress = false;
+                    });
 
             }
         };
 
         this.generateUrl = function () {
-            let url = 'http://localhost:8002/api/states';
+            let url = '/api/states';
             if (this.isUpdateMode){
                 url = `${url}/${this.id}`;
             }
@@ -39,6 +43,9 @@ angular.module('fileUpload', ['ngFileUpload'])
         };
 
         this.getLinkDownload = function () {
-            return `http://localhost:8002/api/states/${this.id}/image`
+            if (this.response && this.response.image.onCloud) {
+                return this.response.image.path
+            }
+            return `/api/states/${this.id}/image`
         }
     }]);

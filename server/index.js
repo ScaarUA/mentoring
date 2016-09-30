@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('./../config/server/cloudianry');
 const express = require('express'),
     session = require('express-session'),
     passport = require('passport'),

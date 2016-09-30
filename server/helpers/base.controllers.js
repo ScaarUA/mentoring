@@ -7,27 +7,27 @@ class BaseController {
         const id = req.params.id;
 
         return this.Model.findById(id)
-            .then((flow) => {
-                return res.status(200).send(flow);
+            .then((instance) => {
+                return res.status(200).send(instance);
             })
             .catch(next);
     }
 
     getAll(req, res, next) {
         return this.Model.find()
-            .then((flows) => {
-                return res.status(200).send(flows);
+            .then((instances) => {
+                return res.status(200).send(instances);
             })
             .catch(next);
     }
 
 
     create(req, res, next) {
-        const flow = req.body;
+        const data = req.body;
 
-        return this.Model.create(flow)
-            .then((flow) => {
-                return res.status(200).send(flow);
+        return this.Model.create(data)
+            .then((instance) => {
+                return res.status(200).send(instance);
             })
             .catch(next);
     }
@@ -37,13 +37,13 @@ class BaseController {
         const data = req.body;
 
         return this.Model.findById(id)
-            .then((flow) => {
-                const updatedInstance = Object.assign(flow, data);
+            .then((instance) => {
+                const updatedInstance = Object.assign(instance, data);
 
                 return updatedInstance.save();
             })
-            .then((flow) => {
-                return res.status(200).send(flow);
+            .then((instance) => {
+                return res.status(200).send(instance);
             })
             .catch(next);
     }
@@ -52,8 +52,8 @@ class BaseController {
         const id = req.params.id;
 
         return this.Model.remove({ _id: id })
-            .then((flow) => {
-                return res.status(200).send(flow);
+            .then((result) => {
+                return res.status(200).send(result);
             })
             .catch(next);
     }
