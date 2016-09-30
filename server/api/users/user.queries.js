@@ -4,8 +4,6 @@ module.exports = {
     update
 };
 
-
-
 function update(id, data) {
     return User.findById(id)
         .then((user) => {

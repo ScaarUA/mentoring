@@ -22,13 +22,13 @@ module.exports = function (passport, app) {
 
     app.post('/auth/local/signup', passport.authenticate('local-signup', {
         successRedirect: '/',
-        failureRedirect: '/signup',
+        failureRedirect: '/auth/local/signup',
         failureFlash: true
     }));
 
     app.post('/auth/local/login', passport.authenticate('local-login', {
         successRedirect: '/',
-        failureRedirect: '/login',
+        failureRedirect: '/auth/local/login',
         failureFlash: true
     }));
 
