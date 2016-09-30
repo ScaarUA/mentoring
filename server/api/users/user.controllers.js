@@ -1,36 +1,24 @@
-const userQueries = require('./user.queries');
+const User = require('./user.model'),
+    userQueries = require('./user.queries'),
+    BaseControllers = require('../../helpers/base.controllers.js');
 
-module.exports = {
-    getAll,
-    getUser,
-    update
-};
+class UserControllers extends BaseControllers {
+    constructor() {
+        super(User);
+    }
 
-function getAll(req, res, next) {
-    return userQueries.getAll()
-        .then((users) => {
-            return res.status(200).send(users);
-        })
-        .catch(next);
+    update(req, res, next) {
+        const id = req.params.id;
+        const data = {
+            local: req.body
+        };
+
+        return userQueries.update(id, data)
+            .then((user) => {
+                return res.status(200).send(user);
+            })
+            .catch(next);
+    }
 }
 
-function getUser(req, res, next) {
-    const id = req.params.id;
-
-    return userQueries.getuser(id)
-        .then((user) => {
-            return res.status(200).send(user);
-        })
-        .catch(next);
-}
-
-function update(req, res, next) {
-    const id = req.params.id;
-    const data = req.body;
-
-    return userQueries.update(id, data)
-        .then((user) => {
-            return res.status(200).send(user);
-        })
-        .catch(next);
-}
+module.exports = UserControllers;

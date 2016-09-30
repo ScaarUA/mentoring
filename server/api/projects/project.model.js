@@ -1,8 +1,14 @@
 const mongoose = require('mongoose');
 
 let projectSchema = mongoose.Schema({
-    name: String,
-    isOpen: Boolean,
+    name: {
+        type: String,
+        required: true
+    },
+    isOpen: {
+        type: Boolean,
+        default: false
+    },
     readers: [
         {
             type: mongoose.Schema.Types.ObjectId,
