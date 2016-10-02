@@ -1,7 +1,8 @@
-const State = require('./state.model'),
+const
+    uploader = require('../../helpers/uploadFile'),
+    State = require('./state.model'),
     stateQueries = require('./state.queries'),
     stateServices = require('./state.services'),
-    uploader = require('../../helpers/uploadFile'),
     BaseControllers = require('../../helpers/base.controllers.js');
 
 class StateControllers extends BaseControllers {
@@ -12,13 +13,18 @@ class StateControllers extends BaseControllers {
     create(req, res, next) {
         uploader(req, res, (err) => {
             if (err) next(err);
-            const state = stateServices.generateState(req.body, req.file);
-
-            return stateQueries.create(state)
-                .then((state) => {
-                    return res.status(200).send(state);
-                })
-                .catch(next);
+            return new Promise((resolve) => {
+                if (stateServices.isModeCloudStorage(req)) {
+                    resolve(stateServices.uploadToCloud(req));
+                    return;
+                }
+                resolve(stateServices.generateState(req.body, req.file));
+            }).then((state) => {
+                return stateQueries.create(state)
+                    .then((state) => {
+                        return res.status(200).send(state);
+                    });
+            }).catch(next);
         });
     }
 
@@ -26,24 +32,24 @@ class StateControllers extends BaseControllers {
         uploader(req, res, (err) => {
             if (err) next(err);
             const id = req.params.id;
-            const state = stateServices.generateState(req.body, req.file);
 
-            if (req.file) {
-                return stateServices.removeFile(id)
-                    .then(() => {
-                        return stateQueries.update(id, state);
-                    })
+            return new Promise((resolve) => {
+                if (req.file) {
+                    return stateServices.removeFile(id)
+                        .then(() => {
+                            if (stateServices.isModeCloudStorage(req)) {
+                                resolve(stateServices.uploadToCloud(req));
+                                return;
+                            }
+                            resolve(stateServices.generateState(req.body, req.file));
+                        });
+                }
+            }).then((state) => {
+                stateQueries.update(id, state)
                     .then((state) => {
                         return res.status(200).send(state);
-                    })
-                    .catch(next);
-            }
-            return stateQueries.update(id, state)
-                .then((state) => {
-                    return res.status(200).send(state);
-                })
-                .catch(next);
-
+                    });
+            }).catch(next);
         });
     }
 
@@ -51,9 +57,6 @@ class StateControllers extends BaseControllers {
         const id = req.params.id;
 
         stateServices.removeFile(id)
-            .then(() => {
-                return stateQueries.remove(id);
-            })
             .then((state) => {
                 return res.status(200).send(state);
             })
@@ -65,7 +68,7 @@ class StateControllers extends BaseControllers {
 
         return stateQueries.getState(id)
             .then((state) => {
-                return res.status(200).download(stateServices.getPathFile(state), state.image.name);
+                return res.status(200).download(state.image.path, state.image.name);
             })
             .catch(next);
     }

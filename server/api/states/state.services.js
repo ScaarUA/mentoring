@@ -1,13 +1,36 @@
-
-const fsp = require('fs-promise');
-const paths = require('../../../config/server/paths');
-const stateQueries = require('./state.queries');
+const fsp = require('fs-promise'),
+    paths = require('../../../config/server/paths'),
+    stateQueries = require('./state.queries'),
+    path = require('path'),
+    cloudinary = require('cloudinary');
 
 module.exports = {
-    generateState,
+    uploadToCloud,
     removeFile,
-    getPathFile
+    generateState,
+    getPathFile,
+    isModeCloudStorage
 };
+
+function uploadToCloud(req) {
+    const localPath = getPathFile(req.file);
+
+    return new Promise((resolve, reject) => {
+        cloudinary.uploader.upload(localPath, (result) => {
+            if (result.error) {
+                reject({ message: `cloud error: ${result.error}` });
+                return;
+            }
+            return removeFileLocal(localPath)
+                .then(() => {
+                    const state = generateState(req.body, result);
+
+                    resolve(state);
+                });
+        });
+    });
+}
+
 
 function generateState(data, file) {
     const state = {};
@@ -19,8 +42,10 @@ function generateState(data, file) {
     if (file) {
         Object.assign(state, {
             image: {
+                onCloud: !!file.public_id,
                 name: file.originalname,
-                uploadName: file.filename
+                path: file.url || getPathFile(file),
+                public_id: file.public_id
             }
         });
     }
@@ -31,12 +56,33 @@ function generateState(data, file) {
 function removeFile(id) {
     return stateQueries.getState(id)
         .then((state) => {
-            return fsp.remove(getPathFile(state));
+            if (state.image && state.image.onCloud) {
+                return removeFileCloud(state.image.public_id);
+            }
+            return removeFileLocal(state.image.path);
         });
 }
 
-function getPathFile(state) {
-    const uploadName = state.toObject().image.uploadName;
+function removeFileLocal(path) {
+    return fsp.remove(path);
+}
 
-    return `${paths.destinationStorageFile}\\${uploadName}`;
+function removeFileCloud(publicId) {
+    return new Promise((resolve, reject) => {
+        cloudinary.uploader.destroy(publicId, (data) => {
+            if (data.result === 'ok') {
+                resolve({ message: 'success remove image from cloud' });
+                return;
+            }
+            reject({ message: `cloud error: ${data.result}` });
+        });
+    });
+}
+
+function getPathFile(file) {
+    return path.resolve(paths.destinationStorageFile, file.filename);
+}
+
+function isModeCloudStorage(req) {
+    return req.body && req.body.onCloud === 'true';
 }

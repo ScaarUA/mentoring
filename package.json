@@ -57,8 +57,9 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
-    "dotenv": "^2.0.0",
+    "cloudinary": "^1.4.3",
     "connect-flash": "^0.1.1",
+    "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "fs": "0.0.1-security",
