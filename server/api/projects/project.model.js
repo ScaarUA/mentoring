@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+    deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 let projectSchema = mongoose.Schema({
     name: {
@@ -28,5 +29,7 @@ let projectSchema = mongoose.Schema({
         }
     ]
 });
+
+projectSchema.plugin(deepPopulate);
 
 module.exports = mongoose.model('Project', projectSchema);
