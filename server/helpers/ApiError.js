@@ -1,7 +1,8 @@
-module.exports = function (message, status) {
-    const error = new Error(message);
+class ApiError extends Error{
+    constructor(message, status){
+        super(message);
+        this.status = status;
+    }
+}
 
-    error.message = message;
-    error.status = status;
-    return error;
-};
+module.exports = ApiError;

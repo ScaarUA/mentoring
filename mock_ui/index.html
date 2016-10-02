@@ -22,9 +22,6 @@
                     ngf-select
                     ng-model="ctrl.state.file"
                     name="file"
-                    ngf-pattern="'image/*'"
-                    accept="image/*"
-                    ngf-max-size="20MB"
             />
             <label class="checkbox">
                 <input type="checkbox" ng-model="ctrl.state.onCloud"> Cloud mode
@@ -37,9 +34,11 @@
             <label>Description</label>
             <textarea ng-model="ctrl.state.description"></textarea>
             <br>
-            <button type="submit" class="btn" ng-click="ctrl.submit()">submit</button>
+            <button type="submit" class="btn"
+                    ng-click="ctrl.submit()"
+                    ng-disabled="!ctrl.canSubmitForm()">submit</button>
             <div ng-cloak >
-                <h3>Response server</h3>
+                <h4>Response server</h4>
                 <div class="loadersmall" ng-show="ctrl.requestInProgress"></div>
                 <pre ng-if="ctrl.response" >{{ctrl.response}}</pre>
                 <a download href="{{ctrl.getLinkDownload()}}" ng-show="ctrl.id && !ctrl.requestInProgress">Download image</a>

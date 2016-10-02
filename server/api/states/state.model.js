@@ -9,8 +9,7 @@ const stateSchema = Schema({
         path: {
             type: String,
             required: true
-        },
-        uploadName: String
+        }
     },
     hotspots: [
         {
@@ -23,10 +22,7 @@ const stateSchema = Schema({
             y2: Number
         }
     ],
-    title: {
-        type: String,
-        require: true
-    },
+    title: String,
     description: String,
     created: {
         type: Date,

@@ -12,7 +12,10 @@ class StateControllers extends BaseControllers {
 
     create(req, res, next) {
         uploader(req, res, (err) => {
-            if (err) next(err);
+            if (err) {
+                next(err);
+                return;
+            }
             return new Promise((resolve) => {
                 if (stateServices.isModeCloudStorage(req)) {
                     resolve(stateServices.uploadToCloud(req));
@@ -30,7 +33,10 @@ class StateControllers extends BaseControllers {
 
     update(req, res, next) {
         uploader(req, res, (err) => {
-            if (err) next(err);
+            if (err) {
+                next(err);
+                return;
+            }
             const id = req.params.id;
 
             return new Promise((resolve) => {

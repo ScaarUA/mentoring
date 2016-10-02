@@ -3,10 +3,10 @@ angular.module('fileUpload', ['ngFileUpload'])
         this.isUpdateMode = false;
         this.state = { onCloud: false };
         this.submit = function () { //function to call on form submit
-            if (this.state && this.state.file) {
-                let formData = new FormData();
+            if (this.canSubmitForm()) {
+                var formData = new FormData();
 
-                for (let info in this.state) {
+                for (var info in this.state) {
                     if (this.state.hasOwnProperty(info)) {
                         formData.append(info, this.state[info]);
                     }
@@ -25,7 +25,7 @@ angular.module('fileUpload', ['ngFileUpload'])
                         this.id = response.data._id;
                     })
                     .catch((error) => {
-                        this.response = error;
+                        this.response = error.data;
                     })
                     .finally(() => {
                         this.requestInProgress = false;
@@ -35,8 +35,8 @@ angular.module('fileUpload', ['ngFileUpload'])
         };
 
         this.generateUrl = function () {
-            let url = '/api/states';
-            if (this.isUpdateMode){
+            var url = '/api/states';
+            if (this.isUpdateMode) {
                 url = `${url}/${this.id}`;
             }
             return url;
@@ -47,5 +47,9 @@ angular.module('fileUpload', ['ngFileUpload'])
                 return this.response.image.path
             }
             return `/api/states/${this.id}/image`
+        };
+
+        this.canSubmitForm = function () {
+            return this.state && this.state.file;
         }
     }]);

@@ -1,8 +1,9 @@
 const fsp = require('fs-promise'),
+    path = require('path'),
+    cloudinary = require('cloudinary'),
     paths = require('../../../config/server/paths'),
     stateQueries = require('./state.queries'),
-    path = require('path'),
-    cloudinary = require('cloudinary');
+    ApiError = require('../../helpers/ApiError');
 
 module.exports = {
     uploadToCloud,
@@ -18,7 +19,7 @@ function uploadToCloud(req) {
     return new Promise((resolve, reject) => {
         cloudinary.uploader.upload(localPath, (result) => {
             if (result.error) {
-                reject({ message: `cloud error: ${result.error}` });
+                reject(new ApiError(`cloud error: ${result.error}`, 503));
                 return;
             }
             return removeFileLocal(localPath)
@@ -74,7 +75,7 @@ function removeFileCloud(publicId) {
                 resolve({ message: 'success remove image from cloud' });
                 return;
             }
-            reject({ message: `cloud error: ${data.result}` });
+            reject(new ApiError(`cloud error: ${data.result}`, 503));
         });
     });
 }
