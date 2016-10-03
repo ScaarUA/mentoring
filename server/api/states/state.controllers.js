@@ -1,5 +1,4 @@
 const
-    uploader = require('../../helpers/uploadFile'),
     State = require('./state.model'),
     stateQueries = require('./state.queries'),
     stateServices = require('./state.services'),
@@ -11,52 +10,40 @@ class StateControllers extends BaseControllers {
     }
 
     create(req, res, next) {
-        uploader(req, res, (err) => {
-            if (err) {
-                next(err);
+        return new Promise((resolve) => {
+            if (stateServices.isModeCloudStorage(req)) {
+                resolve(stateServices.uploadToCloud(req));
                 return;
             }
-            return new Promise((resolve) => {
-                if (stateServices.isModeCloudStorage(req)) {
-                    resolve(stateServices.uploadToCloud(req));
-                    return;
-                }
-                resolve(stateServices.generateState(req.body, req.file));
-            }).then((state) => {
-                return stateQueries.create(state)
-                    .then((state) => {
-                        return res.status(200).send(state);
-                    });
-            }).catch(next);
-        });
+            resolve(stateServices.generateState(req.body, req.file));
+        }).then((state) => {
+            return stateQueries.create(state)
+                .then((state) => {
+                    return res.status(200).send(state);
+                });
+        }).catch(next);
     }
 
     update(req, res, next) {
-        uploader(req, res, (err) => {
-            if (err) {
-                next(err);
-                return;
-            }
-            const id = req.params.id;
+        const id = req.params.id;
 
-            return new Promise((resolve) => {
-                if (req.file) {
-                    return stateServices.removeFile(id)
-                        .then(() => {
-                            if (stateServices.isModeCloudStorage(req)) {
-                                resolve(stateServices.uploadToCloud(req));
-                                return;
-                            }
-                            resolve(stateServices.generateState(req.body, req.file));
-                        });
-                }
-            }).then((state) => {
-                stateQueries.update(id, state)
-                    .then((state) => {
-                        return res.status(200).send(state);
+        return new Promise((resolve) => {
+            if (req.file) {
+                return stateServices.removeFile(id)
+                    .then(() => {
+                        if (stateServices.isModeCloudStorage(req)) {
+                            resolve(stateServices.uploadToCloud(req));
+                            return;
+                        }
+                        resolve(stateServices.generateState(req.body, req.file));
                     });
-            }).catch(next);
-        });
+            }
+        }).then((state) => {
+            stateQueries.update(id, state)
+                .then((state) => {
+                    return res.status(200).send(state);
+                });
+        }).catch(next);
     }
 
     remove(req, res, next) {

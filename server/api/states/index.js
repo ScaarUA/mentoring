@@ -1,15 +1,16 @@
 const express = require('express'),
     router = express.Router(),
     StateControllers = require('./state.controllers.js'),
-    controllers = new StateControllers();
+    controllers = new StateControllers(),
+    uploadFile = require('../../helpers/uploadFile');
 
 router.route('/')
     .get(controllers.getAll.bind(controllers))
-    .post(controllers.create.bind(controllers));
+    .post(uploadFile, controllers.create.bind(controllers));
 
 router.route('/:id')
     .get(controllers.getOne.bind(controllers))
-    .put(controllers.update.bind(controllers))
+    .put(uploadFile, controllers.update.bind(controllers))
     .delete(controllers.remove.bind(controllers));
 
 router.route('/:id/image')

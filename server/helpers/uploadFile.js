@@ -11,6 +11,12 @@ const storage = multer.diskStorage({
     filename
 });
 
+const uploader = multer({
+    storage,
+    fileFilter,
+    limits: config.limits
+}).single(config.fieldNameInForm);
+
 function destination(req, file, cb) {
     if (!fs.existsSync(destinationStorage)) {
         fs.mkdirSync(destinationStorage);
@@ -33,9 +39,15 @@ function fileFilter(req, file, cb) {
     }
 }
 
-module.exports = multer({
-    storage,
-    fileFilter,
-    limits: config.limits
-}).single(config.fieldNameInForm);
+function uploadMiddleware(req, res, next) {
+    uploader(req, res, (err) => {
+        if (err) {
+            next(err);
+            return;
+        }
+        next();
+    });
+}
+
+module.exports = uploadMiddleware;
 
