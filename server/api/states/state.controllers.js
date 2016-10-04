@@ -50,6 +50,9 @@ class StateControllers extends BaseControllers {
         const id = req.params.id;
 
         stateServices.removeFile(id)
+            .then(() => {
+                return stateQueries.remove(id);
+            })
             .then((state) => {
                 return res.status(200).send(state);
             })
