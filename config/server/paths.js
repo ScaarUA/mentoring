@@ -1,6 +1,6 @@
 const path = require('path');
 
-let corePath = path.resolve(__dirname, '../../mock_ui');
+let corePath = path.resolve(__dirname, '../../app');
 
 module.exports = {
     core: corePath,

@@ -1,3 +1,1 @@
-import appComponent from './components/app.component';
-
-appComponent();
+import './ui-components/index.scss';

@@ -4,13 +4,20 @@ module.exports = {
     inline: true,
     progress: true,
     stats: 'errors-only',
-    contentBase: './dist',
+    contentBase: '/app',
     host: process.env.webpackServerHost,
     port: process.env.webpackServerPort,
-    quiet: false,
+    // quiet: false,
     proxy: [
         {
             path: '/api',
+            target: {
+                host: process.env.webpackServerHost,
+                port: process.env.serverPort
+            }
+        },
+        {
+            path: '/assets',
             target: {
                 host: process.env.webpackServerHost,
                 port: process.env.serverPort
