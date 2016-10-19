@@ -1,0 +1,79 @@
+//resets
+@mixin button-reset() {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@mixin input-reset() {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+@mixin list-reset() {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin placeholder-styling($color) {
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba($color, 0.8);
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: rgba($color, 0.8);
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: rgba($color, 0.8);
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: rgba($color, 0.8);
+  }
+}
+
+//partials
+@mixin orange-button($shadow-height: 2px, $padding: 24px, $transition-timing: 0.1s) {
+  @include button-reset();
+  position: relative;
+  overflow: hidden;
+  background: $primary-orange;
+  border-radius: 4px;
+  padding: $padding;
+  transition: padding-bottom $transition-timing, box-shadow $transition-timing;
+  color: $primary-white;
+
+  &:before, &:after {
+    content: '';
+    transition: height $transition-timing;
+  }
+  
+  &:after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: $shadow-height;
+    background: $dark-orange;
+  }
+
+  &:before {
+    display: block;
+    height: 0;
+  }
+
+  &:active {
+    padding-bottom: $padding - $shadow-height;
+    box-shadow: 0 -2px 5px -2px $light-black;
+
+    &:after {
+      height: 0;
+    }
+
+    &:before {
+      width: 100%;
+      height: $shadow-height;
+    }
+  }
+}

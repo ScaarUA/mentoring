@@ -1,0 +1,350 @@
+//helpers
+@import "colors";
+@import "mixins";
+
+//libraries
+@import "~normalize.css/normalize.css";
+
+* {
+  box-sizing: border-box;
+}
+
+// header
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: #094f71;
+
+  &-hamburger {
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+    padding: 5px;
+
+    &__line {
+      width: 20px;
+      height: 3px;
+      background: #ffffff;
+      margin: 4px;
+      border-radius: 2px;
+    }
+  }
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 700px;
+    height: 100%;
+
+    &__logo {
+
+    }
+
+    &__description {
+      font-size: 36px;
+      color: $primary-white;
+    }
+  }
+}
+
+.post-header {
+  background: $primary-blue;
+  height: 345px;
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+
+    &__heading {
+      margin-bottom: 0;
+      font-size: 36px;
+      font-weight: bold;
+      color: $primary-white;
+    }
+
+    &__button {
+      @include orange-button(5px, 24px);
+      text-transform: uppercase;
+      font-size: 24px;
+      margin: 35px 0;
+    }
+  }
+}
+
+.fast-login {
+
+  &__title {
+    display: block;
+    color: $primary-white;
+    font-size: 20px;
+  }
+
+  &__with-google {
+    @include button-reset();
+    background-image: url("/assets/images/sign-in-with-google.png");
+    background-size: cover;
+    width: 153px;
+    height: 30px;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &-form {
+    display: inline-block;
+
+    &__email, &__password {
+      @include input-reset();
+      @include placeholder-styling($primary-white);
+      width: 100px;
+      border-bottom: 2px solid $primary-white;
+      margin: 0 10px;
+      color: white;
+    }
+
+    &__sign-in {
+      @include button-reset();
+      color: $primary-white;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+  }
+}
+
+.benefits {
+  height: 100vh;
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 700px;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  &__heading {
+    font-size: 48px;
+    font-weight: normal;
+    color: $dark-blue;
+  }
+
+  &-list {
+    @include list-reset();
+    width: 100%;
+    height: 100%;
+
+    &-item {
+      position: relative;
+      display: inline-block;
+      width: 40%;
+      height: 33%;
+      float: left;
+
+      &-main {
+        display: flex;
+        align-items: center;
+      }
+
+      &__number {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        background: $primary-blue;
+        font-size: 48px;
+        color: $primary-white;
+        line-height: 80px;
+        text-align: center;
+      }
+
+      &__name {
+        display: inline-block;
+        color: $primary-blue;
+        margin: 0 15px;
+        font-size: 24px;
+        font-weight: normal;
+      }
+
+      &__description {
+        display: block;
+        color: $light-black;
+        margin: 20px 0;
+      }
+
+      &--left {
+        float: left;
+      }
+
+      &--right {
+        float: right;
+
+        & .benefits-list-item-main {
+          justify-content: flex-end;
+        }
+
+        & .benefits-list-item__number {
+          order: 2;
+        }
+
+        & .benefits-list-item__name {
+          order: 1;
+        }
+
+        & .benefits-list-item__description {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+.contributors {
+  height: 100vh;
+
+  &-author {
+    background: $dark-blue;
+    
+    &-content {
+      display: flex;
+      justify-content: space-between;
+      width: 700px;
+      margin: 0 auto;
+      padding: 24px 0;
+    }
+
+    &__heading {
+      font-size: 48px;
+      font-weight: normal;
+      color: $primary-white;
+    }
+
+    &-block {
+
+      &__photo {
+        display: inline-block;
+        width: 240px;
+        height: 240px;
+        box-shadow: 0 2px 1px 0 $light-black;
+      }
+
+      &-info {
+        display: inline-block;
+        position: relative;
+        text-align: right;
+
+        &__name {
+          position: relative;
+          right: -50px;
+          font-size: 24px;
+          font-weight: normal;
+          color: $primary-white;
+          margin: 5px 0;
+        }
+
+        &__rank {
+          font-size: 18px;
+          color: $primary-blue;
+        }
+      }
+    }
+  }
+
+  &-developers {
+
+    &-content {
+      width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    &__heading {
+      font-size: 48px;
+      font-weight: normal;
+      color: $dark-blue;
+    }
+
+    &-wrapper {
+      overflow: hidden;
+    }
+
+    &-developer {
+      float: left;
+
+      &:nth-child(2) {
+        float: right;
+      }
+
+      &__photo {
+        width: 160px;
+        height: 160px;
+        border: 2px solid $dark-blue;
+        border-radius: 50%;
+      }
+
+      &__name {
+        margin: 0 0 10px;
+        font-size: 24px;
+        font-weight: normal;
+        color: $primary-blue;
+      }
+
+      &__rank {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.motivation {
+  display: block;
+  background: $primary-blue;
+
+  &-content {
+    width: 720px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__question {
+    margin: 20px;
+    float: left;
+    color: $primary-white;
+    font-size: 36px;
+  }
+
+  &__button {
+    @include orange-button(1px, 10px);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.footer {
+  background: $dark-blue;
+  text-align: center;
+  overflow: hidden;
+
+  &__logo {
+    color: $primary-white;
+  }
+
+  &__copyright {
+    color: $primary-white;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+}
