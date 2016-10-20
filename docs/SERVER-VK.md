@@ -115,8 +115,8 @@ const state = {
 -------------
 Для того что бы проверить работу с файлами была разработана небольшая FE часть в папке /mock_ui, используя ее можно проверить создание, обновление, загрузку и выгрузку файлов на сервер/облако. 
 Что бы запустить /mock_ui необходимо:  
-1) git clone git@git.epam.com:bohdan_huseinov/mentoring.git;   
-2) cd mentoring;  
+1) git clone git@git.epam.com:bohdan_huseinov/mentoring.git && cd mentoring;   
+2) git checkout BE_completed;  
 3) use node version **6.2.1**;   
 4) npm i;   
 5) disable middleware checking user in file /server/api.routes.js, line 4;     
