@@ -1,15 +1,98 @@
 //helpers
 @import "colors";
 @import "mixins";
+@import "media.queries";
 
 //libraries
 @import "~normalize.css/normalize.css";
+@import "./fa/scss/font-awesome";
 
 * {
   box-sizing: border-box;
 }
 
-// header
+.menu {
+  display: none; //temporary
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 10;
+
+  &-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    background: black;
+  }
+
+  &-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 300px;
+    height: 100%;
+    background: $primary-white;
+    box-shadow: 1px 0 7px 0 $light-black;
+  }
+
+  &-list {
+    @include list-reset();
+
+    &-item {
+      height: 40px;
+      line-height: 40px;
+
+      &__icon {
+        display: inline-block;
+        width: 50px;
+        text-align: center;
+      }
+
+      &__link {
+        @include link-reset();
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        font-weight: bold;
+        font-size: 16px;
+        color: $light-black;
+        
+        &:hover {
+          background: lighten($light-black, 75%);
+          color: $primary-blue;
+
+          .menu-list-item__arrow {
+            visibility: visible;
+          }
+        }
+      }
+
+      &__arrow {
+        float: right;
+        color: lighten($light-black, 50%);
+        padding-right: 20px;
+        visibility: hidden;
+      }
+      
+      &--heading {
+        height: 60px;
+        line-height: 60px;
+        background: $dark-blue;
+        text-align: center;
+        
+        & .menu-list-item__title {
+          font-size: 24px;
+          color: $primary-white;
+        }
+      }
+    }
+  }
+}
+
 .header {
   display: flex;
   justify-content: center;
@@ -34,10 +117,14 @@
 
   &-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     width: 700px;
     height: 100%;
+
+    @media #{$high-media} {
+      justify-content: space-between;
+    }
 
     &__logo {
 
@@ -46,26 +133,36 @@
     &__description {
       font-size: 36px;
       color: $primary-white;
+      display: none;
+
+      @media #{$high-media} {
+        display: block;
+      }
     }
   }
 }
 
 .post-header {
+  position: relative;
   background: $primary-blue;
-  height: 345px;
+  padding: 30px;
 
   &-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 420px;
+    max-width: 360px;
     height: 100%;
     margin: 0 auto;
     text-align: center;
 
+    @media #{$small-media} {
+      max-width: 420px;
+    }
+
     &__heading {
-      margin-bottom: 0;
+      margin: 0;
       font-size: 36px;
       font-weight: bold;
       color: $primary-white;
@@ -74,8 +171,62 @@
     &__button {
       @include orange-button(5px, 24px);
       text-transform: uppercase;
-      font-size: 24px;
+      font-size: 16px;
       margin: 35px 0;
+
+      @media #{$small-media} {
+        font-size: 18px;
+      }
+
+      @media #{$medium-media} {
+        font-size: 24px;
+      }
+    }
+  }
+
+  &-arrow {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 20px;
+    height: 70px;
+    overflow: hidden;
+    color: $primary-white;
+
+    @media #{$medium-media} {
+      display: block;
+    }
+
+    &--right {
+      left: auto;
+      right: 10%;
+    }
+
+    &__one {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      animation-name: arrow-fly;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      font-size: 48px;
+    }
+    
+    @keyframes arrow-fly {
+      0% {
+        opacity: 0;
+        top: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+        top: 100%;
+      }
     }
   }
 }
@@ -114,6 +265,7 @@
 
     &__sign-in {
       @include button-reset();
+      margin: 10px 0;
       color: $primary-white;
       font-weight: bold;
       vertical-align: middle;
@@ -122,19 +274,28 @@
 }
 
 .benefits {
-  height: 100vh;
+
+  @media #{$high-media} {
+    height: 100vh;
+  }
 
   &-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 700px;
+    max-width: 700px;
     height: 100%;
     margin: 0 auto;
+    padding: 0 10px;
+
+    @media #{$high-media} {
+      padding: 0;
+    }
   }
 
   &__heading {
+    text-align: center;
     font-size: 48px;
     font-weight: normal;
     color: $dark-blue;
@@ -147,10 +308,14 @@
 
     &-item {
       position: relative;
-      display: inline-block;
-      width: 40%;
+      display: block;
       height: 33%;
-      float: left;
+
+      @media #{$medium-media} {
+        display: inline-block;
+        width: 40%;
+        float: left;
+      }
 
       &-main {
         display: flex;
@@ -182,12 +347,11 @@
         margin: 20px 0;
       }
 
-      &--left {
-        float: left;
-      }
-
       &--right {
-        float: right;
+
+        @media #{$medium-media} {
+          float: right;
+        }
 
         & .benefits-list-item-main {
           justify-content: flex-end;
@@ -210,17 +374,27 @@
 }
 
 .contributors {
-  height: 100vh;
+
+  @media #{$high-media} {
+    height: 100vh;
+  }
 
   &-author {
     background: $dark-blue;
     
     &-content {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      width: 700px;
+      max-width: 700px;
       margin: 0 auto;
-      padding: 24px 0;
+      padding: 24px 10px;
+      text-align: center;
+
+      @media #{$high-media} {
+        padding: 10px 0;
+        flex-direction: row;
+      }
     }
 
     &__heading {
@@ -244,12 +418,17 @@
         text-align: right;
 
         &__name {
-          position: relative;
-          right: -50px;
           font-size: 24px;
           font-weight: normal;
           color: $primary-white;
           margin: 5px 0;
+          text-align: center;
+
+          @media #{$medium-media} {
+            position: relative;
+            right: -50px;
+            text-align: inherit;
+          }
         }
 
         &__rank {
@@ -263,12 +442,18 @@
   &-developers {
 
     &-content {
-      width: 700px;
+      max-width: 700px;
       margin: 0 auto;
       text-align: center;
+      padding: 30px 10px;
+
+      @media #{$high-media} {
+        padding: 30px 0;
+      }
     }
 
     &__heading {
+      margin: 0;
       font-size: 48px;
       font-weight: normal;
       color: $dark-blue;
@@ -279,10 +464,17 @@
     }
 
     &-developer {
-      float: left;
+      margin-top: 30px;
+
+      @media #{$medium-media} {
+        float: left;
+      }
 
       &:nth-child(2) {
-        float: right;
+
+        @media #{$medium-media} {
+          float: right;
+        }
       }
 
       &__photo {
@@ -311,25 +503,39 @@
   background: $primary-blue;
 
   &-content {
-    width: 720px;
+    max-width: 720px;
     margin: 0 auto;
+    padding: 20px 10px;
     overflow: hidden;
     position: relative;
+    text-align: center;
+
+    @media #{$high-media} {
+      padding: 20px 0;
+    }
+
+    @media #{$high-media} {
+      text-align: left;
+    }
   }
 
   &__question {
-    margin: 20px;
-    float: left;
+    margin: 0 0 5px;
+    //float: left;
     color: $primary-white;
     font-size: 36px;
   }
 
   &__button {
-    @include orange-button(1px, 10px);
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    @include orange-button(2px, 15px);
+    display: inline-block;
+
+    @media #{$high-media} {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
 

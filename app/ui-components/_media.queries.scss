@@ -1,0 +1,7 @@
+$small: 360px;
+$medium: 480px;
+$high: 768px;
+
+$small-media: 'screen and (min-width: #{$small})';
+$medium-media: 'screen and (min-width: #{$medium})';
+$high-media: 'screen and (min-width: #{$high})';

@@ -18,6 +18,11 @@
   padding: 0;
 }
 
+@mixin link-reset() {
+  text-decoration: none;
+  color: inherit;
+}
+
 @mixin placeholder-styling($color) {
   &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: rgba($color, 0.8);
