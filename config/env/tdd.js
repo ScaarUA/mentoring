@@ -8,21 +8,27 @@ let webpackConf = require('./../webpack/webpack.config.test.js');
 
 let changedFiles = [],
     dir = 'app',
-    isModified = false;
+    isModified = false,
+    active;
 
 fs.watch(dir, {recursive: true}, function (evt, file) {
+    if(active) {
+        return;
+    }
 
-    if((/\.js$/.test(file) && evt === 'change') || (isModified && evt === 'rename')) {
+    if((/\.ts$/.test(file) && evt === 'change') || (isModified && evt === 'rename')) {
         console.log(file, evt);
         file = `.\\${dir}\\${file}`;
         if(!~file.indexOf('spec')) {
-            file = file.replace(/\.js$/i, '.spec.js');
+            file = file.replace(/\.ts$/i, '.spec.ts');
         }
         if(!~changedFiles.indexOf(file)) {
             changedFiles.push(file);
         }
+        active = true;
         webpackConf.entry = changedFiles;
         webpack(webpackConf, function (err/*, stats*/) {
+            active = false;
             if(err) {
                 throw err;
             }

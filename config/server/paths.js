@@ -1,6 +1,6 @@
 const path = require('path');
 
-let corePath = path.resolve(__dirname, '../../app');
+let corePath = path.resolve(__dirname, '../../public');
 
 module.exports = {
     core: corePath,

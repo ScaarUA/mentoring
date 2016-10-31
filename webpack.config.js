@@ -7,51 +7,65 @@ const webpack = require('webpack'),
 let extender = require('./config/webpack/extender');
 const devServer = require('./config/webpack/webpack.dev-server');
 let baseConfig = {
-    entry: ['webpack-dev-server/client', 'webpack/hot/dev-server', './app/main.js', './app/ui-components/index.scss'],
+    entry: {
+        app: './app/main.ts',
+        vendor: './app/vendor.ts',
+        polyfills: './app/polyfills.ts'
+    },
     output: {
-        path: './dist',
-        filename: 'app.js'
+        path: './public',
+        filename: '[name].js'
+    },
+    resolve: {
+        extensions: ['', '.ts', '.js']
     },
     babel: {
         presets: ['es2015']
     },
     module: {
+        preLoaders: [
+            {
+                test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=application/font-woff&name=styles/[name].woff'
+            }, {
+                test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=application/font-woff&name=styles/[name].woff2'
+            }, {
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=application/octet-stream&name=styles/[name].ttf'
+            }, {
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file?name=styles/[name].eot'
+            }, {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=image/svg+xml&name=styles/[name].svg'
+            }
+        ],
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.tsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'ts-loader'
             },
             {
                 test: /\.html$/,
                 loader: 'raw'
-            }, {
-                test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/font-woff'
-            }, {
-                test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/font-woff'
-            }, {
-                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/octet-stream'
-            }, {
-                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'file'
-            }, {
-                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=image/svg+xml'
             }
         ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['app', 'vendor', 'polyfills']
+        }),
         new HtmlWebpackPlugin({
             template: './app/index.html'
         }),
-        new CleanWebpackPlugin(['dist'], {
+        new CleanWebpackPlugin(['public'], {
             root: __dirname,
             verbose: true,
-            dry: false
+            dry: false,
+            exclude: ['assets']
         }),
         new ExtractTextPlugin('styles.css')
     ],

@@ -13,9 +13,9 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.tsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'ts-loader'
             },
             {
                 test: /\.html$/,
@@ -30,7 +30,7 @@ module.exports = {
                 loader: 'imports?define=>false'
             },
             {
-                test: /\.spec\.js$/,
+                test: /\.spec\.ts$/,
                 loader: 'imports?chai,expect=>chai.expect,assert=>chai.assert,should=>chai.should()'
             }
         ]

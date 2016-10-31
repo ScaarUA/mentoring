@@ -1,9 +1,21 @@
 /*eslint-disable no-console*/
 
 const exec = require('child_process').exec,
-    fs = require('fs');
+    fs = require('fs'),
+    argv = require('yargs').argv;
 
-let ignoreList = fs.readFileSync('.eslintignore', 'utf-8').split('\n');
+let extension;
+
+switch (argv.type) {
+case 'eslint':
+    extension = 'js';
+    break;
+case 'tslint':
+    extension = 'ts';
+    break;
+}
+
+let ignoreList = argv.type === 'eslint' ? fs.readFileSync('.eslintignore', 'utf-8').split('\n') : [];
 
 exec('git diff --cached --name-status --diff-filter=ACM', (err, stdout, stderr) => {
     let modified = stdout.split('\n').map((file) => {
@@ -11,19 +23,25 @@ exec('git diff --cached --name-status --diff-filter=ACM', (err, stdout, stderr) 
     });
 
     modified = modified.filter((file) => {
-        return /\.js$/.test(file) && ignoreList.indexOf(file) === -1;
+        if(~file.indexOf('.d.ts')) {
+            return;
+        }
+
+        let filePattern = new RegExp(`\.${extension}$`);
+
+        return filePattern.test(file) && ignoreList.indexOf(file) === -1;
     }).join(' ');
 
     console.log('modified files:', modified);
-    if(modified.indexOf('.js') === -1) {
+    if (modified.indexOf(`.${extension}`) === -1) {
         return;
     }
 
-    exec(`eslint ${modified}`, (err, stdout, stderr) => {
+    exec(`${argv.type} ${modified}`, (err, stdout, stderr) => {
         console.log(stdout);
         let nmbOfErrors = /\d+?(?= error)/m.exec(stdout);
 
-        if(nmbOfErrors && parseInt(nmbOfErrors[0]) > 0) {
+        if (nmbOfErrors && parseInt(nmbOfErrors[0]) > 0) {
             process.exit(1);
         }
         console.log(stderr);

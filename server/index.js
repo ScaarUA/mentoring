@@ -5,7 +5,6 @@ const express = require('express'),
     passport = require('passport'),
     mongoose = require('mongoose'),
     flash = require('connect-flash'),
-    path = require('path'),
     bodyParser = require('body-parser'),
     logger = require('./helpers/logger'),
     projectPaths = require('./../config/server/paths.js'),
@@ -22,10 +21,6 @@ mongoose.connect(database, err => {
         throw err;
     }
     logger.success('Connected to database');
-});
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(projectPaths.frontEnd, 'index.html'));
 });
 
 app.use(express.static(projectPaths.frontEnd));

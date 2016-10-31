@@ -9,10 +9,10 @@
     "dev": "webpack-dev-server --debug --open",
     "test": "webpack --config ./config/webpack/webpack.config.test.js && mocha test/test.bundle.js --color --ansi",
     "tdd": "node ./config/env/tdd.js",
-    "test:coverage": "babel-node node_modules/istanbul/lib/cli cover --report html node_modules/mocha/bin/_mocha -- app/**/*.js --compilers external:config/envcssHtmlCompiler.js -u exports --reporter dot",
-    "eslint": "eslint *.js **/*.js",
-    "eslint-changed": "node ./config/env/lintModified.js",
-    "lint": "jshint .",
+    "eslint": "eslint config/**/*.js server/**/*.js",
+    "eslint-changed": "node ./config/env/lintModified.js --type=eslint",
+    "tslint": "tslint app/**/*.ts",
+    "tslint-changed": "node ./config/env/lintModified.js --type=tslint",
     "validate": "npm ls",
     "debug": "devtool server/index.js --watch"
   },
@@ -23,6 +23,8 @@
     "eslint-changed"
   ],
   "devDependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/node": "^6.0.46",
     "autoprefixer-loader": "^3.2.0",
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
@@ -51,12 +53,26 @@
     "sass-loader": "^4.0.1",
     "sinon": "^1.17.5",
     "style-loader": "^0.13.1",
+    "ts-loader": "^0.9.5",
+    "tslint": "^3.13.0",
     "url-loader": "^0.5.5",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1",
     "yargs": "^5.0.0"
   },
   "dependencies": {
+    "@angular/common": "~2.1.0",
+    "@angular/compiler": "~2.1.0",
+    "@angular/core": "~2.1.0",
+    "@angular/forms": "~2.1.0",
+    "@angular/http": "~2.1.0",
+    "@angular/platform-browser": "~2.1.0",
+    "@angular/platform-browser-dynamic": "~2.1.0",
+    "@angular/router": "~3.1.0",
+    "core-js": "^2.4.1",
+    "rxjs": "5.0.0-beta.12",
+    "ts-helpers": "^1.1.1",
+    "zone.js": "^0.6.23",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "cloudinary": "^1.4.3",
@@ -72,6 +88,8 @@
     "normalize.css": "^5.0.0",
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "tslint": "3.13.0",
+    "typescript": "~2.0.3"
   }
 }

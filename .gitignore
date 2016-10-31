@@ -6,6 +6,8 @@ uploads/
 npm-debug.log
 coverage/
 .node-version
-.jshintignore
-.jshintrc
 tmp.txt
+
+#public
+public/
+!public/assets
