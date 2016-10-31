@@ -1,0 +1,39 @@
+.slider {
+  display: flex;
+  margin: 10px 0;
+  padding: 10px;
+  text-align: center;
+  &__control {
+    @include g-vertical-center();
+    user-select: none;
+    &-icon {
+      @include g-icon();
+      font-size: $font_size_icon_slider;
+      vertical-align: middle;
+    }
+  }
+  &-list {
+    &__item {
+      display: none;
+      &-title {
+        font-size: $font_size_header;
+        color: $grey_dark;
+        margin-bottom: 15px;
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+      &-wrapper-image {
+        width: 100%;
+        margin: 0 auto;
+        border: 1px solid $grey_very_light;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+      &-image {
+        width: 100%;
+      }
+    }
+  }
+}

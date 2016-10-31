@@ -1,10 +1,13 @@
 //helpers
 @import "colors";
+@import "variables";
 @import "mixins";
+@import "grid";
+@import "scroll";
 @import "media.queries";
 
 //libraries
-@import "~normalize.css/normalize.css";
+@import "../../node_modules/normalize.css/normalize.css";
 @import "./fa/scss/font-awesome";
 
 //fonts

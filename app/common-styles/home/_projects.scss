@@ -1,0 +1,106 @@
+.projects {
+  width: 50%;
+  border: 1px solid $grey_light;
+  &-header {
+    border-bottom: 1px solid $grey_light;
+    padding: 10px 20px;
+    @include g-clearfix();
+    &__title {
+      display: inline-block;
+      font-size: $font_size_header;
+      color: $grey_dark;
+    }
+    &__add {
+      @include g-reset-button();
+      &-icon {
+        @include g-icon();
+      }
+    }
+    &__search {
+      position: relative;
+      float: right;
+    }
+    &__search-input {
+      padding: 3px;
+      padding-left: 25px;
+      font-size: 18px;
+      border-radius: 3px;
+      border: 1.8px solid $grey_light;
+      color: $grey;
+      width: 100%;
+      max-width: 200px;
+      box-sizing: border-box;
+      &:focus {
+        outline: 0;
+        border: 1px solid $blue_active;
+        cursor: pointer;
+      }
+    }
+    &__search-icon {
+      position: absolute;
+      top: 5px;
+      left: 8px;
+      color: $grey_dark;
+    }
+  }
+  &-filters {
+    border-bottom: 1px solid $grey_light;
+    padding: 10px 20px;
+    &__item {
+      color: #7b8a8b;
+      margin-right: 8px;
+      font-size: $font_size_title;
+      &:hover {
+        color: $blue_active;
+        cursor: pointer;
+      }
+      &_active {
+        color: $blue_active;
+      }
+    }
+  }
+  &-list {
+    border-bottom: 1px solid $grey_light;
+    color: $grey;
+    &__item {
+      border-bottom: 1px solid $grey_light;
+      padding: 10px 20px;
+      @include g-clearfix();
+      &:hover &-icon {
+        opacity: 1;
+      }
+      &_active, &:hover {
+        background: $grey_very_light;
+      }
+      &_last {
+        border-bottom: none;
+      }
+    }
+    &__item-title {
+      font-size: $font_size_header;
+      color: $grey_dark;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+    &__item-description {
+      margin-top: 4px;
+      font-size: $font_size_middle;
+    }
+    &__item-options {
+      float: right;
+      text-align: right;
+    }
+
+    &__item-icon {
+      opacity: 0;
+      @include g-icon();
+    }
+
+    &__item-date {
+      color: $grey;
+      font-size: $font_size_small;
+    }
+  }
+}

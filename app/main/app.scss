@@ -1,0 +1,8 @@
+@import "../common-styles/mixins";
+
+.wrapper {
+  width: 95%;
+  max-width: 1400px;
+  margin: 0 auto;
+  @include g-clearfix();
+}

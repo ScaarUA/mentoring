@@ -1,0 +1,241 @@
+<div class="main-content wrapper row">
+    <div class="projects">
+        <div class="projects-header row">
+            <div class="col-xs-12 col-sm-5">
+                <div class="projects-header__title">Projects</div>
+                <button class="projects-header__add">
+                    <i class="fa fa-plus projects-header__add-icon"></i>
+                </button>
+            </div>
+            <div class="col-xs-12 col-sm-7">
+                        <span class="projects-header__search">
+                            <label for="projects-search" class="projects-header__search-icon">
+                                <i class="fa fa-search"></i>
+                            </label>
+                            <input type="text"
+                                   id="projects-search"
+                                   class="projects-header__search-input"
+                                   placeholder="Search projects">
+                        </span>
+            </div>
+        </div>
+        <div class="projects-filters">
+            <span class="projects-filters__item projects-filters__item_active">All</span>
+            <span class="projects-filters__item">Editable</span>
+            <span class="projects-filters__item">Readeable</span>
+        </div>
+        <project-list></project-list>
+    </div>
+    <div class="project">
+        <div class="project-header">
+            <div class="project-header__title">Details:</div>
+            <div class="project-header__title">Project 2</div>
+            <div class="project-header__description">
+                Assumenda delectus dolorem error harum
+                reiciendis
+                sequi
+                voluptatum. Excepturi, voluptates.
+            </div>
+        </div>
+        <div class="project-users">
+            <div class="project-admins">
+                <span class="project-admins__title">Admins:</span>
+                <span class="project-user">
+                            <span class="project-user__wrapper-photo">
+                                <img class="project-user__photo" src="assets/images/users/Bohdan_Huseinov.JPG" alt="">
+                            </span>
+                            <span class="project-user__name">Bohdan Huseinov</span
+                            ></span
+                ><span class="project-users__separator">,</span>
+                <span class="project-user">
+                            <span class="project-user__wrapper-photo">
+                                <img class="project-user__photo" src="assets/images/users/user_1.jpg" alt="">
+                            </span>
+                            <span class="project-user__name">Anna Novikova</span
+                            ></span
+                ><span class="project-users__separator">,</span>
+                <span class="project-user">
+                            <span class="project-user__wrapper-photo">
+                                <img class="project-user__photo" src="assets/images/users/Vitalii_Kotliar.JPG" alt="">
+                            </span>
+                            <span class="project-user__name">Vitalii Kotliar</span
+                            ></span
+                ><span class="project-user__point">.</span>
+            </div>
+            <div class="project-guests">
+                <span class="project-guests__title">Guests:</span>
+                <span class="project-user">
+                            <span class="project-user__wrapper-photo">
+                                <img class="project-user__photo" src="assets/images/users/user_1.jpg" alt="">
+                            </span>
+                            <span class="project-user__name">Anna Novikova</span
+                            ></span
+                ><span class="project-users__separator">,</span>
+                <span class="project-user">
+                            <span class="project-user__wrapper-photo">
+                                <img class="project-user__photo" src="assets/images/users/user_3.jpeg" alt="">
+                            </span>
+                            <span class="project-user__name">Bohdan Ivanov</span
+                            ></span
+                ><span class="project-users__separator">,</span>
+                <span class="project-user">
+                            <span class="project-user__wrapper-photo">
+                                <img class="project-user__photo" src="assets/images/users/user_2.jpg" alt="">
+                            </span>
+                            <span class="project-user__name">Oleksii Tumanov</span
+                            ></span
+                ><span class="project-users__separator">,</span>
+                <span class="project-user">
+                            <span class="project-user__wrapper-photo">
+                                <img class="project-user__photo" src="assets/images/users/user_4.jpg" alt="">
+                            </span>
+                            <span class="project-user__name">Oleksii Ivanov</span
+                            ></span
+                ><span class="project-user__point">.</span>
+            </div>
+        </div>
+        <div class="flow">
+            <div class="flow-header row">
+                <div class="col-xs-12 col-sm-3">
+                    <div class="flow-header__title">Flows</div>
+                    <button class="flow-header__add">
+                        <i class="fa fa-plus flow-header__add-icon"></i>
+                    </button>
+                </div>
+                <div class="col-xs-12 col-sm-9">
+                    <span class="flow-header__options">
+                         <span class="flow-header__views">
+                            <i class="fa fa-list flow-header__views-item"
+                               id="js-view-list"></i>
+                            <i class="fa fa-picture-o flow-header__views-item flow-header__views-item_active"
+                               id="js-view-slider"></i>
+                        </span>
+                        <span class="flow-header__search">
+                            <label for="flow-search" class="flow-header__search-icon">
+                                <i class="fa fa-search"></i>
+                            </label>
+                            <input type="text"
+                                   id="flow-search"
+                                   class="flow-header__search-input"
+                                   placeholder="Search flow">
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="flow-list" id="js-flow-list">
+                <div class="flow-list__item">
+                    <div class="flow-list__item-options">
+                        <div class="flow-list__item-date">Created: 11.12.2016</div>
+                        <div class="flow-list__item-date">Edited: 01.06.2015</div>
+                        <div class="flow-list__item-icons">
+                            <i class="flow-list__item-icon fa fa-pencil"></i>
+                            <i class="flow-list__item-icon fa fa-trash-o"></i>
+                        </div>
+                    </div>
+                    <span class="flow-list__item-title">Some flow title 1</span>
+                    <div class="flow-list__item-wrapper-image">
+                        <img src="assets/images/states/state-1.png" alt="" class="flow-list__item-image">
+                    </div>
+                    <div class="flow-list__item-description">
+                        Assumenda delectus dolorem error harum
+                        reiciendis
+                        sequi
+                        voluptatum. Excepturi, voluptates.
+                    </div>
+                </div>
+                <div class="flow-list__item">
+                    <div class="flow-list__item-options">
+                        <div class="flow-list__item-date">Created: 11.12.2016</div>
+                        <div class="flow-list__item-date">Edited: 01.06.2015</div>
+                        <div class="flow-list__item-icons">
+                            <i class="flow-list__item-icon fa fa-pencil"></i>
+                            <i class="flow-list__item-icon fa fa-trash-o"></i>
+                        </div>
+                    </div>
+                    <div class="flow-list__item-wrapper-image">
+                        <img src="assets/images/states/state-2.jpg" alt="" class="flow-list__item-image">
+                    </div>
+                    <span class="flow-list__item-title">Some flow title 2</span>
+                    <div class="flow-list__item-description">Assumenda delectus dolorem error harum
+                        reiciendis
+                        sequi
+                        voluptatum. Excepturi, voluptates.
+                    </div>
+                </div>
+                <div class="flow-list__item">
+                    <div class="flow-list__item-options">
+                        <div class="flow-list__item-date">Created: 11.12.2016</div>
+                        <div class="flow-list__item-date">Edited: 01.06.2015</div>
+                        <div class="flow-list__item-icons">
+                            <i class="flow-list__item-icon fa fa-pencil"></i>
+                            <i class="flow-list__item-icon fa fa-trash-o"></i>
+                        </div>
+                    </div>
+                    <div class="flow-list__item-wrapper-image">
+                        <img src="assets/images/states/state-3.jpg" alt="" class="flow-list__item-image">
+                    </div>
+                    <span class="flow-list__item-title">Some flow title 3</span>
+                    <div class="flow-list__item-description">Assumenda delectus dolorem error harum
+                        reiciendis
+                        sequi
+                        voluptatum. Excepturi, voluptates.
+                    </div>
+                </div>
+            </div>
+            <div class="slider row" id="js-flow-slider">
+                <span class="slider__control col-xs-2">
+                    <i class="fa fa-angle-left slider__control-icon js-control-left"></i>
+                </span>
+                <div class="slider-list col-xs-8">
+                    <div class="slider-list__item js-slide">
+                        <div class="slider-list__item-title">Some flow title 1</div>
+                        <div class="slider-list__item-wrapper-image">
+                            <img src="assets/images/states/1.jpeg"
+                                 alt=""
+                                 class="slider-list__item-image">
+                        </div>
+                        <div class="slider-list__item-image">Assumenda delectus dolorem error
+                            harum reiciendis sequi voluptatum. Excepturi, voluptates
+                        </div>
+                    </div>
+                    <div class="slider-list__item js-slide">
+                        <div class="slider-list__item-title">Some flow title 2</div>
+                        <div class="slider-list__item-wrapper-image">
+                            <img src="assets/images/states/2.png"
+                                 alt=""
+                                 class="slider-list__item-image">
+                        </div>
+                        <div class="slider-list__item-image">Assumenda delectus dolorem error
+                            harum reiciendis sequi voluptatum. Excepturi, voluptates
+                        </div>
+                    </div>
+                    <div class="slider-list__item js-slide">
+                        <div class="slider-list__item-title">Some flow title 3</div>
+                        <div class="slider-list__item-wrapper-image">
+                            <img src="assets/images/states/3.jpg"
+                                 alt=""
+                                 class="slider-list__item-image">
+                        </div>
+                        <div class="slider-list__item-image">Assumenda delectus dolorem error
+                            harum reiciendis sequi voluptatum. Excepturi, voluptates
+                        </div>
+                    </div>
+                    <div class="slider-list__item js-slide">
+                        <div class="slider-list__item-title">Some flow title 4</div>
+                        <div class="slider-list__item-wrapper-image">
+                            <img src="assets/images/states/4.png"
+                                 alt=""
+                                 class="slider-list__item-image">
+                        </div>
+                        <div class="slider-list__item-image">Assumenda delectus dolorem error
+                            harum reiciendis sequi voluptatum. Excepturi, voluptates
+                        </div>
+                    </div>
+                </div>
+                <span class="slider__control col-xs-2">
+                    <i class="fa fa-angle-right slider__control-icon js-control-right"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

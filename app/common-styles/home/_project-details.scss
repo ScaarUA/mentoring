@@ -1,0 +1,158 @@
+.project {
+  width: 50%;
+  border-right: 1px solid $grey_light;
+  border-bottom: 1px solid #ccc;
+  &-header {
+    padding: 10px 20px;
+    border-bottom: 1px solid $grey_light;
+    &__title {
+      display: inline-block;
+      font-size: $font_size_header;
+      color: $grey_dark;
+      margin-bottom: 4px;
+
+    }
+    &__description {
+      font-size: $font_size_middle;
+    }
+  }
+
+  &-users {
+    padding: 10px 20px;
+    border-bottom: 1px solid $grey_light;
+  }
+
+  &-user {
+    &:hover &__name {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    &__wrapper-photo {
+      display: inline-block;
+      width: 1.5*$font_size_common;
+    }
+    &__photo {
+      width: 100%;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-bottom: 4px;
+    }
+
+  }
+
+  &-admins {
+    &__title {
+      color: $grey_dark;
+    }
+    margin-bottom: 4px;
+  }
+
+  &-guests {
+    &__title {
+      color: $grey_dark;
+    }
+  }
+}
+
+.flow {
+  &-header {
+    border-bottom: 1px solid $grey_light;
+    padding: 10px 20px;
+    @include g-clearfix();
+    &__title {
+      display: inline-block;
+      font-size: $font_size_header;
+      color: $grey_dark;
+    }
+    &__add {
+      @include g-reset-button();
+      &-icon {
+        @include g-icon();
+      }
+    }
+    &__search {
+      position: relative;
+      float: right;
+    }
+    &__search-input {
+      padding: 3px;
+      padding-left: 25px;
+      font-size: 18px;
+      border-radius: 3px;
+      border: 1.8px solid $grey_light;
+      color: $grey;
+      width: 100%;
+      max-width: 200px;
+      box-sizing: border-box;
+      &:focus {
+        outline: 0;
+        border: 1px solid $blue_active;
+        cursor: pointer;
+      }
+    }
+    &__search-icon {
+      position: absolute;
+      top: 5px;
+      left: 8px;
+      color: $grey_dark;
+    }
+    &__views {
+      padding-top: 4px;
+      float: right;
+      margin-left: 9px;
+    }
+    &__views-item {
+      margin-left: 5px;
+      @include g-icon();
+    }
+  }
+  &-list {
+    display: none;
+    color: $grey;
+    &__item {
+      border-bottom: 1px solid $grey_light;
+      padding: 10px 20px;
+      @include g-clearfix();
+      &:hover &-icon {
+        opacity: 1;
+      }
+      &:hover {
+        background: $grey_very_light;
+      }
+      &-wrapper-image {
+        float: right;
+        width: 17%;
+        margin: 0 15px;
+      }
+      &-image {
+        width: 100%;
+      }
+    }
+    &__item-title {
+      font-size: $font_size_header;
+      color: $grey_dark;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+    &__item-description {
+      margin-top: 4px;
+      font-size: $font_size_middle;
+    }
+    &__item-options {
+      float: right;
+      text-align: right;
+    }
+
+    &__item-icon {
+      opacity: 0;
+      @include g-icon();
+    }
+
+    &__item-date {
+      color: $grey;
+      font-size: $font_size_small;
+    }
+  }
+}
