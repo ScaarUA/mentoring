@@ -9,5 +9,6 @@ coverage/
 tmp.txt
 
 #public
-public/
-!public/assets
+public/*
+!public/assets/
+!public/assets/images
