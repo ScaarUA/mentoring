@@ -4,7 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "node server",
+    "start": "concurrently \"npm run dev\" \"npm run serve\"",
+    "serve": "node server",
     "build": "webpack",
     "dev": "webpack-dev-server --debug --open",
     "test": "webpack --config ./config/webpack/webpack.config.test.js && mocha test/test.bundle.js --color --ansi",
@@ -69,14 +70,12 @@
     "@angular/platform-browser": "~2.1.0",
     "@angular/platform-browser-dynamic": "~2.1.0",
     "@angular/router": "~3.1.0",
-    "core-js": "^2.4.1",
-    "rxjs": "5.0.0-beta.12",
-    "ts-helpers": "^1.1.1",
-    "zone.js": "^0.6.23",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "cloudinary": "^1.4.3",
+    "concurrently": "^3.1.0",
     "connect-flash": "^0.1.1",
+    "core-js": "^2.4.1",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
@@ -89,7 +88,10 @@
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
+    "rxjs": "5.0.0-beta.12",
+    "ts-helpers": "^1.1.1",
     "tslint": "3.13.0",
-    "typescript": "~2.0.3"
+    "typescript": "~2.0.3",
+    "zone.js": "^0.6.23"
   }
 }
