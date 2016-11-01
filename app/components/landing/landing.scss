@@ -2,6 +2,10 @@
 @import "../../common-styles/mixins";
 @import "../../common-styles/media.queries";
 
+landing {
+  font-family: 'Raleway', sans-serif;
+}
+
 .menu {
   display: none; //temporary
   position: absolute;

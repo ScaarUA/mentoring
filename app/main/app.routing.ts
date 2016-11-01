@@ -2,6 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from '../components/home/home.component';
+import { ProjectsComponent } from '../projects/projects.component';
 import { LandingComponent } from '../components/landing/landing.component';
 import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
 
@@ -12,8 +13,8 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    component: HomeComponent
+    path: 'projects',
+    component: ProjectsComponent
   },
   { 
     path: 'landing',

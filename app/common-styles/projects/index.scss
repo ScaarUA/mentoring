@@ -7,7 +7,16 @@
   min-height: calc(100vh - #{$header_height} - #{$footer_height});
 }
 
+home {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  min-width: 300px;
+  font-size: $font_size_common;
+  color: $grey;
+  padding-bottom: $footer_height;
+}
+
 @import "projects";
 @import "project-details";
 @import "slider";
-@import "main-responsive";
+@import "projects-responsive";
