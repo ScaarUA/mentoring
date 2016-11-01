@@ -12,7 +12,7 @@
     "tdd": "node ./config/env/tdd.js",
     "eslint": "eslint config/**/*.js server/**/*.js",
     "eslint-changed": "node ./config/env/lintModified.js --type=eslint",
-    "tslint": "tslint app/**/*.ts",
+    "tslint": "tslint src/**/*.ts",
     "tslint-changed": "node ./config/env/lintModified.js --type=tslint",
     "validate": "npm ls",
     "debug": "devtool server/index.js --watch"

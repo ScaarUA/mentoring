@@ -2,7 +2,7 @@ let webpackConfig = require('./webpack.config');
 
 module.exports = (config) => {
     config.set({
-        basePath: 'app',
+        basePath: 'src/app',
         frameworks: ['mocha', 'chai', 'sinon'],
         files: [
             {pattern: '**/app.component.spec.js', watched: false}

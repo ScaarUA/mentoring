@@ -8,9 +8,9 @@ let extender = require('./config/webpack/extender');
 const devServer = require('./config/webpack/webpack.dev-server');
 let baseConfig = {
     entry: {
-        app: './app/main.ts',
-        vendor: './app/vendor.ts',
-        polyfills: './app/polyfills.ts'
+        app: './src/main.ts',
+        vendor: './src/vendor.ts',
+        polyfills: './src/polyfills.ts'
     },
     output: {
         path: './public',
@@ -59,7 +59,7 @@ let baseConfig = {
             name: ['app', 'vendor', 'polyfills']
         }),
         new HtmlWebpackPlugin({
-            template: './app/index.html'
+            template: './src/index.html'
         }),
         new CleanWebpackPlugin(['public'], {
             root: __dirname,
