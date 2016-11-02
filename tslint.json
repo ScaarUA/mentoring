@@ -12,7 +12,11 @@
         "no-consecutive-blank-lines": true,
         "trailing-comma": [true, {"singleline": "never"}],
         "whitespace": [true, "check-decl", "check-branch", "check-operator", "check-typecast", "check-module", "check-type"],
-        "no-unused-variable": true,
+        "no-unused-variable": [
+            true,
+            "check-parameters",
+            { "ignore-pattern": "ngOnInit|ngOnDestroy" }
+        ],
         "quotemark": [true, "single", "avoid-escape"],
         "variable-name": [true,
             "ban-keywords",

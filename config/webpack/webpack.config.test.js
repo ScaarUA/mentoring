@@ -28,10 +28,6 @@ module.exports = {
             {
                 test: /sinon.js$/,
                 loader: 'imports?define=>false'
-            },
-            {
-                test: /\.spec\.ts$/,
-                loader: 'imports?chai,expect=>chai.expect,assert=>chai.assert,should=>chai.should()'
             }
         ]
     },

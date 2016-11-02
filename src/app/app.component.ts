@@ -1,5 +1,4 @@
 import './app.html';
-import '../common-styles/index.scss';
 import './app.scss';
 
 import { Component } from '@angular/core';
@@ -8,5 +7,4 @@ import { Component } from '@angular/core';
     selector: 'app',
     template: require('./app.html'),
 })
-export class AppComponent {
-}
+export class AppComponent {}

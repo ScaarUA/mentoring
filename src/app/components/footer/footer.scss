@@ -1,0 +1,18 @@
+@import '../../../common-styles/_colors';
+
+.footer {
+  background: $dark-blue;
+  text-align: center;
+  overflow: hidden;
+
+  &__logo {
+    width: 140px;
+    color: $primary-white;
+  }
+
+  &__copyright {
+    color: $primary-white;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+}

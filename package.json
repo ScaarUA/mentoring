@@ -21,7 +21,8 @@
   "license": "ISC",
   "pre-commit": [
     "test",
-    "eslint-changed"
+    "eslint-changed",
+    "tslint-changed"
   ],
   "devDependencies": {
     "@types/core-js": "^0.9.34",

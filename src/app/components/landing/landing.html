@@ -29,7 +29,10 @@
 <section class="post-header">
     <div class="post-header-content">
         <h2 class="post-header-content__heading">Make your project flow more convenient</h2>
-        <button class="post-header-content__button">Click here to start now</button>
+        <button [routerLink]="['/users/login']"
+                class="post-header-content__button">
+            Click here to start now
+        </button>
         <!--fast login component-->
         <div class="fast-login">
             <span class="fast-login__title">Or fast login</span>
@@ -122,7 +125,10 @@
     <div class="motivation">
         <div class="motivation-content">
             <h2 class="motivation__question">So what are you waiting for?</h2>
-            <button class="motivation__button">Start now</button>
+            <button [routerLink]="['/users/login']"
+                    class="motivation__button">
+                Start now
+            </button>
         </div>
     </div>
 
@@ -149,7 +155,4 @@
     </div>
 </section>
 <!--footer component-->
-<footer class="footer">
-    <img class="footer__logo" src="assets/images/logo.png" alt="" />
-    <div class="footer__copyright">Copyright 2016 - Bohdan Huseinov and Vitaliy Kotliar (Epam Systems)</div>
-</footer>
+<app-footer></app-footer>

@@ -1,18 +1,19 @@
-import { NgModule, Type } from '@angular/core';
+import '../common-styles/index.scss';
 import { CommonModule } from '@angular/common';
-import { BrowserModule }  from '@angular/platform-browser';
+import { NgModule, Type } from '@angular/core';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { BrowserModule }  from '@angular/platform-browser';
 
-/** Modules **/
 import { ProjectsModule } from './projects/projects.module';
+import { UsersModule } from './users/users.module';
 
 import { routing } from './app.routing';
 
-/** Components **/
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { LandingComponent } from './components/landing/landing.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -20,6 +21,7 @@ import { LandingComponent } from './components/landing/landing.component';
         AppComponent,
         PageNotFoundComponent,
         HeaderComponent,
+        FooterComponent,
         LandingComponent
     ],
     imports: [
@@ -28,6 +30,7 @@ import { LandingComponent } from './components/landing/landing.component';
         HttpModule,
         JsonpModule,
         ProjectsModule,
+        UsersModule,
         routing
     ]
 })
