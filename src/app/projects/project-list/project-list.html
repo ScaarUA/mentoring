@@ -1,7 +1,5 @@
 <div class="projects-list">
-    <div class="projects-list__item"
-         *ngFor='let project of projects'>
-        <h1>{{project.id}}</h1>
+    <div class="projects-list__item" *ngFor='let project of projects'>
         <div class="projects-list__item-options">
             <div class="projects-list__item-date">Created: 11.12.2016</div>
             <div class="projects-list__item-date">Edited: 01.06.2015</div>
@@ -10,8 +8,10 @@
                 <i class="projects-list__item-icon fa fa-trash-o"></i>
             </div>
         </div>
-        <span class="projects-list__item-title">{{project.name}}</span>
-        <div class="projects-list__item-description">{{project._id}}
-        </div>
+        <span class="projects-list__item-title"
+              [routerLink]="['/projects/details', project._id]">
+            {{project.name}}
+        </span>
+        <div class="projects-list__item-description">{{project._id}}</div>
     </div>
 </div>

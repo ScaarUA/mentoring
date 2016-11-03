@@ -23,6 +23,9 @@
             "check-format",
             "allow-leading-underscore",
             "allow-pascal-case"
-        ]
+        ],
+        "ordered-imports": false,
+        "object-literal-sort-keys": false,
+        "no-string-literal": false
     }
 }

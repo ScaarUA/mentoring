@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LandingComponent } from './components/landing/landing.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { ProjectsComponent } from './projects/projects.component';
 import { UsersComponent } from './users/users.component';
 
 const appRoutes: Routes = [
@@ -11,10 +10,6 @@ const appRoutes: Routes = [
         path: '',
         pathMatch: 'full',
         redirectTo: 'landing'
-    },
-    {
-        component: ProjectsComponent,
-        path: 'projects'
     },
     {
         component: LandingComponent,

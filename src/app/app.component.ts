@@ -1,4 +1,3 @@
-import './app.html';
 import './app.scss';
 
 import { Component } from '@angular/core';

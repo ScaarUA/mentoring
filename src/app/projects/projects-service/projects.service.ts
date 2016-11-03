@@ -1,23 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/toPromise';
 
 import { Project } from '../../models/project';
 
+export const ENDPOINT_PROJECTS = '/api/projects';
+
 @Injectable()
 export class ProjectsService {
-    constructor(
-        private http: Http
-    ) {}
+    constructor(private http: Http) {
+    }
 
-    getProjects(): Observable<Project[]> {
-        return this.http.get('/api/projects')
-            .map( this.handleData )
-            .catch( this.handleError );
+    public getProjects(): Promise<Project[]> {
+        return this.http.get(ENDPOINT_PROJECTS)
+            .toPromise()
+            .then(this.handleData)
+            .catch(this.handleError);
+    }
+
+    public getProjectById(id: String): Promise<Project[]> {
+        return this.http.get(`${ENDPOINT_PROJECTS}/${id}`)
+            .toPromise()
+            .then(this.handleData)
+            .catch(this.handleError);
     }
 
     private handleData(response: Response) {
-        let body = response.json();
+        let body = response.json() as Project[];
         return body || {};
     }
 
@@ -28,10 +37,7 @@ export class ProjectsService {
             ? `${error.status} - ${error.statusText}`
             : 'Server error';
 
-        // log this somewhere and format the message well for devs
         console.error(errMsg);
-
-        // our oportunity customize this error
-        return Observable.throw(errMsg);
+        return Promise.reject(errMsg);
     }
 }

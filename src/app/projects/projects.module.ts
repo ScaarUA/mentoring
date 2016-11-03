@@ -6,17 +6,15 @@ import { projectsRouting } from './projects.routing';
 
 import { ProjectsComponent } from './projects.component';
 import { ProjectListComponent } from './project-list/project-list.component';
-// import { ProjectComponent } from './project/project.component';
-// import { ProjectFormComponent }  from './project-form/project-form.component';
-//
+import { ProjectDetailsComponent  } from './project-details/project-details.component';
+
 import { ProjectsService } from './projects-service/projects.service';
 
 @NgModule({
   declarations: [
     ProjectListComponent,
     ProjectsComponent,
-    // ProjectComponent,
-    // ProjectFormComponent
+    ProjectDetailsComponent
   ],
   imports: [
     CommonModule,

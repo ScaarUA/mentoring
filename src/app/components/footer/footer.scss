@@ -1,18 +1,42 @@
-@import '../../../common-styles/_colors';
+@import '../../../common-styles/_variables';
 
 .footer {
-  background: $dark-blue;
+  background: $blue_common;
+  padding: 17px;
+  height: $footer_height;
+  box-sizing: border-box;
   text-align: center;
-  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
 
-  &__logo {
-    width: 140px;
-    color: $primary-white;
-  }
-
-  &__copyright {
-    color: $primary-white;
-    font-size: 14px;
-    margin: 5px 0;
+.social {
+  &-list {
+    list-style-type: none;
+    width: 300px;
+    margin: 0 auto;
+    color: $wight;
+    &__item {
+      float: left;
+      display: inline-block;
+      border: 1px solid $wight;
+      border-radius: 50%;
+      font-size: $font_size_icon_footer;
+      width: 1.5em;
+      height: 1.5em;
+      box-sizing: border-box;
+      padding-top: 3px;
+      margin-left: 7px;
+      &:hover {
+        color: $blue_common;
+        background-color: $wight;
+        cursor: pointer;
+      }
+    }
+    &__item-icon {
+      vertical-align: middle;
+    }
   }
 }

@@ -1,9 +1,8 @@
-import './project-list.html';
 import './project-list.scss';
 
 import { Component, OnInit } from '@angular/core';
 
-import { Project } from './../../models/project'
+import { Project } from './../../models/project';
 import { ProjectsService } from './../projects-service/projects.service';
 
 @Component({
@@ -11,15 +10,15 @@ import { ProjectsService } from './../projects-service/projects.service';
     template: require('./project-list.html')
 })
 export class ProjectListComponent implements OnInit {
-    projects: Array<Project>;
-    errorMessage: string;
+    public projects: Array<Project>;
+    public errorMessage: string;
+
     constructor(private projectsService: ProjectsService) {
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.projectsService.getProjects()
-            .subscribe(
-                projects => this.projects = projects,
-                error => this.errorMessage = <any>error);
+            .then(projects => this.projects = projects)
+            .catch(error => this.errorMessage = <any> error);
     }
 }
