@@ -1,6 +1,9 @@
 export class Project {
     constructor(
-        public id: number,
-        public name: string) {
+        public _id: number,
+        public title: string,
+        public description: string,
+        public isPrivate: boolean
+    ) {
     }
 }

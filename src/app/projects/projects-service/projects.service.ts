@@ -25,6 +25,20 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
+    public addProject(project: Project) {
+        return this.http.post(ENDPOINT_PROJECTS, project)
+            .toPromise()
+            .then(this.handleData)
+            .catch(this.handleError);
+    }
+
+    public removeProject(id: Number) {
+        return this.http.delete(`${ENDPOINT_PROJECTS}/${id}`)
+            .toPromise()
+            .then(this.handleData)
+            .catch(this.handleError);
+    }
+
     private handleData(response: Response) {
         let body = response.json() as Project[];
         return body || {};

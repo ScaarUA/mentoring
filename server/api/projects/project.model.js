@@ -2,13 +2,24 @@ const mongoose = require('mongoose'),
     deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 let projectSchema = mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: true
     },
-    isOpen: {
+    description: {
+        type: String
+    },
+    isPrivate: {
         type: Boolean,
         default: false
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    edited: {
+        type: Date,
+        default: Date.now
     },
     readers: [
         {

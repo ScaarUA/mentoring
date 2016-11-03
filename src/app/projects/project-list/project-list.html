@@ -1,17 +1,17 @@
 <div class="projects-list">
     <div class="projects-list__item" *ngFor='let project of projects'>
         <div class="projects-list__item-options">
-            <div class="projects-list__item-date">Created: 11.12.2016</div>
-            <div class="projects-list__item-date">Edited: 01.06.2015</div>
+            <div class="projects-list__item-date">{{project.created}}</div>
+            <div class="projects-list__item-date">{{project.edited}}</div>
             <div class="projects-list__item-icons">
                 <i class="projects-list__item-icon fa fa-pencil"></i>
-                <i class="projects-list__item-icon fa fa-trash-o"></i>
+                <i class="projects-list__item-icon fa fa-trash-o" (click)="removeProject(project._id)"></i>
             </div>
         </div>
         <span class="projects-list__item-title"
               [routerLink]="['/projects/details', project._id]">
-            {{project.name}}
+            {{project.title}}
         </span>
-        <div class="projects-list__item-description">{{project._id}}</div>
+        <div class="projects-list__item-description">{{project.description}}</div>
     </div>
 </div>
