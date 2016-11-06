@@ -18,3 +18,7 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  min-height: calc(100vh + 1px); // permanent scrollbar
+}
