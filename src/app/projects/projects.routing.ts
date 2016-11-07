@@ -7,6 +7,7 @@ import { AddProjectComponent } from './add-project-form/add-project-form.compone
 
 import { ProjectsResolver } from './project-resolvers/projects.resolver';
 import { ProjectResolver } from './project-resolvers/project.resolver';
+import { FlowsResolver } from '../flows/flow-resolvers/flows.resolver';
 
 const projectsRoutes: Routes = [
     {
@@ -28,7 +29,10 @@ const projectsRoutes: Routes = [
     },
     {
         path: 'project/add',
-        component: AddProjectComponent
+        component: AddProjectComponent,
+        resolve: {
+            flows: FlowsResolver
+        },
     }
 ];
 
