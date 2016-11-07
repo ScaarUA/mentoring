@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SelectModule } from 'ng2-select/ng2-select';
 
 import { FlowsModule } from '../flows/flows.module';
 
@@ -26,6 +27,7 @@ import { ProjectResolver } from './project-resolvers/project.resolver';
     imports: [
         CommonModule,
         FormsModule,
+        SelectModule,
         FlowsModule,
         projectsRouting
     ],

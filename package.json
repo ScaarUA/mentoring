@@ -86,7 +86,7 @@
     "mongoose": "^4.6.1",
     "mongoose-deep-populate": "^3.0.0",
     "multer": "^1.2.0",
-    "ng2-modal": "0.0.22",
+    "ng2-select": "^1.1.1",
     "normalize.css": "^5.0.0",
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0",
