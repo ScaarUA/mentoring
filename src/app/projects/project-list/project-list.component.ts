@@ -3,7 +3,7 @@ import './project-list.scss';
 import { Component, OnInit } from '@angular/core';
 
 import { Project } from './../../models/project';
-import { ProjectsService } from './../projects-service/projects.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'project-list',
@@ -11,14 +11,18 @@ import { ProjectsService } from './../projects-service/projects.service';
 })
 export class ProjectListComponent implements OnInit {
     public projects: Array<Project>;
-    public errorMessage: string;
+    private sub: any;
 
-    constructor(private projectsService: ProjectsService) {
+    constructor(private route: ActivatedRoute) {
     }
 
     public ngOnInit() {
-        this.projectsService.getProjects()
-            .then(projects => this.projects = projects)
-            .catch(error => this.errorMessage = <any> error);
+        this.sub = this.route.params.subscribe(() => {
+            this.projects = this.route.snapshot.data['projects'];
+        });
+    }
+
+    public ngOnDestroy() {
+        this.sub.unsubscribe();
     }
 }

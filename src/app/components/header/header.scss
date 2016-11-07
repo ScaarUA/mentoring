@@ -5,6 +5,9 @@
   padding: 10px;
   min-height: $header_height;
   box-sizing: border-box;
+  .navbar {
+    margin-bottom: 0;
+  }
 }
 
 .logo {

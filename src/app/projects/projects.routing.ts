@@ -3,12 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectDetailsComponent } from './project-details';
 import { ProjectsComponent } from './projects.component';
+import { ProjectsResolver } from './project-resolvers/projects.resolver';
 import { ProjectResolver } from './project-resolvers/project.resolver';
 
 const projectsRoutes: Routes = [
     {
         path: 'projects',
         component: ProjectsComponent,
+        resolve: {
+            projects: ProjectsResolver
+        },
         children: [
             { path: '' },
             {

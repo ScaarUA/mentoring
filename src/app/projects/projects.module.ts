@@ -11,6 +11,7 @@ import { ProjectFormAddComponent } from './project-form-add/project-form-add.com
 
 import { projectsRouting } from './projects.routing';
 import { ProjectsService } from './projects-service/projects.service';
+import { ProjectsResolver } from './project-resolvers/projects.resolver';
 import { ProjectResolver } from './project-resolvers/project.resolver';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ProjectResolver } from './project-resolvers/project.resolver';
     ],
     providers: [
         ProjectsService,
+        ProjectsResolver,
         ProjectResolver
     ]
 })
