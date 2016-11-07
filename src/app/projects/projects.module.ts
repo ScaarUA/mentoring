@@ -11,6 +11,7 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
 import { ProjectFormAddComponent } from './project-form-add/project-form-add.component';
 
 import { ProjectsService } from './projects-service/projects.service';
+import { ProjectResolver } from './project-resolvers/project.resolver';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { ProjectsService } from './projects-service/projects.service';
         projectsRouting
     ],
     providers: [
-        ProjectsService
+        ProjectsService,
+        ProjectResolver
     ]
 })
 export class ProjectsModule {
