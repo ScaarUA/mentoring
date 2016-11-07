@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectDetailsComponent } from './project-details';
 import { ProjectsComponent } from './projects.component';
+import { AddProjectComponent } from './add-project-form/add-project-form.component';
+
 import { ProjectsResolver } from './project-resolvers/projects.resolver';
 import { ProjectResolver } from './project-resolvers/project.resolver';
 
@@ -23,6 +25,10 @@ const projectsRoutes: Routes = [
                 }
             },
         ]
+    },
+    {
+        path: 'project/add',
+        component: AddProjectComponent
     }
 ];
 

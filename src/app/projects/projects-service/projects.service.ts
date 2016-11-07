@@ -16,10 +16,7 @@ export class ProjectsService {
     }
 
     public getProjects(): Promise<Project[]> {
-        if (this.projects.length === 0) {
-            return this.loadProjects();
-        }
-        return q.resolve(this.projects);
+        return this.loadProjects();
     }
 
     public loadProjects(): Promise<Project[]> {
