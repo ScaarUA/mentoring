@@ -21,9 +21,4 @@ export class ProjectListComponent implements OnInit {
             .then(projects => this.projects = projects)
             .catch(error => this.errorMessage = <any> error);
     }
-
-    public removeProject(id: Number) {
-        this.projectsService.removeProject(id)
-            .catch(error => this.errorMessage = <any> error);
-    }
 }

@@ -1,0 +1,15 @@
+<div class="projects-list__item" >
+    <div class="projects-list__item-options">
+        <div class="projects-list__item-date">{{project.created}}</div>
+        <div class="projects-list__item-date">{{project.edited}}</div>
+        <div class="projects-list__item-icons">
+            <i class="projects-list__item-icon fa fa-pencil"></i>
+            <i class="projects-list__item-icon fa fa-trash-o" (click)="removeProject(project._id)"></i>
+        </div>
+    </div>
+    <span class="projects-list__item-title"
+          [routerLink]="['/projects/details', project._id]">
+            {{project.title}}
+        </span>
+    <div class="projects-list__item-description">{{project.description}}</div>
+</div>
