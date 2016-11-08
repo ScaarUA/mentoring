@@ -1,22 +1,20 @@
-import './add-project-form.scss';
+import './edit-project-form.scss';
 
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 import { Project } from './../../models/project';
-import { Flow } from './../../models/Flow';
 import { ProjectsService } from './../projects-service/projects.service';
 
 @Component({
-    selector: 'add-project-form',
-    template: require('./add-project-form.html')
+    selector: 'edit-project-form',
+    template: require('./edit-project-form.html')
 })
-export class AddProjectComponent {
+export class EditProjectComponent {
     public project: Project;
     public items: any[];
-    private flows: Flow[];
-    private selectedFlows: any = [];
+    private selectedFlows: any[] = [];
 
     constructor(private projectsService: ProjectsService,
                 private route: ActivatedRoute,
@@ -25,25 +23,34 @@ export class AddProjectComponent {
     }
 
     public submit() {
+        const id = this.route.snapshot.params['id'];
         this.project.flows = this.filterSelectedFlows();
-        this.projectsService.addProject(this.project)
+        this.projectsService.updateProject(id, this.project)
             .then(() => this.back());
+
     }
 
     public cancel() {
-        this.location.back();
+        this.back();
     }
 
     public updateFlows(value: any): void {
         this.selectedFlows = value;
     }
 
+    private init(): void {
+        const flows = this.route.snapshot.data['flows'];
+        this.project = this.route.snapshot.data['project'];
+        this.selectedFlows = this.filterFlows(this.project.flows);
+        this.items = this.filterFlows(flows);
+    }
+
     private back() {
         this.location.back();
     }
 
-    private filterFlows() {
-        return this.flows.map((flow) => {
+    private filterFlows(flows: any[]) {
+        return flows.map((flow) => {
             return {
                 id: flow._id,
                 text: flow.title
@@ -53,11 +60,5 @@ export class AddProjectComponent {
 
     private filterSelectedFlows() {
         return this.selectedFlows.map(flow => flow.id);
-    }
-
-    private init() {
-        this.project = new Project();
-        this.flows = this.route.snapshot.data['flows'];
-        this.items = this.filterFlows();
     }
 }

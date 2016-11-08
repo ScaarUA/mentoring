@@ -10,6 +10,7 @@ import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { AddProjectComponent } from './add-project-form/add-project-form.component';
+import { EditProjectComponent } from './edit-project-form/edit-project-form.component';
 
 import { projectsRouting } from './projects.routing';
 import { ProjectsService } from './projects-service/projects.service';
@@ -22,7 +23,8 @@ import { ProjectResolver } from './project-resolvers/project.resolver';
         ProjectListComponent,
         ProjectComponent,
         ProjectDetailsComponent,
-        AddProjectComponent
+        AddProjectComponent,
+        EditProjectComponent
     ],
     imports: [
         CommonModule,

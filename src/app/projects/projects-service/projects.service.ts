@@ -51,6 +51,13 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
+    public updateProject(id: Number, project: Project) {
+        return this.http.put(`${ENDPOINT_PROJECTS}/${id}`, project)
+            .toPromise()
+            .then(this.handleData)
+            .catch(this.handleError);
+    }
+
     private findProjectById(id: Number): Project {
         return this.projects.find(project => id === project._id);
     }

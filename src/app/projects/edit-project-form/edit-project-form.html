@@ -1,6 +1,6 @@
 <div class="main-content wrapper row">
-    <div class="add-project-form">
-        <form #addProjectForm="ngForm">
+    <div class="edit-project-form">
+        <form #editProjectForm="ngForm">
             <div class="form-group">
                 <label for="title">Title:</label>
                 <input [(ngModel)]="project.title"
@@ -20,6 +20,7 @@
                     Flows
                     <ng-select [allowClear]="true"
                                [multiple]="true"
+                               [active]="selectedFlows"
                                [items]="items"
                                (data)="updateFlows($event)"
                                placeholder="No flows selected"></ng-select>
@@ -32,7 +33,7 @@
             </div>
 
             <button class="btn btn-default" type="button"
-                    [disabled]="!addProjectForm.valid"
+                    [disabled]="!editProjectForm.valid"
                     (click)="submit()">Submit</button>
             <button class="btn btn-primary" (click)="back()">Back</button>
         </form>
