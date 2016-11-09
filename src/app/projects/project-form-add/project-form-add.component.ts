@@ -1,3 +1,4 @@
+// TODO remove this component
 import './project-form-add.scss';
 
 import { Component } from '@angular/core';

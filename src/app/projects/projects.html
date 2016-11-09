@@ -13,13 +13,15 @@
                                 <i class="fa fa-search"></i>
                             </label>
                             <input type="text"
+                                   [(ngModel)]="token"
+                                   (input)="onChange($event)"
                                    id="projects-search"
                                    class="projects-header__search-input"
                                    placeholder="Search projects">
                         </span>
             </div>
         </div>
-        <div class="projects-filters">
+        <div class="projects-filters" style="display: none;">
             <span class="projects-filters__item projects-filters__item_active">All</span>
             <span class="projects-filters__item">Editable</span>
             <span class="projects-filters__item">Readeable</span>

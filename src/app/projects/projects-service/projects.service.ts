@@ -14,6 +14,15 @@ export class ProjectsService {
         this.binding();
     }
 
+    public getProjectsStore(): Project[] {
+        return this.projects;
+    }
+
+    public setProjectsStore(projects: Project[]) {
+        this.projects.length = 0;
+        this.projects.push(...projects);
+    }
+
     public getProjects(): Promise<Project[]> {
         return this.loadProjects();
     }
