@@ -1,8 +1,9 @@
 const mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 const flowSchema = Schema({
-    stateId: {
+    state: {
         type: Schema.ObjectId,
         required: true
     },
@@ -17,5 +18,7 @@ const flowSchema = Schema({
         default: Date.now
     }
 });
+
+flowSchema.plugin(deepPopulate);
 
 module.exports = mongoose.model('Flow', flowSchema);

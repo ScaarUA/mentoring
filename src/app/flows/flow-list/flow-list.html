@@ -1,0 +1,22 @@
+<div class="flow-list">
+    <div class="flow-list__item" *ngFor='let flow of flows'>
+        <div class="flow-list__item-options">
+            <div class="flow-list__item-date">Created: {{flow.created}}</div>
+            <div class="flow-list__item-date">Edited: {{flow.edited}}</div>
+            <div class="flow-list__item-icons">
+                <i class="flow-list__item-icon fa fa-pencil"></i>
+                <i class="flow-list__item-icon fa fa-trash-o"></i>
+            </div>
+        </div>
+        <span class="flow-list__item-title">{{flow.title}}</span>
+        <div class="flow-list__item-wrapper-image">
+            <img src="assets/images/states/state-1.png" alt="" class="flow-list__item-image">
+        </div>
+        <div class="flow-list__item-description">
+            Assumenda delectus dolorem error harum
+            reiciendis
+            sequi
+            voluptatum. Excepturi, voluptates.
+        </div>
+    </div>
+</div>

@@ -3,13 +3,15 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { FlowsComponent } from './flows.component';
+import { FlowListComponent } from './flow-list/flow-list.component';
 import { FlowsService } from './flows-service/flows.service';
 
 import { FlowsResolver } from './flow-resolvers/flows.resolver';
 
 @NgModule({
     declarations: [
-        FlowsComponent
+        FlowsComponent,
+        FlowListComponent
     ],
     imports: [
         CommonModule,
@@ -18,6 +20,9 @@ import { FlowsResolver } from './flow-resolvers/flows.resolver';
     providers: [
         FlowsService,
         FlowsResolver
+    ],
+    exports: [
+        FlowListComponent
     ]
 })
 export class FlowsModule {
