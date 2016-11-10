@@ -74,9 +74,11 @@
                     <span class="flow-header__options">
                          <span class="flow-header__views">
                             <i class="fa fa-list flow-header__views-item"
-                               id="js-view-list"></i>
+                               [routerLink]="['list']"
+                               [routerLinkActive]="'flow-header__views-item_active'"></i>
                             <i class="fa fa-picture-o flow-header__views-item flow-header__views-item_active"
-                               id="js-view-slider"></i>
+                               [routerLink]="['slider']"
+                               [routerLinkActive]="'flow-header__views-item_active'"></i>
                         </span>
                         <span class="flow-header__search">
                             <label for="flow-search" class="flow-header__search-icon">
@@ -90,59 +92,5 @@
                     </span>
         </div>
     </div>
-    <flow-list [flows]="project.flows"></flow-list>
-    <div class="slider row" style="display: none;" id="js-flow-slider">
-                <span class="slider__control col-xs-2">
-                    <i class="fa fa-angle-left slider__control-icon js-control-left"></i>
-                </span>
-        <div class="slider-list col-xs-8">
-            <div class="slider-list__item js-slide">
-                <div class="slider-list__item-title">Some flow title 1</div>
-                <div class="slider-list__item-wrapper-image">
-                    <img src="assets/images/states/1.jpeg"
-                         alt=""
-                         class="slider-list__item-image">
-                </div>
-                <div class="slider-list__item-image">Assumenda delectus dolorem error
-                    harum reiciendis sequi voluptatum. Excepturi, voluptates
-                </div>
-            </div>
-            <div class="slider-list__item js-slide">
-                <div class="slider-list__item-title">Some flow title 2</div>
-                <div class="slider-list__item-wrapper-image">
-                    <img src="assets/images/states/2.png"
-                         alt=""
-                         class="slider-list__item-image">
-                </div>
-                <div class="slider-list__item-image">Assumenda delectus dolorem error
-                    harum reiciendis sequi voluptatum. Excepturi, voluptates
-                </div>
-            </div>
-            <div class="slider-list__item js-slide">
-                <div class="slider-list__item-title">Some flow title 3</div>
-                <div class="slider-list__item-wrapper-image">
-                    <img src="assets/images/states/3.jpg"
-                         alt=""
-                         class="slider-list__item-image">
-                </div>
-                <div class="slider-list__item-image">Assumenda delectus dolorem error
-                    harum reiciendis sequi voluptatum. Excepturi, voluptates
-                </div>
-            </div>
-            <div class="slider-list__item js-slide">
-                <div class="slider-list__item-title">Some flow title 4</div>
-                <div class="slider-list__item-wrapper-image">
-                    <img src="assets/images/states/4.png"
-                         alt=""
-                         class="slider-list__item-image">
-                </div>
-                <div class="slider-list__item-image">Assumenda delectus dolorem error
-                    harum reiciendis sequi voluptatum. Excepturi, voluptates
-                </div>
-            </div>
-        </div>
-        <span class="slider__control col-xs-2">
-            <i class="fa fa-angle-right slider__control-icon js-control-right"></i>
-        </span>
-    </div>
+    <router-outlet></router-outlet>
 </div>

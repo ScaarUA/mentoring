@@ -1,15 +1,16 @@
 import './project-list.scss';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Project } from './../../models/project';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'project-list',
     template: require('./project-list.html')
 })
 export class ProjectListComponent implements OnInit {
+    @Input() public token: String;
     public projects: Array<Project>;
     private sub: any;
 

@@ -1,8 +1,8 @@
 <div class="flow-list">
     <div class="flow-list__item" *ngFor='let flow of flows'>
         <div class="flow-list__item-options">
-            <div class="flow-list__item-date">Created: {{flow.created}}</div>
-            <div class="flow-list__item-date">Edited: {{flow.edited}}</div>
+            <div class="flow-list__item-date">Created: {{flow.created | date:'dd.MM.yyyy HH:mm'}}</div>
+            <div class="flow-list__item-date">Edited: {{flow.edited | date:'dd.MM.yyyy HH:mm'}}</div>
             <div class="flow-list__item-icons">
                 <i class="flow-list__item-icon fa fa-pencil"></i>
                 <i class="flow-list__item-icon fa fa-trash-o"></i>

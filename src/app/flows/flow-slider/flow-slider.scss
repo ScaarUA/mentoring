@@ -1,3 +1,6 @@
+@import "../../../common-styles/variables";
+@import "../../../common-styles/mixins";
+
 .slider {
   display: flex;
   margin: 10px 0;
@@ -15,6 +18,9 @@
   &-list {
     &__item {
       display: none;
+      &_active{
+        display: block;
+      }
       &-title {
         font-size: $font_size_header;
         color: $grey_dark;

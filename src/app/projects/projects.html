@@ -14,7 +14,6 @@
                             </label>
                             <input type="text"
                                    [(ngModel)]="token"
-                                   (input)="onChange($event)"
                                    id="projects-search"
                                    class="projects-header__search-input"
                                    placeholder="Search projects">
@@ -26,7 +25,7 @@
             <span class="projects-filters__item">Editable</span>
             <span class="projects-filters__item">Readeable</span>
         </div>
-        <project-list></project-list>
+        <project-list [token]="token"></project-list>
     </div>
     <div class="project">
         <router-outlet></router-outlet>

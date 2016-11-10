@@ -17,6 +17,8 @@ import { ProjectsService } from './projects-service/projects.service';
 import { ProjectsResolver } from './project-resolvers/projects.resolver';
 import { ProjectResolver } from './project-resolvers/project.resolver';
 
+import { ProjectsSearchPipe } from './project-pipes/projects-search.pipe';
+
 @NgModule({
     declarations: [
         ProjectsComponent,
@@ -24,7 +26,8 @@ import { ProjectResolver } from './project-resolvers/project.resolver';
         ProjectComponent,
         ProjectDetailsComponent,
         AddProjectComponent,
-        EditProjectComponent
+        EditProjectComponent,
+        ProjectsSearchPipe
     ],
     imports: [
         CommonModule,

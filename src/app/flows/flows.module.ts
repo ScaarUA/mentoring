@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { FlowsComponent } from './flows.component';
 import { FlowListComponent } from './flow-list/flow-list.component';
+import { FlowSliderComponent } from './flow-slider/flow-slider.component';
 import { FlowsService } from './flows-service/flows.service';
 
 import { FlowsResolver } from './flow-resolvers/flows.resolver';
@@ -11,7 +12,8 @@ import { FlowsResolver } from './flow-resolvers/flows.resolver';
 @NgModule({
     declarations: [
         FlowsComponent,
-        FlowListComponent
+        FlowListComponent,
+        FlowSliderComponent
     ],
     imports: [
         CommonModule,
@@ -22,7 +24,8 @@ import { FlowsResolver } from './flow-resolvers/flows.resolver';
         FlowsResolver
     ],
     exports: [
-        FlowListComponent
+        FlowListComponent,
+        FlowSliderComponent
     ]
 })
 export class FlowsModule {

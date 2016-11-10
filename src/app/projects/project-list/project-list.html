@@ -1,4 +1,4 @@
 <div class="projects-list">
-    <project *ngFor='let project of projects'
+    <project *ngFor='let project of projects | ProjectSearch:token'
              [project]="project"></project>
 </div>
