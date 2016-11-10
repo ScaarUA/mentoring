@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Project } from './../../models/project';
 import { Flow } from './../../models/flow';
-import { ProjectsService } from './../projects-service/projects.service';
+import { ProjectsService } from '../project-services/projects.service';
 
 @Component({
     selector: 'add-project-form',

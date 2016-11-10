@@ -13,7 +13,8 @@ import { AddProjectComponent } from './add-project-form/add-project-form.compone
 import { EditProjectComponent } from './edit-project-form/edit-project-form.component';
 
 import { projectsRouting } from './projects.routing';
-import { ProjectsService } from './projects-service/projects.service';
+import { ProjectsService } from './project-services/projects.service';
+import { ProjectService } from './project-services/project.service';
 import { ProjectsResolver } from './project-resolvers/projects.resolver';
 import { ProjectResolver } from './project-resolvers/project.resolver';
 
@@ -38,6 +39,7 @@ import { ProjectsSearchPipe } from './project-pipes/projects-search.pipe';
     ],
     providers: [
         ProjectsService,
+        ProjectService,
         ProjectsResolver,
         ProjectResolver
     ]

@@ -3,7 +3,7 @@ import { Resolve } from '@angular/router';
 import 'rxjs/add/operator/toPromise';
 
 import { Project } from '../../models/project';
-import { ProjectsService } from '../projects-service/projects.service';
+import { ProjectsService } from '../project-services/projects.service';
 
 @Injectable()
 export class ProjectsResolver implements Resolve<Project> {

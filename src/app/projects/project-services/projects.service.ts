@@ -35,13 +35,6 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
-    public getProjectById(id: String): Promise<Project[]> {
-        return this.http.get(`${ENDPOINT_PROJECTS}/${id}`)
-            .toPromise()
-            .then(this.handleData)
-            .catch(this.handleError);
-    }
-
     public addProject(project: Project) {
         delete project._id;
         return this.http.post(ENDPOINT_PROJECTS, project)

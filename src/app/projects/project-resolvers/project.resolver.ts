@@ -3,14 +3,14 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import 'rxjs/add/operator/toPromise';
 
 import { Project } from '../../models/project';
-import { ProjectsService } from '../projects-service/projects.service';
+import { ProjectService } from '../project-services/project.service';
 
 @Injectable()
 export class ProjectResolver implements Resolve<Project> {
-    constructor(private projectsService: ProjectsService) {
+    constructor(private projectService: ProjectService) {
     }
 
     public resolve(route: ActivatedRouteSnapshot): Promise<any> {
-        return this.projectsService.getProjectById(route.params['id']);
+        return this.projectService.getProjectById(route.params['id']);
     }
 }

@@ -2,7 +2,7 @@ import './project.scss';
 import { Component, Input } from '@angular/core';
 
 import { Project } from '../../models/project';
-import { ProjectsService } from './../projects-service/projects.service';
+import { ProjectsService } from '../project-services/projects.service';
 
 @Component({
     selector: 'project',

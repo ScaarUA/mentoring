@@ -29,7 +29,7 @@ const projectsRoutes: Routes = [
                     project: ProjectResolver
                 },
                 children: [
-                    { path: '', redirectTo: 'slider'},
+                    { path: '', redirectTo: 'list'},
                     {
                         path: 'list',
                         component: FlowListComponent

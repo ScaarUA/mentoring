@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Flow } from '../../models/flow';
+import { ProjectService } from '../../projects/project-services/project.service'
 
 export const ENDPOINT_FLOWS = '/api/flows';
 
@@ -10,7 +11,8 @@ export const ENDPOINT_FLOWS = '/api/flows';
 export class FlowsService {
     private flows: Flow[] = [];
 
-    constructor(private http: Http) {
+    constructor(private http: Http,
+                private projectService: ProjectService) {
         this.binding();
     }
 
@@ -58,8 +60,8 @@ export class FlowsService {
             .catch(this.handleError);
     }
 
-    private findFlowById(id: Number): Flow {
-        return this.flows.find(flow => id === flow._id);
+    private findFlowById(flows: Flow[], id: Number): Flow {
+        return flows.find(flow => id === flow._id);
     }
 
     private saveFlowsInStore(flows: Flow[]): Flow[] {
@@ -72,10 +74,11 @@ export class FlowsService {
     }
 
     private removeFlowFromStore(id: Number) {
-        const flow = this.findFlowById(id);
-        const index = this.flows.indexOf(flow);
+        const project = this.projectService.getProject();
+        const flow = this.findFlowById(project.flows, id);
+        const index = project.flows.indexOf(flow);
         if (index > -1) {
-            this.flows.splice(index, 1);
+            project.flows.splice(index, 1);
         }
     }
 
