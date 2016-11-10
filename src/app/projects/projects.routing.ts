@@ -23,13 +23,13 @@ const projectsRoutes: Routes = [
         children: [
             { path: '' },
             {
-                path: 'details/:id',
+                path: ':id/details',
                 component: ProjectDetailsComponent,
                 resolve: {
                     project: ProjectResolver
                 },
                 children: [
-                    { path: '', redirectTo: 'list'},
+                    { path: '', redirectTo: 'slider'},
                     {
                         path: 'list',
                         component: FlowListComponent
@@ -50,7 +50,7 @@ const projectsRoutes: Routes = [
         },
     },
     {
-        path: 'project/edit/:id',
+        path: 'project/:id/edit',
         component: EditProjectComponent,
         resolve: {
             project: ProjectResolver,

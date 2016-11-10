@@ -5,23 +5,31 @@ import { CommonModule } from '@angular/common';
 import { FlowsComponent } from './flows.component';
 import { FlowListComponent } from './flow-list/flow-list.component';
 import { FlowSliderComponent } from './flow-slider/flow-slider.component';
-import { FlowsService } from './flows-service/flows.service';
+import { AddFlowComponent } from './add-flow-form/add-flow-form.component';
+import { EditFlowComponent } from './edit-flow-form/edit-flow-form.component';
 
+import { flowsRouting } from './flows.routing';
+import { FlowsService } from './flows-service/flows.service';
 import { FlowsResolver } from './flow-resolvers/flows.resolver';
+import { FlowResolver } from './flow-resolvers/flow.resolver';
 
 @NgModule({
     declarations: [
         FlowsComponent,
         FlowListComponent,
-        FlowSliderComponent
+        FlowSliderComponent,
+        AddFlowComponent,
+        EditFlowComponent
     ],
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        flowsRouting
     ],
     providers: [
         FlowsService,
-        FlowsResolver
+        FlowsResolver,
+        FlowResolver
     ],
     exports: [
         FlowListComponent,

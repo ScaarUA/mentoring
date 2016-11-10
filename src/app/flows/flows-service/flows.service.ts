@@ -51,6 +51,13 @@ export class FlowsService {
             .catch(this.handleError);
     }
 
+    public updateFlow(id: Number, flow: Flow) {
+        return this.http.put(`${ENDPOINT_FLOWS}/${id}`, flow)
+            .toPromise()
+            .then(this.handleData)
+            .catch(this.handleError);
+    }
+
     private findFlowById(id: Number): Flow {
         return this.flows.find(flow => id === flow._id);
     }

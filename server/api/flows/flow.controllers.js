@@ -10,7 +10,7 @@ class FlowControllers extends BaseControllers {
     getOne(req, res, next) {
         let id = req.params.id;
 
-        flowQueries.getOne(id)
+        flowQueries.getFlow(id)
             .then(flow => {
                 return res.send(flow);
             })

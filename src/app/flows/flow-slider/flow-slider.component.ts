@@ -11,14 +11,17 @@ import { Flow } from './../../models/flow';
 })
 export class FlowSliderComponent implements OnInit {
     private flows: Flow[];
-    private currentSlide: number = 1;
+    private currentSlide: number = 0;
+    private sub: any;
 
     constructor(private route: ActivatedRoute) {
     }
 
     public ngOnInit() {
-        const project = this.route.snapshot.parent.data['project'];
-        this.flows = project.flows;
+        this.sub = this.route.parent.params.subscribe(() => {
+            const project = this.route.snapshot.parent.data['project'];
+            this.flows = project.flows;
+        });
     }
 
     public isOnScreen(index) {
@@ -26,15 +29,17 @@ export class FlowSliderComponent implements OnInit {
     }
 
     public next() {
-        if (this.currentSlide === this.flows.length) {
+        if (this.currentSlide === this.flows.length - 1) {
             this.currentSlide = 0;
+            return;
         }
         this.currentSlide++;
     }
 
     public prev() {
         if (this.currentSlide === 0) {
-            this.currentSlide = this.flows.length + 1;
+            this.currentSlide = this.flows.length - 1;
+            return;
         }
         this.currentSlide--;
     }
