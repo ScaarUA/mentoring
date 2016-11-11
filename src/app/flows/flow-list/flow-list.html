@@ -1,21 +1,25 @@
 <div class="flow-list">
     <div class="flow-list__item" *ngFor='let flow of flows'>
-        <div class="flow-list__item-options">
-            <div class="flow-list__item-date">Created: {{flow.created | date:'dd.MM.yyyy HH:mm'}}</div>
-            <div class="flow-list__item-date">Edited: {{flow.edited | date:'dd.MM.yyyy HH:mm'}}</div>
-            <div class="flow-list__item-icons">
-                <i class="flow-list__item-icon fa fa-pencil"
-                   [routerLink]="['/flow', flow._id, 'edit']"></i>
-                <i class="flow-list__item-icon fa fa-trash-o"
-                    (click)="removeFlow(flow._id)"></i>
+        <div class="col-xs-4 flow-list__item-info">
+            <span class="flow-list__item-title" title="{{flow.title}}">{{flow.title}}</span>
+            <div class="flow-list__item-description" title="{{flow.description}}">{{flow.description}}</div>
+        </div>
+        <div class="col-xs-4">
+            <div class="flow-list__item-wrapper-image">
+                <img src="assets/images/states/state-1.png" alt="" class="flow-list__item-image">
             </div>
         </div>
-        <span class="flow-list__item-title">{{flow.title}}</span>
-        <div class="flow-list__item-wrapper-image">
-            <img src="assets/images/states/state-1.png" alt="" class="flow-list__item-image">
-        </div>
-        <div class="flow-list__item-description">
-           {{flow.description}}
+        <div class="col-xs-4">
+            <div class="flow-list__item-options">
+                <div class="flow-list__item-date">Created: {{flow.created | date:'dd.MM.yyyy HH:mm'}}</div>
+                <div class="flow-list__item-date">Edited: {{flow.edited | date:'dd.MM.yyyy HH:mm'}}</div>
+                <div class="flow-list__item-icons">
+                    <i class="flow-list__item-icon fa fa-pencil"
+                       [routerLink]="['/flow', flow._id, 'edit']"></i>
+                    <i class="flow-list__item-icon fa fa-trash-o"
+                       (click)="removeFlow(flow._id)"></i>
+                </div>
+            </div>
         </div>
     </div>
 </div>

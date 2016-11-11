@@ -4,7 +4,7 @@ import './project-form-add.scss';
 import { Component } from '@angular/core';
 
 import { Project } from './../../models/project';
-import { ProjectsService } from '../project-services/projects.service';
+import { ProjectsService } from './../projects-service/projects.service';
 
 @Component({
     selector: 'project-form-add',

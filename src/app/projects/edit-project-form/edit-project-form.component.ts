@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 import { Project } from './../../models/project';
-import { ProjectsService } from '../project-services/projects.service';
+import { ProjectsService } from './../projects-service/projects.service';
 
 @Component({
     selector: 'edit-project-form',
