@@ -1,6 +1,8 @@
 @import '../../../common-styles/_variables';
 
 .header {
+  position: relative;
+  z-index: 100;
   background: $blue_common;
   padding: 10px;
   min-height: $header_height;

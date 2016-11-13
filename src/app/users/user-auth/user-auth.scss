@@ -2,8 +2,18 @@
 @import "../../../common-styles/_mixins";
 
 .user-auth {
+  position: relative;
   height: 100vh;
   margin: -70px 0;
+
+  &__session-unavailable {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: $primary-orange;
+  }
 
   &-wrapper {
     display: inline-block;

@@ -1,4 +1,9 @@
 <section class="user-auth">
+    <h2 class="user-auth__session-unavailable"
+        *ngIf="sessionExpired">
+        Sorry, you're not logged in yet or your session is no longer available to access that page
+    </h2>
+
     <div class="user-auth-wrapper">
         <h2 class="user-auth__heading">{{getTitle()}}</h2>
         <hr>

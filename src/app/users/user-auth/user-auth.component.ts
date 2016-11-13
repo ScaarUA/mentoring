@@ -13,7 +13,7 @@ import { UsersService } from '../users-service/users.service';
 })
 export class UserAuthComponent implements OnInit, OnDestroy {
     public error: string = 'You\'ve put wrong email or password';
-    public sessionMessage: string = ''; // TODO message on view;
+    public sessionExpired: boolean = false;
     private _isError: Boolean = false;
     private user = {};
     private title: String = 'Login';
@@ -45,7 +45,7 @@ export class UserAuthComponent implements OnInit, OnDestroy {
                     this._isError = true;
                 }
                 if (param['session'] === 'expired') {
-                    this.sessionMessage = 'Your session is no longer available';
+                    this.sessionExpired = true;
                 }
             }
         );
