@@ -1,0 +1,25 @@
+<div class="slider row">
+    <span class="slider__control col-xs-2">
+        <i class="fa fa-angle-left slider__control-icon" (click)="prev()"></i>
+    </span>
+    <div class="col-xs-8 slider-list ">
+        <div *ngFor='let flow of flows; let i = index'>
+            <div *ngIf="isOnScreen(i)">
+                <div class="slider-list__item slider-list__item_active">
+                    <div class="slider-list__item-title">{{flow.title}}</div>
+                    <div class="slider-list__item-wrapper-image">
+                        <img src="assets/images/states/1.jpeg"
+                             alt=""
+                             class="slider-list__item-image">
+                    </div>
+                    <div class="slider-list__item-image">
+                        {{flow.description}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="slider__control col-xs-2">
+        <i class="fa fa-angle-right slider__control-icon" (click)="next()"></i>
+    </span>
+</div>

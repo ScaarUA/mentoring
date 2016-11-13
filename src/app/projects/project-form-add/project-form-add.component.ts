@@ -1,6 +1,7 @@
+// TODO remove this component
 import './project-form-add.scss';
 
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Project } from './../../models/project';
 import { ProjectsService } from './../projects-service/projects.service';
@@ -13,7 +14,7 @@ export class ProjectFormAddComponent {
     public project: Project;
 
     constructor(private projectsService: ProjectsService) {
-        this.project = new Project(null, '', '', false);
+        this.project = new Project();
     }
 
     public submit($event, form) {

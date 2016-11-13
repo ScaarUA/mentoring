@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { BrowserModule }  from '@angular/platform-browser';
-import { ModalModule }  from 'ng2-modal';
 
 import { ProjectsModule } from './projects/projects.module';
 import { UsersModule } from './users/users.module';
@@ -30,7 +29,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
         CommonModule,
         HttpModule,
         JsonpModule,
-        ModalModule,
         ProjectsModule,
         UsersModule,
         routing

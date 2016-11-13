@@ -1,29 +1,29 @@
 import './project-list.scss';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Project } from './../../models/project';
-import { ProjectsService } from './../projects-service/projects.service';
 
 @Component({
     selector: 'project-list',
     template: require('./project-list.html')
 })
 export class ProjectListComponent implements OnInit {
+    @Input() public token: String;
     public projects: Array<Project>;
-    public errorMessage: string;
+    private sub: any;
 
-    constructor(private projectsService: ProjectsService) {
+    constructor(private route: ActivatedRoute) {
     }
 
     public ngOnInit() {
-        this.projectsService.getProjects()
-            .then(projects => this.projects = projects)
-            .catch(error => this.errorMessage = <any> error);
+        this.sub = this.route.params.subscribe(() => {
+            this.projects = this.route.snapshot.data['projects'];
+        });
     }
 
-    public removeProject(id: Number) {
-        this.projectsService.removeProject(id)
-            .catch(error => this.errorMessage = <any> error);
+    public ngOnDestroy() {
+        this.sub.unsubscribe();
     }
 }

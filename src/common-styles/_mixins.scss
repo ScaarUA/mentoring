@@ -120,3 +120,8 @@
     vertical-align: middle;
   }
 }
+
+@mixin g-text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

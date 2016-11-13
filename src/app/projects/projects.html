@@ -3,7 +3,9 @@
         <div class="projects-header">
             <div class="col-xs-12 col-sm-5">
                 <div class="projects-header__title">Projects</div>
-                <project-form-add></project-form-add>
+                <button class="projects-header__add" [routerLink]="['/project/add']">
+                    <i class="fa fa-plus projects-header__add-icon"></i>
+                </button>
             </div>
             <div class="col-xs-12 col-sm-7">
                         <span class="projects-header__search">
@@ -11,18 +13,19 @@
                                 <i class="fa fa-search"></i>
                             </label>
                             <input type="text"
+                                   [(ngModel)]="token"
                                    id="projects-search"
                                    class="projects-header__search-input"
                                    placeholder="Search projects">
                         </span>
             </div>
         </div>
-        <div class="projects-filters">
+        <div class="projects-filters" style="display: none;">
             <span class="projects-filters__item projects-filters__item_active">All</span>
             <span class="projects-filters__item">Editable</span>
             <span class="projects-filters__item">Readeable</span>
         </div>
-        <project-list></project-list>
+        <project-list [token]="token"></project-list>
     </div>
     <div class="project">
         <router-outlet></router-outlet>

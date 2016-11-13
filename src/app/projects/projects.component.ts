@@ -1,4 +1,3 @@
-import './projects.html';
 import './projects.scss';
 
 import { Component } from '@angular/core';
@@ -7,4 +6,6 @@ import { Component } from '@angular/core';
     selector: 'projects',
     template: require('./projects.html')
 })
-export class ProjectsComponent { }
+export class ProjectsComponent {
+    constructor() {}
+}

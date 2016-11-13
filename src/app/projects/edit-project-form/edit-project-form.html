@@ -1,0 +1,41 @@
+<div class="main-content wrapper row">
+    <div class="edit-project-form">
+        <form #editProjectForm="ngForm">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input [(ngModel)]="project.title"
+                       name="title"
+                       required
+                       type="text" class="form-control" id="title">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea [(ngModel)]="project.description"
+                          name="description"
+                          class="form-control" id="description">
+                </textarea>
+            </div>
+            <div class="form-group">
+                <label>
+                    Flows
+                    <ng-select [allowClear]="true"
+                               [multiple]="true"
+                               [active]="selectedFlows"
+                               [items]="items"
+                               (data)="updateFlows($event)"
+                               placeholder="No flows selected"></ng-select>
+                    </label>
+            </div>
+            <div class="checkbox">
+                <label><input [(ngModel)]="project.isPrivate"
+                              name="isPrivate"
+                              type="checkbox">Private</label>
+            </div>
+
+            <button class="btn btn-default" type="button"
+                    [disabled]="!editProjectForm.valid"
+                    (click)="submit()">Submit</button>
+            <button class="btn btn-primary" (click)="back()">Back</button>
+        </form>
+    </div>
+</div>

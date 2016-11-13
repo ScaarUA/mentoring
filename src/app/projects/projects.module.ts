@@ -1,32 +1,45 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ModalModule } from 'ng2-modal';
+import { SelectModule } from 'ng2-select/ng2-select';
 
-import { projectsRouting } from './projects.routing';
+import { FlowsModule } from '../flows/flows.module';
 
 import { ProjectsComponent } from './projects.component';
 import { ProjectListComponent } from './project-list/project-list.component';
+import { ProjectComponent } from './project/project.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
-import { ProjectFormAddComponent } from './project-form-add/project-form-add.component';
+import { AddProjectComponent } from './add-project-form/add-project-form.component';
+import { EditProjectComponent } from './edit-project-form/edit-project-form.component';
 
+import { projectsRouting } from './projects.routing';
 import { ProjectsService } from './projects-service/projects.service';
+import { ProjectsResolver } from './project-resolvers/projects.resolver';
+import { ProjectResolver } from './project-resolvers/project.resolver';
+
+import { ProjectsSearchPipe } from './project-pipes/projects-search.pipe';
 
 @NgModule({
     declarations: [
-        ProjectListComponent,
         ProjectsComponent,
+        ProjectListComponent,
+        ProjectComponent,
         ProjectDetailsComponent,
-        ProjectFormAddComponent
+        AddProjectComponent,
+        EditProjectComponent,
+        ProjectsSearchPipe
     ],
     imports: [
         CommonModule,
         FormsModule,
-        ModalModule,
+        SelectModule,
+        FlowsModule,
         projectsRouting
     ],
     providers: [
-        ProjectsService
+        ProjectsService,
+        ProjectsResolver,
+        ProjectResolver
     ]
 })
 export class ProjectsModule {

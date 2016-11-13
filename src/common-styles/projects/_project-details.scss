@@ -107,7 +107,6 @@
     }
   }
   &-list {
-    display: none;
     color: $grey;
     &__item {
       border-bottom: 1px solid $grey_light;
@@ -120,14 +119,16 @@
         background: $grey_very_light;
       }
       &-wrapper-image {
-        float: right;
-        width: 17%;
-        margin: 0 15px;
       }
       &-image {
         width: 100%;
       }
     }
+
+    &__item-info {
+      @include g-text-overflow();
+    }
+
     &__item-title {
       font-size: $font_size_header;
       color: $grey_dark;
@@ -139,7 +140,9 @@
     &__item-description {
       margin-top: 4px;
       font-size: $font_size_middle;
+      @include g-text-overflow();
     }
+
     &__item-options {
       float: right;
       text-align: right;
@@ -153,6 +156,7 @@
     &__item-date {
       color: $grey;
       font-size: $font_size_small;
+      @include g-text-overflow();
     }
   }
 }

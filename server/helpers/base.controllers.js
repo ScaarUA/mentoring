@@ -38,7 +38,7 @@ class BaseController {
 
         return this.Model.findById(id)
             .then((instance) => {
-                const updatedInstance = Object.assign(instance, data);
+                const updatedInstance = Object.assign(instance, data, { edited: new Date()});
 
                 return updatedInstance.save();
             })
