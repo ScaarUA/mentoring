@@ -4,7 +4,8 @@
 
 .main-content {
   display: flex;
-  min-height: calc(100vh - #{$header_height} - #{$footer_height});
+  min-height: calc(100vh - #{$header_height});
+  padding-bottom: $footer_height;
 }
 
 projects {

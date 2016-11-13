@@ -1,5 +1,5 @@
 <div class="flows-list">
-    <div class="flows-list__item" *ngFor='let flow of flows'>
+    <div class="flows-list__item" *ngFor='let flow of flows; let i = index'>
         <div class="col-xs-4 flow-list__item-info">
             <span class="flows-list__item-title"
                   title="{{flow.title}}"
@@ -10,7 +10,7 @@
         </div>
         <div class="col-xs-4">
             <div class="flows-list__item-wrapper-image">
-                <img src="assets/images/states/state-1.png" alt="" class="flows-list__item-image">
+                <img src="assets/images/states/state-{{i + 1}}.jpg" alt="" class="flows-list__item-image">
             </div>
         </div>
         <div class="col-xs-4">

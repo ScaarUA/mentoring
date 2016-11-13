@@ -14,14 +14,14 @@
                 <span class="user__name">{{getUserInfo().name}}</span>
                 <span class="user__caret"></span>
             </div>
-            <ul class="dropdown-menu"
-                [ngClass]="{'dropdown-menu--active': isDropdownOpened}">
-                <li class="dropdown-menu__item">
-                    <span class="dropdown-menu__email">{{getUserInfo().email}}</span>
+            <ul class="user-dropdown-menu"
+                [ngClass]="{'user-dropdown-menu--active': isDropdownOpened}">
+                <li class="user-dropdown-menu__item">
+                    <span class="user-dropdown-menu__email">{{getUserInfo().email}}</span>
                 </li>
-                <li class="dropdown-menu__item">
+                <li class="user-dropdown-menu__item">
                     <a href="#"
-                       class="dropdown-menu__logout"
+                       class="user-dropdown-menu__logout"
                        (click)="logout()">Log out</a>
                 </li>
             </ul>
