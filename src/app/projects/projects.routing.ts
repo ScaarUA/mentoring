@@ -13,23 +13,32 @@ import { ProjectsResolver } from './project-resolvers/projects.resolver';
 import { ProjectResolver } from './project-resolvers/project.resolver';
 import { FlowsResolver } from '../flows/flow-resolvers/flows.resolver';
 
+import { AuthGuard } from '../guards/auth.guard';
+
 const projectsRoutes: Routes = [
     {
         path: 'projects',
         component: ProjectsComponent,
+        canActivate: [AuthGuard],
         resolve: {
             projects: ProjectsResolver
         },
         children: [
-            { path: '' },
+            {
+                path: '',
+                canActivate: [AuthGuard]
+            },
             {
                 path: ':id/details',
                 component: ProjectDetailsComponent,
+                canActivate: [AuthGuard],
                 resolve: {
                     project: ProjectResolver
                 },
                 children: [
-                    { path: '', redirectTo: 'list'},
+                    {
+                        path: '', redirectTo: 'list'
+                    },
                     {
                         path: 'list',
                         component: FlowListComponent
@@ -45,6 +54,7 @@ const projectsRoutes: Routes = [
     {
         path: 'project/add',
         component: AddProjectComponent,
+        canActivate: [AuthGuard],
         resolve: {
             flows: FlowsResolver
         },
@@ -52,6 +62,7 @@ const projectsRoutes: Routes = [
     {
         path: 'project/:id/edit',
         component: EditProjectComponent,
+        canActivate: [AuthGuard],
         resolve: {
             project: ProjectResolver,
             flows: FlowsResolver

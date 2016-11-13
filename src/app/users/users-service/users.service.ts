@@ -9,6 +9,8 @@ const userStorageKey = 'USER';
 
 @Injectable()
 export class UsersService {
+    public redirectUrl: String;
+
     constructor(
         private http: Http,
         private localStorageService: LocalStorageService
@@ -24,7 +26,7 @@ export class UsersService {
     public getCurrentUser() {
         return this.http.get('/api/users/current')
             .toPromise()
-            .then(this.handleData)
+            .then(this.handleData, this.handleUserNoLongerAvailable.bind(this))
             .then(this.storeData.bind(this))
             .catch(this.handleError);
     }
@@ -80,5 +82,13 @@ export class UsersService {
 
     private removeData() {
         this.localStorageService.remove(userStorageKey);
+    }
+
+    private handleUserNoLongerAvailable(error) {
+        if (error.status === 401) {
+            this.removeData();
+        }
+
+        return Promise.reject(error);
     }
 }

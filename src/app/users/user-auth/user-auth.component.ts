@@ -12,7 +12,8 @@ import { UsersService } from '../users-service/users.service';
     template: require('./user-auth.html')
 })
 export class UserAuthComponent implements OnInit, OnDestroy {
-    public error: String = 'You\'ve put wrong email or password';
+    public error: string = 'You\'ve put wrong email or password';
+    public sessionMessage: string = ''; // TODO message on view;
     private _isError: Boolean = false;
     private user = {};
     private title: String = 'Login';
@@ -27,14 +28,14 @@ export class UserAuthComponent implements OnInit, OnDestroy {
 
     public ngOnInit() {
         if (this.usersService.isInStorage()) {
-            this.goToProjects();
+            this.navigateOnSuccess();
         }
 
         this.querySubscription = this.activatedRoute.queryParams.subscribe(
             (param: any) => {
                 if (param['from-google']) {
                     this.usersService.getCurrentUser()
-                        .then(this.goToProjects.bind(this));
+                        .then(this.navigateOnSuccess.bind(this));
                 }
             });
 
@@ -42,6 +43,9 @@ export class UserAuthComponent implements OnInit, OnDestroy {
             (param: any) => {
                 if (param['error']) {
                     this._isError = true;
+                }
+                if (param['session'] === 'expired') {
+                    this.sessionMessage = 'Your session is no longer available';
                 }
             }
         );
@@ -69,7 +73,7 @@ export class UserAuthComponent implements OnInit, OnDestroy {
 
     public login() {
         return this.usersService.login(this.user)
-            .then(this.goToProjects.bind(this), this.toggleError.bind(this));
+            .then(this.navigateOnSuccess.bind(this), this.toggleError.bind(this));
     }
 
     public register() {
@@ -93,8 +97,10 @@ export class UserAuthComponent implements OnInit, OnDestroy {
         this._isError = !this._isError;
     }
 
-    private goToProjects() {
-        this.router.navigate(['/projects']);
+    private navigateOnSuccess() {
+        let url = this.usersService.redirectUrl || '/projects';
+
+        this.router.navigate([url]);
     }
 
     private changeTitle() {

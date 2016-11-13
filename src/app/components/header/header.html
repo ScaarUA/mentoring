@@ -4,20 +4,25 @@
             <img src="http://d9hhrg4mnvzow.cloudfront.net/do.thelandingpagecourse.com/a08e1b26-unbounce-primary-logo-dark-background-white_05k01a05j01a000000.png"
                  alt="Logo mentoring program" class="logo__image">
         </a>
-        <div class="navbar">
-            <div class="user" id="js-toggle-options">
+        <div class="navbar"
+             *ngIf="isLoggedIn()">
+            <div class="user"
+                 (click)="toggleDropdown()">
                 <div class="user__wrapper-photo">
-                    <img src="assets/images/users/Vitalii_Kotliar.JPG" alt="Halk" class="user__photo">
+                    <img src="{{getUserInfo().avatar}}" alt="avatar" class="user__photo">
                 </div>
-                <span class="user__name">Vitalii Kotliar</span>
+                <span class="user__name">{{getUserInfo().name}}</span>
                 <span class="user__caret"></span>
             </div>
-            <ul class="dropdown-menu" id="js-dropdown-menu">
+            <ul class="dropdown-menu"
+                [ngClass]="{'dropdown-menu--active': isDropdownOpened}">
                 <li class="dropdown-menu__item">
-                    <span class="dropdown-menu__email">gmail@gmail.com</span>
+                    <span class="dropdown-menu__email">{{getUserInfo().email}}</span>
                 </li>
                 <li class="dropdown-menu__item">
-                    <a href="" class="dropdown-menu__logout">Log out</a>
+                    <a href="#"
+                       class="dropdown-menu__logout"
+                       (click)="logout()">Log out</a>
                 </li>
             </ul>
         </div>

@@ -19,6 +19,8 @@ import { ProjectResolver } from './project-resolvers/project.resolver';
 
 import { ProjectsSearchPipe } from './project-pipes/projects-search.pipe';
 
+import { AuthGuard } from '../guards/auth.guard';
+
 @NgModule({
     declarations: [
         ProjectsComponent,
@@ -39,7 +41,8 @@ import { ProjectsSearchPipe } from './project-pipes/projects-search.pipe';
     providers: [
         ProjectsService,
         ProjectsResolver,
-        ProjectResolver
+        ProjectResolver,
+        AuthGuard
     ]
 })
 export class ProjectsModule {
