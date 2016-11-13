@@ -1,7 +1,7 @@
 @import "../../../common-styles/_colors";
 @import "../../../common-styles/_mixins";
 
-.user-login {
+.user-auth {
   height: 100vh;
   margin: -70px 0;
 
@@ -62,11 +62,12 @@
       height: 0;
       overflow: hidden;
       font-size: $fz;
+      font-weight: bold;
       color: $primary-orange;
       transition: height 0.2s;
 
       &--active {
-        height: $fz;
+        height: $fz + 5px;
       }
     }
 

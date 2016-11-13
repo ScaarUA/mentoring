@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { ProjectsModule } from './projects/projects.module';
 import { UsersModule } from './users/users.module';
+import { FormsModule }   from '@angular/forms';
 
 import { routing } from './app.routing';
 
@@ -33,6 +34,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
         ProjectsModule,
         UsersModule,
         SharedModule,
+        FormsModule,
         routing
     ]
 })

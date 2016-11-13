@@ -8,8 +8,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { UsersService } from '../users-service/users.service';
 
-// import { User } from '../../models/user';
-
 @Component({
     template: require('./user-auth.html')
 })
@@ -18,7 +16,8 @@ export class UserAuthComponent implements OnInit, OnDestroy {
     private _isError: Boolean = false;
     private user = {};
     private title: String = 'Login';
-    private subscription: Subscription;
+    private querySubscription: Subscription;
+    private paramsSubscription: Subscription;
 
     constructor(
         private usersService: UsersService,
@@ -31,7 +30,7 @@ export class UserAuthComponent implements OnInit, OnDestroy {
             this.goToProjects();
         }
 
-        this.subscription = this.activatedRoute.queryParams.subscribe(
+        this.querySubscription = this.activatedRoute.queryParams.subscribe(
             (param: any) => {
                 if (param['from-google']) {
                     this.usersService.getCurrentUser()
@@ -39,10 +38,19 @@ export class UserAuthComponent implements OnInit, OnDestroy {
                 }
             });
 
+        this.paramsSubscription = this.activatedRoute.params.subscribe(
+            (param: any) => {
+                if (param['error']) {
+                    this._isError = true;
+                }
+            }
+        );
+
     }
 
     public ngOnDestroy() {
-        this.subscription.unsubscribe();
+        this.querySubscription.unsubscribe();
+        this.paramsSubscription.unsubscribe();
     }
 
     public getTitle() {

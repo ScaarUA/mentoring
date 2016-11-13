@@ -37,13 +37,17 @@
         <div class="fast-login">
             <span class="fast-login__title">Or fast login</span>
             <button class="fast-login__with-google"></button>
-            <form class="fast-login-form">
+            <form class="fast-login-form" (ngSubmit)="login()">
                 <input class="fast-login-form__email"
                        type="email"
+                       [(ngModel)]="user.email"
+                       name="email"
                        tabindex="1"
                        placeholder="email">
                 <input class="fast-login-form__password"
                        type="password"
+                       [(ngModel)]="user.password"
+                       name="password"
                        tabindex="2"
                        placeholder="password">
                 <button class="fast-login-form__sign-in">> Sign in <</button>

@@ -1,56 +1,56 @@
-<section class="user-login">
-    <div class="user-login-wrapper">
-        <h2 class="user-login__heading">{{getTitle()}}</h2>
+<section class="user-auth">
+    <div class="user-auth-wrapper">
+        <h2 class="user-auth__heading">{{getTitle()}}</h2>
         <hr>
-        <form class="user-login-form" (ngSubmit)="submit()">
-            <div class="user-login-form-row"
+        <form class="user-auth-form" (ngSubmit)="submit()">
+            <div class="user-auth-form-row"
                  *ngIf="!isLogin()">
-                <input class="user-login-form__name"
+                <input class="user-auth-form__name"
                        type="text"
                        placeholder="name"
                        [(ngModel)]="user.name"
                        name="name"
                        tabindex="1">
             </div>
-            <div class="user-login-form-row">
-                <a class="user-login-form__sign-in-with-google"
+            <div class="user-auth-form-row">
+                <a class="user-auth-form__sign-in-with-google"
                         *ngIf="isLogin()"
                         href="/auth/google"></a>
             </div>
-            <div class="user-login-form-row">
-                <input class="user-login-form__email"
+            <div class="user-auth-form-row">
+                <input class="user-auth-form__email"
                        type="email"
                        placeholder="Email"
                        [(ngModel)]="user.email"
                        name="email"
                        tabindex="2">
-                <input class="user-login-form__password"
+                <input class="user-auth-form__password"
                        type="password"
                        placeholder="Password"
                        [(ngModel)]="user.password"
                        name="password"
                        tabindex="3">
             </div>
-            <div class="user-login-form-row">
-                <span class="user-login-form__error"
-                      [ngClass]="{'user-login-form__error--active': isError()}">
+            <div class="user-auth-form-row">
+                <span class="user-auth-form__error"
+                      [ngClass]="{'user-auth-form__error--active': isError()}">
                     {{error}}
                 </span>
             </div>
             <hr>
-            <div class="user-login-form-row"
+            <div class="user-auth-form-row"
                  *ngIf="isLogin()">
                 <span>Not registered?</span>
-                <a class="user-login-form__sign-up"
+                <a class="user-auth-form__sign-up"
                         (click)="changeMode()">sign up now!</a>
             </div>
-            <div class="user-login-form-row"
+            <div class="user-auth-form-row"
                  *ngIf="!isLogin()">
-                <a class="user-login-form__login"
+                <a class="user-auth-form__login"
                         (click)="changeMode()">Back to login</a>
             </div>
-            <div class="user-login-form-row">
-                <button type="submit" class="user-login-form__button">Submit</button>
+            <div class="user-auth-form-row">
+                <button type="submit" class="user-auth-form__button">Submit</button>
             </div>
         </form>
 
