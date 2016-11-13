@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
 
-import { UserLoginComponent } from './user-login/user-login.component';
+import { UserAuthComponent } from './user-auth/user-auth.component';
 import { UsersComponent } from './users.component';
 
 import { UsersService } from './users-service/users.service';
@@ -12,13 +13,14 @@ import { userssRouting } from './users.routing';
 @NgModule({
     declarations: [
         UsersComponent,
-        UserLoginComponent
+        UserAuthComponent
     ],
     exports: [
         RouterModule
     ],
     imports: [
         CommonModule,
+        FormsModule,
         userssRouting
     ],
     providers: [

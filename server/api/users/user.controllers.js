@@ -19,6 +19,20 @@ class UserControllers extends BaseControllers {
             })
             .catch(next);
     }
+
+    getCurrent(req, res) {
+        if (req.user) {
+            let user = {
+                id: req.user._id,
+                name: req.user.local.name || req.user.google.name,
+                email: req.user.local.email || req.user.google.email
+            };
+
+            res.send(user);
+        } else {
+            res.sendStatus(401);
+        }
+    }
 }
 
 module.exports = UserControllers;

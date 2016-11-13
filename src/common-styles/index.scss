@@ -20,5 +20,9 @@
 }
 
 body {
+  min-height: calc(100vh + 1px);
+}
+
+body {
   min-height: calc(100vh + 1px); // permanent scrollbar
 }

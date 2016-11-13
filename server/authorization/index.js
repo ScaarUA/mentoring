@@ -21,15 +21,11 @@ module.exports = function (passport, app) {
     });
 
     app.post('/auth/local/signup', passport.authenticate('local-signup', {
-        successRedirect: '/',
-        failureRedirect: '/auth/local/signup',
-        failureFlash: true
+
     }));
 
     app.post('/auth/local/login', passport.authenticate('local-login', {
-        successRedirect: '/',
-        failureRedirect: '/auth/local/login',
-        failureFlash: true
+        successRedirect: '/api/users/current'
     }));
 
     app.get('/auth/google', passport.authenticate('google', {
@@ -38,7 +34,7 @@ module.exports = function (passport, app) {
 
     app.get('/auth/google/callback',
         passport.authenticate('google', {
-            successRedirect : '/',
-            failureRedirect : '/login'
+            successRedirect: `http://localhost:${process.env.webpackServerPort}/users/auth?from-google=true`,
+            failureRedirect : '/auth'
         }));
 };

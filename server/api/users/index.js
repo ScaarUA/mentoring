@@ -3,6 +3,9 @@ const express = require('express'),
     UserControllers = require('./user.controllers'),
     controllers = new UserControllers();
 
+router.get('/current', 
+    controllers.getCurrent.bind(controllers));
+
 router.route('/')
     .get(controllers.getAll.bind(controllers));
 

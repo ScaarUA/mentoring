@@ -1,17 +1,17 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { UserLoginComponent } from './user-login/user-login.component';
+import { UserAuthComponent } from './user-auth/user-auth.component';
 
 const usersRoutes: Routes = [
     {
         path: 'users',
         pathMatch: 'full',
-        redirectTo: 'users/login'
+        redirectTo: 'users/auth'
     },
     {
-        component: UserLoginComponent,
-        path: 'users/login'
+        component: UserAuthComponent,
+        path: 'users/auth'
     }
 ];
 

@@ -13,12 +13,13 @@ module.exports = passport => {
                 return done(err);
             }
             if (user) {
-                return done(null, false, req.flash('failureMessage', 'This user email already exist.'));
+                return done(null, false);
             } else {
                 var newUser = new User();
 
                 newUser.local.email = email;
                 newUser.local.password = newUser.generateHash(password);
+                newUser.local.name = req.body.name;
 
                 newUser.save(function(err) {
                     if (err)

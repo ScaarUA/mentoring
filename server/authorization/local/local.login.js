@@ -13,8 +13,9 @@ module.exports = passport => {
                 return done(err);
             }
             if (!user || !user.isPasswordValid(password)) {
-                return done(null, false, req.flash('failureMessage', 'Incorrect data.'));
+                return done(null, false);
             }
+            
             return done(null, user);
         });
     }

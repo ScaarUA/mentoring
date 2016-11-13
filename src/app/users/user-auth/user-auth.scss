@@ -1,0 +1,93 @@
+@import "../../../common-styles/_colors";
+@import "../../../common-styles/_mixins";
+
+.user-login {
+  height: 100vh;
+  margin: -70px 0;
+
+  &-wrapper {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    text-align: center;
+  }
+
+  &__heading {
+    font-size: 36px;
+    color: $primary-blue;
+  }
+
+  &-form {
+
+    &-row {
+      display: block;
+    }
+
+    &__email, &__password, &__name {
+      @include placeholder-styling($light-black);
+      @include input-reset();
+      border: 1px solid rgba($primary-blue, 0.7);
+      border-radius: 5px;
+      font-size: 20px;
+      padding: 5px;
+      margin: 10px 20px;
+      transition: all 0.4s;
+      width: 250px;
+
+      &:focus {
+        border-color: $primary-blue;
+        box-shadow: 0 0 2px $primary-blue;
+      }
+    }
+
+    &__name {
+
+    }
+
+    &__sign-in-with-google {
+      display: inline-block;
+      background-image: url(/assets/images/sign-in-with-google.png);
+      background-size: cover;
+      width: 153px;
+      height: 30px;
+      margin: 10px 20px;
+    }
+
+    &__error {
+      $fz: 16px;
+      display: block;
+      height: 0;
+      overflow: hidden;
+      font-size: $fz;
+      color: $primary-orange;
+      transition: height 0.2s;
+
+      &--active {
+        height: $fz;
+      }
+    }
+
+    &__sign-up, &__login {
+      @include button-reset();
+      color: $primary-blue;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &__button {
+      @include button-reset();
+      @include orange-button();
+      margin: 15px;
+      padding-left: 30px;
+      padding-right: 30px;
+      font-size: 24px;
+    }
+  }
+}
+
+

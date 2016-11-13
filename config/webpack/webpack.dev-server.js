@@ -22,6 +22,13 @@ module.exports = {
                 host: process.env.webpackServerHost,
                 port: process.env.serverPort
             }
-        }
+        },
+        {
+            path: '/auth',
+            target: {
+                host: process.env.webpackServerHost,
+                port: process.env.serverPort
+            }
+        },
     ]
 };
