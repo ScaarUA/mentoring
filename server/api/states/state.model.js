@@ -31,6 +31,10 @@ const stateSchema = Schema({
     edited: {
         type: Date,
         default: Date.now
+    },
+    flow: {
+        type: Schema.ObjectId,
+        ref: 'Flow'
     }
 });
 

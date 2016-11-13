@@ -11,7 +11,7 @@
   }
 
   .projects-header__search,
-  .flow-header__options {
+  .flows-header__options {
     float: left;
     margin-top: 4px;
   }
@@ -21,7 +21,7 @@
     display: none;
   }
 
-  .projects-list, .flow-list {
+  .projects-list, .flows-list {
     max-height: none;
     overflow-y: auto;
   }

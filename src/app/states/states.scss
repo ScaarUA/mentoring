@@ -1,0 +1,33 @@
+.states {
+
+  &__navigate-left, &__navigate-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    padding: 3px;
+    border: 1px solid $light-black;
+    font-size: 48px;
+    transition-property: border-color, color;
+    transition-duration: 0.2s;
+    box-shadow: 0 2px 3px $light-black;
+
+    &:hover {
+      cursor: pointer;
+      color: $dark-orange;
+      border-color: $dark-orange;
+    }
+  }
+
+  &__navigate-left {
+    left: 0;
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+  }
+
+  &__navigate-right {
+    right: 0;
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+  }
+}

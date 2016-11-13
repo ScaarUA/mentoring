@@ -3,10 +3,12 @@ const mongoose = require('mongoose'),
     deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 const flowSchema = Schema({
-    state: {
-        type: Schema.ObjectId,
-        required: true
-    },
+    states: [
+        {
+            type: Schema.ObjectId,
+            ref: 'State'
+        }
+    ],
     title: String,
     description: String,
     created: {

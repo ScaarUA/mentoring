@@ -7,6 +7,7 @@ import { FlowListComponent } from './flow-list/flow-list.component';
 import { FlowSliderComponent } from './flow-slider/flow-slider.component';
 import { AddFlowComponent } from './add-flow-form/add-flow-form.component';
 import { EditFlowComponent } from './edit-flow-form/edit-flow-form.component';
+import { FlowComponent } from './flow/flow.component';
 
 import { flowsRouting } from './flows.routing';
 import { FlowsService } from './flows-service/flows.service';
@@ -19,7 +20,8 @@ import { FlowResolver } from './flow-resolvers/flow.resolver';
         FlowListComponent,
         FlowSliderComponent,
         AddFlowComponent,
-        EditFlowComponent
+        EditFlowComponent,
+        FlowComponent
     ],
     imports: [
         CommonModule,

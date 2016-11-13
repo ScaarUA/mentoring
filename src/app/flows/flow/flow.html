@@ -1,0 +1,15 @@
+<section class="flow">
+    <h1 class="flow__title">{{flow.title}}</h1>
+    <h4 class="flow__description">{{flow.description}}</h4>
+
+    <ul class="flow-states-list">
+        <li class="flow-states-list__item"
+            *ngFor="let state of flow.states"
+            [routerLink]="['/state', state._id]">
+            img.flow-states-list__item-image
+        </li>
+        <li class="flow-states-list__item flow-states-list__item--add-new" [routerLink]="'/state/add'">
+            <span class="flow-states-list__item-add-icon fa fa-plus"></span>
+        </li>
+    </ul>
+</section>

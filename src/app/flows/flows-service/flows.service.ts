@@ -26,7 +26,7 @@ export class FlowsService {
             .catch(this.handleError);
     }
 
-    public getFlowById(id: String): Promise<Flow[]> {
+    public getFlowById(id: String): Promise<Flow> {
         return this.http.get(`${ENDPOINT_FLOWS}/${id}`)
             .toPromise()
             .then(this.handleData)
