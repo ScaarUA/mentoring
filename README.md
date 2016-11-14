@@ -1,7 +1,7 @@
 # Bohdan Huseinov's and Vitaliy Kotliar's project
 ## Javascript mentoring program
 
-To run a server
+To run a webpack dev server and API server
 ```sh
 $ npm start
 ```
@@ -43,4 +43,7 @@ $ npm run eslint
 
 1. [JSMP3.5: JAVASCRIPT WEB DESIGN PATTERNS](docs/PATTERNS.md) - Huseinov B.
 2. [JSMP3.6: JavaScript on Backend](docs/SERVER.md) - Huseinov B.
-2. [JSMP3.7: HTML AND CSS MASTERSHIP + RESPONSIVE WEB DESIGN](docs/Responsive/RESPONSIVE.md) - Huseinov B.
+3. [JSMP3.6: JavaScript on Backend](docs/SERVER-VK.md) - Kotliar V.
+4. [JSMP3.7: HTML AND CSS MASTERSHIP + RESPONSIVE WEB DESIGN](docs/Responsive/RESPONSIVE.md) - Huseinov B.
+5. [JSMP3.7: HTML AND CSS MASTERSHIP + RESPONSIVE WEB DESIGN](https://git.epam.com/vitalii_kotliar/mp-responsive-layout) - Kotliar V.
+6. [JSMP3.12: Angular 2](docs/ng2/ng2-VK.md) - Kotliar V.
