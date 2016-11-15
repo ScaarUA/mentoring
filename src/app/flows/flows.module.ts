@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { StateModule } from '../state/state.module';
 
 import { FlowsComponent } from './flows.component';
 import { FlowListComponent } from './flow-list/flow-list.component';
@@ -26,6 +27,7 @@ import { FlowResolver } from './flow-resolvers/flow.resolver';
     imports: [
         CommonModule,
         FormsModule,
+        StateModule,
         flowsRouting
     ],
     providers: [
