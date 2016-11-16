@@ -12,7 +12,7 @@ import { State } from '../../models/state';
     template: require('./state-add.html')
 })
 export class StateAddComponent implements OnInit, OnDestroy {
-    public state: State = new State('', '', [], '', 'Description', new Date(), new Date(), '');
+    public state: State = new State('', '', [], '', 'Description', new Date(), new Date());
     public titleEditable: boolean = true;
     public descriptionEditable: boolean = false;
     public imageShown: boolean = false;
@@ -42,6 +42,10 @@ export class StateAddComponent implements OnInit, OnDestroy {
         this.subscription.unsubscribe();
     }
 
+    public selectFile($event) {
+        this.state.file = $event.target.files[0];
+    }
+
     public toggleTitle() {
         this.titleEditable = !this.titleEditable;
         if (this.state.title === '') {
@@ -61,7 +65,6 @@ export class StateAddComponent implements OnInit, OnDestroy {
         if (!this.imageShown) {
             this.hotspotCreationProcess = false;
         }
-        this.state.file = $event.target.files[0];
     }
 
     public createHotspot(event) {

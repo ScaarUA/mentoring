@@ -27,6 +27,7 @@
     <input type="file"
            imagePreview="state"
            id="state-file"
+           (change)="selectFile($event)"
            (blur)="toggleImage($event)"
            class="state-add__image-input">
     <span class="state-add__wrong-image"

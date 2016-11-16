@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Response } from '@angular/http';
 
 import { State } from '../../models/state';
 
 @Injectable()
 export class StateService {
-    constructor(private http: Http) {
+    constructor() {
     }
 
     public saveState(state): Promise<State> {
@@ -17,21 +17,14 @@ export class StateService {
             }
         }
 
-        let headers = new Headers({ 'Content-Type': undefined });
-        let options = new RequestOptions({ headers: headers });
-
-        return fetch(`/api/states`, {
+        const config = {
             method: 'POST',
-            body: formData,
-            headers
-        })
+            body: formData
+        };
+
+        return window.fetch('/api/states', config)
             .then(this.handleData)
             .catch(this.handleError);
-
-        // this.http.post(`/api/states`, formData, options)
-        //     .toPromise()
-        //     .then(this.handleData)
-        //     .catch(this.handleError);
     }
 
     private handleData(response: Response) {

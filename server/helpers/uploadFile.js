@@ -40,7 +40,6 @@ function fileFilter(req, file, cb) {
 }
 
 function uploadMiddleware(req, res, next) {
-    debugger;
     uploader(req, res, (err) => {
         if (err) {
             next(err);

@@ -7,6 +7,7 @@ export class State {
         public description: string, //
         public created: Date, //
         public edited: Date,
-        public flow: string
+        public flow: string = '5828e07fa1d9b2246550e56c',
+        public onCloud: Boolean = true
     ) {}
 }

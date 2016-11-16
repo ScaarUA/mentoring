@@ -10,7 +10,6 @@ class StateControllers extends BaseControllers {
     }
 
     create(req, res, next) {
-        debugger;
         return new Promise((resolve) => {
             if (stateServices.isModeCloudStorage(req)) {
                 resolve(stateServices.uploadToCloud(req));
