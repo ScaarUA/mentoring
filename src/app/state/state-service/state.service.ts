@@ -5,9 +5,8 @@ import { State } from '../../models/state';
 
 @Injectable()
 export class StateService {
-    constructor(
-        private http: Http
-    ) {}
+    constructor(private http: Http) {
+    }
 
     public saveState(state): Promise<State> {
         let formData = new FormData();
@@ -18,13 +17,21 @@ export class StateService {
             }
         }
 
-        let headers = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers: headers});
+        let headers = new Headers({ 'Content-Type': undefined });
+        let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(`/api/states`, formData, options)
-            .toPromise()
+        return fetch(`/api/states`, {
+            method: 'POST',
+            body: formData,
+            headers
+        })
             .then(this.handleData)
             .catch(this.handleError);
+
+        // this.http.post(`/api/states`, formData, options)
+        //     .toPromise()
+        //     .then(this.handleData)
+        //     .catch(this.handleError);
     }
 
     private handleData(response: Response) {

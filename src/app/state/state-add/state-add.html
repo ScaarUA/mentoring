@@ -27,7 +27,7 @@
     <input type="file"
            imagePreview="state"
            id="state-file"
-           (blur)="toggleImage()"
+           (blur)="toggleImage($event)"
            class="state-add__image-input">
     <span class="state-add__wrong-image"
           *ngIf="imageShown"
@@ -35,7 +35,6 @@
 
     <div class="state-add-container"
          (click)="createHotspot($event)"
-         *ngIf="imageShown"
          [ngClass]="{'state-add-container--events-off' : hotspotCreationProcess}"
          id="state">
         <div class="state-add-container__backdrop"

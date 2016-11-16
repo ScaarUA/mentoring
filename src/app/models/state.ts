@@ -1,7 +1,7 @@
 export class State {
     constructor(
         public id: string,
-        public image: string,
+        public file: any,
         public hotspots: Array<Object>,
         public title: string, //
         public description: string, //

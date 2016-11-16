@@ -8,7 +8,7 @@
             [routerLink]="['/state', state._id]">
             img.flow-states-list__item-image
         </li>
-        <li class="flow-states-list__item flow-states-list__item--add-new" [routerLink]="'/state/add'">
+        <li class="flow-states-list__item flow-states-list__item--add-new" [routerLink]="['/flow', flow._id, 'state', 'add']">
             <span class="flow-states-list__item-add-icon fa fa-plus"></span>
         </li>
     </ul>

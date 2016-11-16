@@ -56,11 +56,12 @@ export class StateAddComponent implements OnInit, OnDestroy {
         }
     }
 
-    public toggleImage() {
+    public toggleImage($event) {
         this.imageShown = !this.imageShown;
         if (!this.imageShown) {
             this.hotspotCreationProcess = false;
         }
+        this.state.file = $event.target.files[0];
     }
 
     public createHotspot(event) {
