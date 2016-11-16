@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start:react": "SET framework=react && npm run dev",
+    "start:react": "cross-env framework=react npm run dev",
     "start": "concurrently \"npm run dev\" \"npm run serve\"",
     "serve": "nodemon server",
     "build": "webpack",
@@ -35,6 +35,7 @@
     "babel-preset-es2015": "^6.14.0",
     "chai": "^3.5.0",
     "clean-webpack-plugin": "^0.1.10",
+    "cross-env": "^3.1.3",
     "css-loader": "^0.25.0",
     "devtool": "^2.2.0",
     "eslint": "^3.4.0",

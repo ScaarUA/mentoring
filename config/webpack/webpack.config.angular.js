@@ -6,13 +6,15 @@ module.exports = {
         vendor: './src/vendor.ts',
         polyfills: './src/polyfills.ts'
     },
-    loaders: [
-        {
-            test: /\.tsx?$/,
-            exclude: /node_modules/,
-            loader: 'ts-loader'
-        },
-    ],
+    module: {
+        loaders: [
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                loader: 'ts-loader'
+            },
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html'
