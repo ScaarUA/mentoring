@@ -1,26 +1,64 @@
-<div class="main-content wrapper row">
-    <div class="add-flow-form">
-        <form>
-            <div class="form-group">
-                <label for="title">Title:</label>
-                <input [(ngModel)]="state.title"
-                       name="title"
-                       required
-                       type="text" class="form-control" id="title">
-            </div>
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea [(ngModel)]="state.description"
-                          name="description"
-                          class="form-control" id="description">
-                </textarea>
-            </div>
+<section class="state-add">
+    <input type="text"
+           class="state-add__title-input"
+           placeholder="Title"
+           inputFocus
+           *ngIf="titleEditable"
+           (blur)="toggleTitle()"
+           [(ngModel)]="state.title">
+    <h2 class="state-add__title"
+        *ngIf="!titleEditable"
+        (click)="toggleTitle()">
+        {{state.title}}
+    </h2>
+    <input type="text"
+           class="state-add__description-input"
+           placeholder="Description"
+           inputFocus
+           *ngIf="descriptionEditable"
+           (blur)="toggleDescription()"
+           [(ngModel)]="state.description">
+    <h4 class="state-add__description"
+        *ngIf="!descriptionEditable"
+        (click)="toggleDescription()">
+        {{state.description}}
+    </h4>
 
-            <button class="btn btn-default"
-                    type="button">
-                Submit
-            </button>
-            <button class="btn btn-primary" type="button" (click)="back()">Back</button>
-        </form>
+    <input type="file"
+           imagePreview="state"
+           id="state-file"
+           (blur)="toggleImage()"
+           class="state-add__image-input">
+    <span class="state-add__wrong-image"
+          *ngIf="imageShown"
+          (click)="toggleImage()">Wrong image?</span>
+
+    <div class="state-add-container"
+         (click)="createHotspot($event)"
+         *ngIf="imageShown"
+         [ngClass]="{'state-add-container--events-off' : hotspotCreationProcess}"
+         id="state">
+        <div class="state-add-container__backdrop"
+             [ngClass]="{'state-add-container__backdrop--shown' : hotspotCreationProcess}"></div>
     </div>
-</div>
+    <div class="state-add-hotspot"
+         *ngIf="hotspotCreationProcess">
+        <input type="text"
+               placeholder="Hotspot title"
+               [(ngModel)]="hotspotTempData.title"
+               inputFocus
+               class="state-add-hotspot__title">
+        <input type="text"
+               placeholder="Hotspot description"
+               [(ngModel)]="hotspotTempData.description"
+               class="state-add-hotspot__description">
+        <button class="state-add-hotspot__save fa fa-check"
+                (click)="addHotspot()"></button>
+        <button class="state-add-hotspot__cancel fa fa-times"
+                (click)="removeHotspot()"></button>
+    </div>
+
+    <button class="state-add__save"
+            (click)="saveState()">Save</button>
+
+</section>

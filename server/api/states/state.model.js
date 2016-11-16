@@ -16,10 +16,8 @@ const stateSchema = Schema({
             stateId: Schema.ObjectId,
             title: String,
             description: String,
-            x1: Number,
-            y1: Number,
-            x2: Number,
-            y2: Number
+            x: Number,
+            y: Number
         }
     ],
     title: String,
