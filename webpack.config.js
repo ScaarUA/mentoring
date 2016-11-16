@@ -1,75 +1,20 @@
 require('dotenv').config();
-const webpack = require('webpack'),
-    HtmlWebpackPlugin = require('html-webpack-plugin'),
-    CleanWebpackPlugin = require('clean-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+const
+    merge = require('webpack-merge'),
+    extender = require('./config/webpack/extender'),
+    baseConfig = require('./config/webpack/webpack.config.base'),
+    angularConfig = require('./config/webpack/webpack.config.angular'),
+    reactConfig = require('./config/webpack/webpack.config.react');
 
-let extender = require('./config/webpack/extender');
-const devServer = require('./config/webpack/webpack.dev-server');
-let baseConfig = {
-    entry: {
-        app: './src/main.ts',
-        vendor: './src/vendor.ts',
-        polyfills: './src/polyfills.ts'
-    },
-    output: {
-        path: './public',
-        filename: '[name].js'
-    },
-    resolve: {
-        extensions: ['', '.ts', '.js']
-    },
-    babel: {
-        presets: ['es2015']
-    },
-    module: {
-        preLoaders: [
-            {
-                test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/font-woff&name=styles/[name].woff'
-            }, {
-                test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/font-woff&name=styles/[name].woff2'
-            }, {
-                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/octet-stream&name=styles/[name].ttf'
-            }, {
-                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'file?name=styles/[name].eot'
-            }, {
-                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=image/svg+xml&name=styles/[name].svg'
-            }
-        ],
-        loaders: [
-            {
-                test: /\.tsx?$/,
-                exclude: /node_modules/,
-                loader: 'ts-loader'
-            },
-            {
-                test: /\.html$/,
-                loader: 'raw'
-            }
-        ]
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor', 'polyfills']
-        }),
-        new HtmlWebpackPlugin({
-            template: './src/index.html'
-        }),
-        new CleanWebpackPlugin(['public'], {
-            root: __dirname,
-            verbose: true,
-            dry: false,
-            exclude: ['assets']
-        }),
-        new ExtractTextPlugin('styles.css')
-    ],
-    devServer: devServer
-};
+const framework = process.env.framework.trim();
+let resultConfig = {};
 
-module.exports = extender(baseConfig);
+if (framework === 'angular2') {
+    resultConfig = merge(baseConfig, angularConfig);
+}
+
+if (framework === 'react') {
+    resultConfig = merge(baseConfig, reactConfig);
+}
+
+module.exports = extender(resultConfig);

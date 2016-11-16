@@ -4,6 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
+    "start:react": "SET framework=react && npm run dev",
     "start": "concurrently \"npm run dev\" \"npm run serve\"",
     "serve": "nodemon server",
     "build": "webpack",
@@ -47,6 +48,7 @@
     "imports-loader": "^0.6.5",
     "isparta": "^4.0.0",
     "istanbul": "^1.0.0-alpha.2",
+    "jsx-loader": "^0.13.2",
     "mocha": "^3.0.2",
     "node-sass": "^3.9.3",
     "nodemon": "^1.11.0",
@@ -61,6 +63,7 @@
     "url-loader": "^0.5.5",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1",
+    "webpack-merge": "^0.17.0",
     "yargs": "^5.0.0"
   },
   "dependencies": {
@@ -93,6 +96,8 @@
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
     "q": "^1.4.1",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
     "tslint": "3.13.0",
