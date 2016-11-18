@@ -47,3 +47,4 @@ $ npm run eslint
 4. [JSMP3.7: HTML AND CSS MASTERSHIP + RESPONSIVE WEB DESIGN](docs/Responsive/RESPONSIVE.md) - Huseinov B.
 5. [JSMP3.7: HTML AND CSS MASTERSHIP + RESPONSIVE WEB DESIGN](https://git.epam.com/vitalii_kotliar/mp-responsive-layout) - Kotliar V.
 6. [JSMP3.12: Angular 2](docs/ng2/ng2-VK.md) - Kotliar V.
+7. [JSMP3.12: Angular 2](docs/ng2/ng2-BH.md) - Huseinov B.
