@@ -1,8 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        app: './src/react/main.js'
+        app: './react/main.js'
     },
     resolve: {
         extensions: ['', '.js']
@@ -22,7 +23,11 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/react/index.html'
+            template: './react/index.html'
+        }),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
         })
     ]
 };
