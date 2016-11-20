@@ -9,12 +9,6 @@ module.exports = {
         path: './public',
         filename: '[name].js'
     },
-    resolve: {
-        extensions: ['', '.ts', '.js']
-    },
-    babel: {
-        presets: ['es2015']
-    },
     module: {
         preLoaders: [
             {

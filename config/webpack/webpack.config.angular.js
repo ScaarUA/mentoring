@@ -6,6 +6,12 @@ module.exports = {
         vendor: './src/vendor.ts',
         polyfills: './src/polyfills.ts'
     },
+    resolve: {
+        extensions: ['', '.ts', '.js']
+    },
+    babel: {
+        presets: ['es2015']
+    },
     module: {
         loaders: [
             {
