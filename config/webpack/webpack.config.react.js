@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        app: './react/main.js'
+        app: './react/index.js'
     },
     resolve: {
         extensions: ['', '.js']

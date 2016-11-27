@@ -24,9 +24,9 @@ module.exports = function (passport, app) {
 
     }));
 
-    app.post('/auth/local/login', passport.authenticate('local-login', {
-        successRedirect: '/api/users/current'
-    }));
+    app.post('/auth/local/login', passport.authenticate('local-login'), (req, res) => {
+        res.send(req.user.local)
+    });
 
     app.get('/auth/google', passport.authenticate('google', {
         scope: ['profile', 'email']
