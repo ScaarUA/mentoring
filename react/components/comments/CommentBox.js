@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as actions from '../../actions'
+import { Link } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
-import CommentList from './CommentList'
-import CommentForm from './CommentForm'
+import CommentList from './CommentList';
+import CommentForm from './CommentForm';
 
 class CommentBox extends React.Component {
     render() {

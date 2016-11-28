@@ -5,9 +5,10 @@ function login(body) {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
         }
     };
+
     return fetch('/auth/local/login', config);
 }
 

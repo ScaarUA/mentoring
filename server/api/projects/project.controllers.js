@@ -66,8 +66,8 @@ class ProjectControllers extends BaseControllers {
     }
 }
 
-function getOnlyIds(array) {
-    return array.map(item => item._id + '');
-}
+// function getOnlyIds(array) {
+//     return array.map(item => item._id + '');
+// }
 
 module.exports = ProjectControllers;

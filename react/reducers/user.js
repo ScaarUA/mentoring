@@ -1,12 +1,12 @@
 import {
     LOGIN
-} from '../actions'
+} from '../actions';
 
-export default function comments(state = { }, action) {
+export default function comments(state = {}, action) {
     switch (action.type) {
-        case LOGIN:
-            return action.payload;
-        default:
-            return state
+    case LOGIN:
+        return action.payload;
+    default:
+        return state;
     }
 }
