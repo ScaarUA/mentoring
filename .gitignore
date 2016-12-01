@@ -12,3 +12,6 @@ tmp.txt
 public/*
 !public/assets/
 !public/assets/images
+
+cordova/platforms
+cordova/www
