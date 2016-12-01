@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { Injectable } from '@angular/core';
+import { Response } from '@angular/http';
 
 import { Project } from '../../models/project';
+import { Whttp } from '../../shared/services/whttp.service';
 
-export const ENDPOINT_PROJECTS = '/api/projects';
+export const ENDPOINT_PROJECTS = 'http://mentoring-program-vitalikkotliar.c9users.io:8080/api/projects';
 
 @Injectable()
 export class ProjectsService {
     private projects: Project[] = [];
 
-    constructor(private http: Http) {
+    constructor(private whttp: Whttp) {
         this.binding();
     }
 
@@ -28,7 +29,7 @@ export class ProjectsService {
     }
 
     public loadProjects(): Promise<Project[]> {
-        return this.http.get(ENDPOINT_PROJECTS)
+        return this.whttp.get(ENDPOINT_PROJECTS)
             .toPromise()
             .then(this.handleData)
             .then(this.saveProjectsInStore)
@@ -36,7 +37,7 @@ export class ProjectsService {
     }
 
     public getProjectById(id: String): Promise<Project[]> {
-        return this.http.get(`${ENDPOINT_PROJECTS}/${id}`)
+        return this.whttp.get(`${ENDPOINT_PROJECTS}/${id}`)
             .toPromise()
             .then(this.handleData)
             .catch(this.handleError);
@@ -44,7 +45,7 @@ export class ProjectsService {
 
     public addProject(project: Project) {
         delete project._id;
-        return this.http.post(ENDPOINT_PROJECTS, project)
+        return this.whttp.post(ENDPOINT_PROJECTS, project)
             .toPromise()
             .then(this.handleData)
             .then(this.addProjectInStore)
@@ -52,7 +53,7 @@ export class ProjectsService {
     }
 
     public removeProject(id: Number) {
-        return this.http.delete(`${ENDPOINT_PROJECTS}/${id}`)
+        return this.whttp.delete(`${ENDPOINT_PROJECTS}/${id}`)
             .toPromise()
             .then(() => {
                 this.removeProjectFromStore(id);
@@ -61,7 +62,7 @@ export class ProjectsService {
     }
 
     public updateProject(id: Number, project: Project) {
-        return this.http.put(`${ENDPOINT_PROJECTS}/${id}`, project)
+        return this.whttp.put(`${ENDPOINT_PROJECTS}/${id}`, project)
             .toPromise()
             .then(this.handleData)
             .catch(this.handleError);

@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 
 import { State } from '../../models/state';
+import { Whttp } from '../../shared/services/whttp.service';
 
 @Injectable()
 export class StateService {
-    constructor() {
+    constructor(private whttp: Whttp) {
     }
 
     public saveState(state): Promise<State> {
@@ -22,7 +23,7 @@ export class StateService {
             body: formData
         };
 
-        return window.fetch('/api/states', config)
+        return window.fetch(this.whttp.addPrefix('/api/states'), config)
             .then(this.handleData)
             .catch(this.handleError);
     }

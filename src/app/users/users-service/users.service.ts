@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 
 import { User } from '../../models/user';
 
+import { Whttp } from '../../shared/services/whttp.service';
 import { LocalStorageService } from '../../shared/storage/local-storage.service';
 
 const userStorageKey = 'USER';
@@ -11,20 +12,19 @@ const userStorageKey = 'USER';
 export class UsersService {
     public redirectUrl: String;
 
-    constructor(
-        private http: Http,
-        private localStorageService: LocalStorageService
-    ) {}
+    constructor(private whttp: Whttp,
+                private localStorageService: LocalStorageService) {
+    }
 
     public getUser(id): Promise<User[]> {
-        return this.http.get(`/api/users/${id}`)
+        return this.whttp.get(`/api/users/${id}`)
             .toPromise()
             .then(this.handleData)
             .catch(this.handleError);
     }
 
     public getCurrentUser() {
-        return this.http.get('/api/users/current')
+        return this.whttp.get('/api/users/current')
             .toPromise()
             .then(this.handleData, this.handleUserNoLongerAvailable.bind(this))
             .then(this.storeData.bind(this))
@@ -32,7 +32,7 @@ export class UsersService {
     }
 
     public login(credentials) {
-        return this.http.post('/auth/local/login', credentials)
+        return this.whttp.post('/auth/local/login', credentials)
             .toPromise()
             .then(this.handleData)
             .then(this.storeData.bind(this))
@@ -40,14 +40,14 @@ export class UsersService {
     }
 
     public register(credentials) {
-        return this.http.post('/auth/local/signup', credentials)
+        return this.whttp.post('/auth/local/signup', credentials)
             .toPromise()
             .then(this.handleData)
             .catch(this.handleError);
     }
 
     public logout() {
-        return this.http.get('/auth/logout')
+        return this.whttp.get('/auth/logout')
             .toPromise()
             .then(this.removeData)
             .catch(this.handleError);

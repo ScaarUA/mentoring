@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { Injectable } from '@angular/core';
+import { Response } from '@angular/http';
 
 import { Flow } from '../../models/flow';
+import { Whttp } from '../../shared/services/whttp.service';
 
 export const ENDPOINT_FLOWS = '/api/flows';
 
@@ -10,7 +11,7 @@ export const ENDPOINT_FLOWS = '/api/flows';
 export class FlowsService {
     private flows: Flow[] = [];
 
-    constructor(private http: Http) {
+    constructor(private whttp: Whttp) {
         this.binding();
     }
 
@@ -19,7 +20,7 @@ export class FlowsService {
     }
 
     public loadFlows(): Promise<Flow[]> {
-        return this.http.get(ENDPOINT_FLOWS)
+        return this.whttp.get(ENDPOINT_FLOWS)
             .toPromise()
             .then(this.handleData)
             .then(this.saveFlowsInStore)
@@ -27,7 +28,7 @@ export class FlowsService {
     }
 
     public getFlowById(id: String): Promise<Flow> {
-        return this.http.get(`${ENDPOINT_FLOWS}/${id}`)
+        return this.whttp.get(`${ENDPOINT_FLOWS}/${id}`)
             .toPromise()
             .then(this.handleData)
             .catch(this.handleError);
@@ -35,7 +36,7 @@ export class FlowsService {
 
     public addFlow(flow: Flow) {
         delete flow._id;
-        return this.http.post(ENDPOINT_FLOWS, flow)
+        return this.whttp.post(ENDPOINT_FLOWS, flow)
             .toPromise()
             .then(this.handleData)
             .then(this.addFlowInStore)
@@ -43,7 +44,7 @@ export class FlowsService {
     }
 
     public removeFlow(id: Number) {
-        return this.http.delete(`${ENDPOINT_FLOWS}/${id}`)
+        return this.whttp.delete(`${ENDPOINT_FLOWS}/${id}`)
             .toPromise()
             .then(() => {
                 this.removeFlowFromStore(id);
@@ -52,7 +53,7 @@ export class FlowsService {
     }
 
     public updateFlow(id: Number, flow: Flow) {
-        return this.http.put(`${ENDPOINT_FLOWS}/${id}`, flow)
+        return this.whttp.put(`${ENDPOINT_FLOWS}/${id}`, flow)
             .toPromise()
             .then(this.handleData)
             .catch(this.handleError);
