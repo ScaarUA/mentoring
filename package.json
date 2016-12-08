@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start:react": "cross-env framework=react npm run start",
+    "start:react-bh": "cross-env framework=react-bh npm run start",
     "start": "concurrently \"npm run dev\" \"npm run serve\"",
     "serve": "nodemon server",
     "build": "webpack",
