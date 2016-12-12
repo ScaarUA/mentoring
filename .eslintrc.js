@@ -12,13 +12,19 @@ module.exports = {
         "mocha": true
     },
     "plugins": [
-        "mocha"
+        "mocha",
+        "react"
     ],
     "extends": "eslint:recommended",
     "parserOptions": {
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
     },
     "rules": {
+        "react/jsx-uses-react": [2],
+        "react/jsx-uses-vars": [2],
         "indent": [2, 4],
         "quotes": [2, "single"],
         "semi": [2, "always"],

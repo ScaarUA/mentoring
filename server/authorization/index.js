@@ -20,9 +20,9 @@ module.exports = function (passport, app) {
         res.redirect('/');
     });
 
-    app.post('/auth/local/signup', passport.authenticate('local-signup', {
-
-    }));
+    app.post('/auth/local/signup', passport.authenticate('local-signup'), (req, res) => {
+        res.send(req.user.local);
+    });
 
     app.post('/auth/local/login', passport.authenticate('local-login'), (req, res) => {
         res.send(req.user.local);
