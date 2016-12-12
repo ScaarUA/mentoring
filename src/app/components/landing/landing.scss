@@ -1,6 +1,7 @@
 @import "../../../common-styles/_colors";
 @import "../../../common-styles/_mixins";
 @import "../../../common-styles/_media.queries";
+@import "../../../common-styles/_variables";
 
 landing {
   font-family: 'Raleway', sans-serif;
@@ -236,7 +237,7 @@ landing {
 
   &__with-google {
     @include button-reset();
-    background-image: url("/assets/images/sign-in-with-google.png");
+    background-image: url("#{$api_endpoints}/assets/images/sign-in-with-google.png");
     background-size: cover;
     width: 153px;
     height: 30px;

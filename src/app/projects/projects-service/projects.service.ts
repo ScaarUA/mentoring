@@ -5,7 +5,7 @@ import { Response } from '@angular/http';
 import { Project } from '../../models/project';
 import { Whttp } from '../../shared/services/whttp.service';
 
-export const ENDPOINT_PROJECTS = 'http://mentoring-program-vitalikkotliar.c9users.io:8080/api/projects';
+export const ENDPOINT_PROJECTS = '/api/projects';
 
 @Injectable()
 export class ProjectsService {
