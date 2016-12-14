@@ -1,4 +1,4 @@
-JSMP3.11: ReactJS Architectural Concept (Bohdan Huseinov)
+JSMP3.15: Cordova / PhoneGap frameworks  (Bohdan Huseinov)
 =========================================================
 
 Поддерживаемые платформы: _android, browser_
