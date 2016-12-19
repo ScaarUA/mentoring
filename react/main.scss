@@ -50,6 +50,80 @@
   margin-left: 5px;
 }
 
-.comment{
+.comment {
   padding-left: 10px;
+}
+
+.part {
+  width: 100%;
+  margin: 10px;
+  max-width: 150px;
+  img {
+    width: 100%;
+  }
+}
+
+.canvas-box {
+  position: relative;
+  padding: 10px;
+}
+
+.main-canvas {
+  border: 2px #0a7acd dashed;
+  border-radius: 20px;
+  width: 500px;
+  margin: 10px;
+}
+
+.canvas-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#js-tmp-canvas {
+  display: none;
+}
+
+.video {
+  display: none;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+#input-file {
+  display: none;
+}
+
+.container-canvas {
+  button {
+    margin-left: 5px;
+  }
+}
+
+.tools {
+  font-size: 30px;
+}
+
+.list-group-item {
+  cursor: pointer;
 }
