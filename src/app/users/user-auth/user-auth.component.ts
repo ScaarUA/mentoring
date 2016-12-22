@@ -7,6 +7,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UsersService } from '../users-service/users.service';
+import { Whttp } from '../../shared/services/whttp.service';
 
 @Component({
     template: require('./user-auth.html')
@@ -23,7 +24,8 @@ export class UserAuthComponent implements OnInit, OnDestroy {
     constructor(
         private usersService: UsersService,
         private router: Router,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private whttp: Whttp
     ) {}
 
     public ngOnInit() {
@@ -73,6 +75,7 @@ export class UserAuthComponent implements OnInit, OnDestroy {
 
     public login() {
         return this.usersService.login(this.user)
+            .then((data: any) => this.whttp.setToken(data.token))
             .then(this.navigateOnSuccess.bind(this), this.toggleError.bind(this));
     }
 

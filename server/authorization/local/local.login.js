@@ -1,4 +1,6 @@
 const LocalStrategy = require('passport-local').Strategy,
+    jwt = require("jwt-simple"),
+    config = require('../../../config/server/auth'),
     User = require('../../api/users/user.model');
 
 module.exports = passport => {
@@ -15,9 +17,14 @@ module.exports = passport => {
             if (!user || !user.isPasswordValid(password)) {
                 return done(null, false);
             }
-            
+
+            const payload = {
+                id: user.id
+            };
+
+            user.local.token = jwt.encode(payload, config.token.secret);
+
             return done(null, user);
         });
-    }
-    ));
+    }));
 };

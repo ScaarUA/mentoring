@@ -13,21 +13,21 @@ module.exports = {
             path: '/api',
             target: {
                 host: process.env.webpackServerHost,
-                port: process.env.serverPort
+                port: process.env.PORT
             }
         },
         {
             path: '/assets',
             target: {
                 host: process.env.webpackServerHost,
-                port: process.env.serverPort
+                port: process.env.PORT
             }
         },
         {
             path: '/auth',
             target: {
                 host: process.env.webpackServerHost,
-                port: process.env.serverPort
+                port: process.env.PORT
             }
         },
     ]

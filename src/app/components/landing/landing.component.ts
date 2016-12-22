@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UsersService } from '../../users/users-service/users.service';
+import { Whttp } from '../../shared/services/whttp.service';
 
 @Component({
     selector: 'landing',
@@ -15,7 +16,8 @@ export class LandingComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private usersService: UsersService
+        private usersService: UsersService,
+        private whttp: Whttp
     ) {}
 
     public ngOnInit() {
@@ -26,6 +28,7 @@ export class LandingComponent implements OnInit {
 
     public login() {
         return this.usersService.login(this.user)
+            .then((data: any) => this.whttp.setToken(data.token))
             .then(this.goToProjects.bind(this), this.goToAuth.bind(this));
     }
 
