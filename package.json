@@ -7,7 +7,7 @@
     "start:react": "cross-env framework=react npm run start",
     "start:react-bh": "cross-env framework=react-bh npm run start",
     "start": "concurrently \"npm run dev\" \"npm run serve\"",
-    "serve": "nodemon server",
+    "serve": "nodemon server --watch server --watch config",
     "build": "webpack",
     "cordova:emulate": "npm run copy:dist && cd cordova && cordova emulate browser",
     "make:android": "npm run copy:dist && npm run build:android && npm run copy:apk",
