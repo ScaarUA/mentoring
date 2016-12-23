@@ -27,8 +27,7 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',
-            jQuery: 'jquery',
-            fabric: 'fabric/dist/fabric.require.js'
+            jQuery: 'jquery'
         })
     ]
 };
