@@ -36,6 +36,11 @@ export default class BuilderTools extends React.Component {
     }
 
     runOption(func) {
+        if (!this.props.layer) {
+            alert(`Layer doesn't chosen`);
+            this.stopOption();
+            return;
+        }
         this.interval = setInterval(() => {
             func && func();
         }, 50);

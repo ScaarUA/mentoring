@@ -12,5 +12,10 @@ export default {
   "teeth": [
     "/assets/react/img/teeth1.png",
     "/assets/react/img/teeth2.png"
+  ],
+  "mask": [
+    "/assets/react/img/mask1.png",
+    "/assets/react/img/mask2.jpg",
+    "/assets/react/img/mask3.jpg",
   ]
 }

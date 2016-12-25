@@ -4,10 +4,11 @@ import series from './series.js';
 import BuilderParts from './BuilderParts';
 import BuilderTools from './BuilderTools';
 import BuilderLayers from './BuilderLayers';
+import BuilderDropdown from './BuilderDropdown';
 
 export const CANVAS = {
     WIDTH: 500,
-    HEIGHT: 500
+    HEIGHT: 375
 };
 
 export const WIDTH_PART = 100;
@@ -18,11 +19,11 @@ export default class Builder extends React.Component {
 
     constructor(props) {
         super(props);
-        this.parts = ['nose', 'eyebrows', 'teeth'];
+        this.parts = ['mask', 'nose', 'eyebrows', 'teeth'];
         this.series = series;
         this.state = {
             photo: '',
-            currentPart: this.parts[1],
+            currentPart: this.parts[0],
             currentLayer: -1,
             layers: []
         };
@@ -32,13 +33,6 @@ export default class Builder extends React.Component {
 
 
     render() {
-        const partNodes = this.parts.map((part) => {
-            return (
-                <li key={part.toString()}>
-                    <a onClick={() => this.onChangePart(part)}>{part}</a>
-                </li>
-            );
-        });
         return (
             <div className="builder">
                 <div className="col-xs-8 container-canvas">
@@ -62,17 +56,11 @@ export default class Builder extends React.Component {
                 </div>
                 <div className="col-xs-4">
                     <div className="col-xs-10">
-                        <div className="dropdown">
-                            <button className="btn btn-default dropdown-toggle"
-                                    type="button" id="dropdownMenu1" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="true">
-                                Choose part:
-                                <span className="caret"></span>
-                            </button>
-                            <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                {partNodes}
-                            </ul>
-                        </div>
+                        <BuilderDropdown
+                            items={this.parts}
+                            selected={this.state.currentPart}
+                            onChange={(item) => this.onChangePart(item)}
+                        />
                         <BuilderParts
                             addPart={(pathSeries) => this.addPart(pathSeries)}
                             parts={this.series[this.state.currentPart]}
@@ -124,7 +112,11 @@ export default class Builder extends React.Component {
         const mergedCanvas = this.mergeCanvas();
         const image = mergedCanvas.toDataURL("image/png")
             .replace("image/png", "image/octet-stream");
-        window.location.href = image;
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'avatar.png';
+        document.body.appendChild(link);
+        link.click();
     }
 
     addPart(pathSeries) {
@@ -189,7 +181,7 @@ export default class Builder extends React.Component {
         const canvases = this.getWrapperCanvas().getElementsByClassName('js-canvas-item');
         for (let i = 0; i < canvases.length; i++) {
             let canvas = canvases[i];
-            ctx.drawImage(canvas, 0, 0);
+            ctx.drawImage(canvas, 0, 0, CANVAS.WIDTH, CANVAS.HEIGHT);
         }
         return tmpCanvas;
     }
@@ -248,8 +240,8 @@ export default class Builder extends React.Component {
     startup() {
         const canvas = document.getElementById('js-main-canvas');
         let streaming = false;
-        let width = 320;
-        let height = 0;
+        let width = CANVAS.WIDTH;
+        let height = CANVAS.HEIGHT;
         let video = document.getElementById("js-video");
 
         navigator.getMedia = ( navigator.getUserMedia ||
@@ -277,12 +269,6 @@ export default class Builder extends React.Component {
 
         video.addEventListener('canplay', function (ev) {
             if (!streaming) {
-                height = video.videoHeight / (video.videoWidth / width);
-
-                if (isNaN(height)) {
-                    height = width / (4 / 3);
-                }
-
                 video.setAttribute('width', width);
                 video.setAttribute('height', height);
                 canvas.setAttribute('width', width);

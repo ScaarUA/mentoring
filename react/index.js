@@ -20,10 +20,9 @@ render(
     <Provider store={configureStore()}>
         <Router history={history}>
             <Route path="/" component={App}>
-                {/*<IndexRoute component={LoginForm}/>*/}
-                <IndexRoute component={BuilderBox}/>
-                <Route path="/login" component={LoginForm}/>
+                <IndexRoute component={LoginForm}/>
                 <Route path="/comments" component={CommentBox}/>
+                <Route path="/builder" component={BuilderBox}/>
             </Route>
         </Router>
     </Provider>,

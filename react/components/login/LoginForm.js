@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
                 if (response.status >= 400) {
                     this.setState({ fail: true, isLoading: false});
                 } else {
-                    browserHistory.push('/comments');
+                    browserHistory.push('/builder');
                 }
                 this.props.login(data);
             });

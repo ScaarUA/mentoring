@@ -65,14 +65,13 @@
 
 .canvas-box {
   position: relative;
-  padding: 10px;
+  margin: 10px;
 }
 
 .main-canvas {
   border: 2px #0a7acd dashed;
   border-radius: 20px;
   width: 500px;
-  margin: 10px;
 }
 
 .canvas-item {
@@ -126,4 +125,8 @@
 
 .list-group-item {
   cursor: pointer;
+}
+
+.item-active{
+  background: #ccc;
 }
