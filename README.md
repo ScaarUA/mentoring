@@ -50,4 +50,5 @@ $ npm run eslint
 7. [JSMP3.12: Angular 2](docs/ng2/ng2-BH.md) - Huseinov B.
 8. [JSMP3.11: ReactJS Architectural Concept](docs/react/react-VK.md) - Kotliar V.
 9. [JSMP3.11: ReactJS Architectural Concept](docs/react/react-BH.md) - Huseinov B.
-1. [JSMP3.15: Cordova / PhoneGap frameworks](docs/cordova/cordova-BH.md) - Huseinov B.
+10. [JSMP3.15: Cordova / PhoneGap frameworks](docs/cordova/cordova-BH.md) - Huseinov B.
+11. [JSMP3.15: Cordova / PhoneGap frameworks](docs/cordova/cordova-VK.md) - Kotliar V.
