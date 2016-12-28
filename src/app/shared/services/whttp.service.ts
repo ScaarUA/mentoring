@@ -15,6 +15,10 @@ export class Whttp {
         this.token = token;
     }
 
+    public getToken(): string {
+        return this.token;
+    }
+
     public get(url: string, options?: RequestOptionsArgs): Observable<Response> {
         const config = this.appendHeaders(options);
         return this.http.get(this.addPrefix(url), config);

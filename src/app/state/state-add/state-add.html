@@ -61,4 +61,8 @@
     <button class="state-add__save"
             (click)="saveState()">Save</button>
 
+    <button class="state-add__photo"
+            *ngIf="isShowTakePhoto()"
+            (click)="takePhoto()">Take a photo</button>
+
 </section>

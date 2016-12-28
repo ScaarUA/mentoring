@@ -1,15 +1,26 @@
+import 'rxjs/add/operator/toPromise';
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 
 import { State } from '../../models/state';
 import { Whttp } from '../../shared/services/whttp.service';
+import { Device } from '../../shared/services/device.service';
 
 @Injectable()
 export class StateService {
-    constructor(private whttp: Whttp) {
+    constructor(private whttp: Whttp,
+                private device: Device) {
     }
 
     public saveState(state): Promise<State> {
+        if (this.device.isPhone()) {
+            this.device.phoneUpload(state);
+        } else {
+            this.browserUpload(state);
+        }
+    }
+
+    private browserUpload(state) {
         let formData = new FormData();
 
         for (let field in state) {
@@ -18,12 +29,8 @@ export class StateService {
             }
         }
 
-        const config = {
-            method: 'POST',
-            body: formData
-        };
-
-        return window.fetch(this.whttp.addPrefix('/api/states'), config)
+        return this.whttp.post('/api/states', formData)
+            .toPromise()
             .then(this.handleData)
             .catch(this.handleError);
     }

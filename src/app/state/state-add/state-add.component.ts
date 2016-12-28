@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { StateService } from '../state-service/state.service';
+import { Device } from '../../shared/services/device.service';
 
 import { State } from '../../models/state';
 
@@ -24,18 +25,24 @@ export class StateAddComponent implements OnInit, OnDestroy {
     private hotspotY: number;
     private subscription: Subscription;
     private flowId: string;
+    private pictureSource: string;
+    private destinationType: any;
 
-    constructor(
-        private stateService: StateService,
-        private router: Router,
-        private activatedRoute: ActivatedRoute
-    ) {}
+    constructor(private stateService: StateService,
+                private router: Router,
+                private device: Device,
+                private activatedRoute: ActivatedRoute) {
+    }
 
     public ngOnInit() {
         this.subscription = this.activatedRoute.params.subscribe(
             (param: any) => {
                 this.flowId = param['id'];
             });
+        this.onDeviceReady = this.onDeviceReady.bind(this);
+        this.onPhotoSuccess = this.onPhotoSuccess.bind(this);
+        this.onPhotoFail = this.onPhotoFail.bind(this);
+        document.addEventListener('deviceready', this.onDeviceReady, false);
     }
 
     public ngOnDestroy() {
@@ -60,7 +67,7 @@ export class StateAddComponent implements OnInit, OnDestroy {
         }
     }
 
-    public toggleImage($event) {
+    public toggleImage() {
         this.imageShown = !this.imageShown;
         if (!this.imageShown) {
             this.hotspotCreationProcess = false;
@@ -112,5 +119,30 @@ export class StateAddComponent implements OnInit, OnDestroy {
         this.stateService.saveState(this.state);
 
         this.router.navigate([]);
+    }
+
+    public isShowTakePhoto() {
+        return this.device.isPhone();
+    }
+
+    public takePhoto() {
+        const options = {
+            quality: 50,
+            destinationType: this.destinationType.FILE_URI
+        };
+        navigator.camera.getPicture(this.onPhotoSuccess, this.onPhotoFail, options);
+    }
+
+    private onPhotoSuccess(fileURI: any) {
+        this.state.file = fileURI;
+    }
+
+    private onPhotoFail(message: string) {
+        alert('Failed photo: ' + message);
+    }
+
+    private onDeviceReady() {
+        this.pictureSource = navigator.camera.PictureSourceType;
+        this.destinationType = navigator.camera.DestinationType;
     }
 }
