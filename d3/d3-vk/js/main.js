@@ -98,8 +98,7 @@ function prepareData(data) {
 function run(currencies) {
     const url = 'http://www.apilayer.net/api/live';
     const api = `${url}?access_key=e9568c555f60dc612e93214da97d35d8&format=1&currencies=${currencies}`;
-    const options = { method: 'GET' };
-    window.fetch(api, options)
+    window.fetch(api)
         .then((response) => response.json())
         .then(prepareData)
         .then((data) => {

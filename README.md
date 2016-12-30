@@ -52,3 +52,5 @@ $ npm run eslint
 9. [JSMP3.11: ReactJS Architectural Concept](docs/react/react-BH.md) - Huseinov B.
 10. [JSMP3.15: Cordova / PhoneGap frameworks](docs/cordova/cordova-BH.md) - Huseinov B.
 11. [JSMP3.15: Cordova / PhoneGap frameworks](docs/cordova/cordova-VK.md) - Kotliar V.
+12. [JSMP3.16: Theory of front-end data visualization (Kotliar Vitalii)](docs/canvas/canvas-vk/canvas-vk.md) - Kotliar V.
+13. [JSMP3.17: D3.js library](docs/d3/d3-vk/d3-vk.md) - Kotliar V.
