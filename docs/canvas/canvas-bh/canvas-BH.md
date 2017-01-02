@@ -1,4 +1,4 @@
-12. JSMP3.16: Theory of front-end data visualization (Huseinvo Bohdan)
+12. JSMP3.16: Theory of front-end data visualization (Huseinov Bohdan)
 ======================================================================
 
 ## Для запуска генератора аватарок нужно выполнить всего одну команду:
@@ -17,5 +17,5 @@
 
 И еще немного результатов
 
-![ava1](/ava1.PNG)
-![ava2](/ava2.PNG)
+![ava1](/ava1.png)
+![ava2](/ava2.png)
