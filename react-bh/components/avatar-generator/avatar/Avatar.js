@@ -65,13 +65,8 @@ export class Avatar extends Component {
         density = parseInt(density, 10);
         this.hair.density = density;
 
-        let params = {
-            density,
-            length: this.hair.length
-        };
-
         canvas.remove(hair);
-        makeHair(params);
+        makeHair(this.hair);
     }
 
     changeHairLength(length) {
