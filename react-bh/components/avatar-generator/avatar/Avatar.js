@@ -5,24 +5,59 @@ const fabric = window.fabric;
 
 let canvas, cWidth, cHeight, radius, maxDistance;
 
-let glasses, hair;
+let glasses, hair, lips;
 
 export class Avatar extends Component {
     constructor() {
         super();
         this.hair = {};
+        this.glasses = {};
+        this.lips = {};
     }
 
     componentDidMount() {
         avatarGenerator();
+        this.glasses = {
+            glassRadius: radius / 3,
+            position: 150,
+            halfRounded: false
+        };
+
+        this.lips = {
+            position: 120,
+            emotionHeight: 0,
+            mustache: false
+        };
     }
 
     render() {
         return <div>
-            <p>Hair</p>
-            <p>Density <input type="number" onChange={e => this.changeHairDensity(e.target.value)}/></p>
-            <p>length <input type="range" onChange={e => this.changeHairLength(e.target.value)}/></p>
-            <canvas id="canvas" width="500px" height="500px" />
+            <div style={{float: 'left'}}>
+                <p><strong>Hair</strong></p>
+                <p>Density <input type="range" min="1" max="100"
+                                  onChange={e => this.changeHairDensity(e.target.value)}/></p>
+                <p>length <input type="range" onChange={e => this.changeHairLength(e.target.value)}/></p>
+            </div>
+            <div style={{float: 'left', borderLeft: '1px solid black'}}>
+                <p><strong>Glasses</strong></p>
+                <p>Half rounded <input type="checkbox" onChange={e => this.changeGlassesType(e.target.checked)}/></p>
+                <p>Position <input type="range" min="100" max="200"
+                                   onChange={e => this.changeGlassesPosition(e.target.value)}/></p>
+                <p>Radius <input type="range" min="10" max="100"
+                                 onChange={e => this.changeGlassesRadius(e.target.value)}/></p>
+            </div>
+            <div style={{float: 'left', borderLeft: '1px solid black'}}>
+                <p><strong>Lips</strong></p>
+                <p>Mustache <input type="checkbox" onChange={e => this.changeLipsMustache(e.target.checked)}/></p>
+                <p>Position <input type="range" min="60" max="180"
+                                   onChange={e => this.changeLipsPosition(e.target.value)}/></p>
+                <p>Happiness <input type="range" min="-30" max="30"
+                                    onChange={e => this.changeLipsEmotion(e.target.value)}/></p>
+            </div>
+            <div style={{overflow: 'hidden', clear: 'both'}}>
+                <canvas id="canvas" width="500px" height="500px"/>
+            </div>
+            <a id="download" href="#" onClick={() => this.download()}>Download avatar</a>
         </div>;
     }
 
@@ -43,18 +78,69 @@ export class Avatar extends Component {
         length = parseInt(length, 10);
         this.hair.length = length;
 
-        let params = {
-            density: this.hair.density,
-            length
-        };
-
         canvas.remove(hair);
-        makeHair(params);
+        makeHair(this.hair);
+    }
+
+    changeGlassesType(halfRounded) {
+        this.glasses.halfRounded = halfRounded;
+
+        canvas.remove(glasses);
+        makeGlasses(this.glasses);
+    }
+
+    changeGlassesPosition(position) {
+        position = parseInt(position, 10);
+        this.glasses.position = position;
+
+        canvas.remove(glasses);
+        makeGlasses(this.glasses);
+    }
+
+    changeGlassesRadius(glassRadius) {
+        glassRadius = parseInt(glassRadius, 10);
+        this.glasses.glassRadius = glassRadius;
+
+        canvas.remove(glasses);
+        makeGlasses(this.glasses);
+    }
+
+    changeLipsMustache(mustache) {
+        this.lips.mustache = mustache;
+
+        canvas.remove(lips);
+        makeLips(this.lips);
+    }
+
+    changeLipsPosition(position) {
+        position = parseInt(position, 10);
+        this.lips.position = position;
+
+        canvas.remove(lips);
+        makeLips(this.lips);
+    }
+
+    changeLipsEmotion(emotionHeight) {
+        emotionHeight = parseInt(emotionHeight, 10);
+        this.lips.emotionHeight = emotionHeight;
+
+        canvas.remove(lips);
+        makeLips(this.lips);
+    }
+
+    download() {
+        // eslint-disable-next-line
+        $('<a />').attr({href: canvas.toDataURL({
+            format: 'png',
+            quality: 0.3
+        }), download: 'avatar.png'})[0].click();
     }
 }
 
 function avatarGenerator() {
-    canvas = new fabric.Canvas('canvas');
+    canvas = new fabric.Canvas('canvas', {
+        backgroundColor: '#fff'
+    });
 
     cWidth = canvas.width;
     cHeight = canvas.height;
@@ -78,13 +164,13 @@ function avatarGenerator() {
     makeGlasses({
         glassRadius: radius / 3,
         position: 150,
-        halfRounded: true
+        halfRounded: false
     });
 
     makeLips({
         verticalPosition: 120,
         emotionHeight: -10,
-        mustache: true
+        mustache: false
 
     });
 
@@ -139,7 +225,7 @@ function makeGlasses(params) {
 }
 
 function makeLips(params) {
-    let position = params.verticalPosition || 100,
+    let position = params.position || 100,
         emotionHeight = params.emotionHeight || 0,
         figures = [];
 
@@ -168,9 +254,9 @@ function makeLips(params) {
         figures.push(mustache);
     }
 
-    let lips = new fabric.Group(figures);
+    lips = new fabric.Group(figures);
 
-    mouth.set('selectable', false);
+    lips.set('selectable', false);
 
     canvas.add(lips);
 }
