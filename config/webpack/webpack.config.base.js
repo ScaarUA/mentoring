@@ -37,9 +37,6 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor', 'polyfills']
-        }),
         new CleanWebpackPlugin(['public'], {
             root: __dirname,
             verbose: true,

@@ -1,4 +1,5 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin'),
+    webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -18,10 +19,13 @@ module.exports = {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
                 loader: 'ts-loader'
-            },
+            }
         ]
     },
     plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['app', 'vendor', 'polyfills']
+        }),
         new HtmlWebpackPlugin({
             template: './src/index.html'
         })

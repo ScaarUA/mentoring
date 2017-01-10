@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>d3 weather charts</title>
+</head>
+<body>
+    <div id="input" class="forecast">
+        <input class="forecast__city-input" type="text" placeholder="city">
+        <button class="forecast__button">Get Forecast</button>
+        <span class="chosen-city"></span>
+    </div>
+    <div id="output">
+        <div class="forecast-error"></div>
+
+        <div class="chart-container">
+            <div class="bar-chart">
+
+            </div>
+            <div class="bar-chart-legend">
+
+            </div>
+        </div>
+
+        <svg class="pie">
+            <g transform="translate(200, 200)"></g>
+        </svg>
+    </div>
+</body>
+</html>

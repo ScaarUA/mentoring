@@ -5,7 +5,8 @@ const
     baseConfig = require('./config/webpack/webpack.config.base'),
     angularConfig = require('./config/webpack/webpack.config.angular'),
     reactConfig = require('./config/webpack/webpack.config.react'),
-    reactBHConfig = require('./config/webpack/webpack.config.react-bh');
+    reactBHConfig = require('./config/webpack/webpack.config.react-bh'),
+    d3BHConfig = require('./config/webpack/webpack.config.d3-bh');
 
 const framework = process.env.framework.trim();
 let resultConfig = {};
@@ -20,6 +21,10 @@ if (framework === 'react') {
 
 if (framework === 'react-bh') {
     resultConfig = merge(baseConfig, reactBHConfig);
+}
+
+if (framework === 'd3-bh') {
+    resultConfig = merge(baseConfig, d3BHConfig);
 }
 
 module.exports = extender(resultConfig);
